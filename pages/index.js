@@ -1,13 +1,24 @@
-import Layout from '../components/layout';
+import Layout from '../components/layout'
 import Head from 'next/head'
+
+import Header from '../components/index/header'
+import Body from '../components/index/body'
+import Bottom from '../components/index/bottom'
 
 function HomePage() {
   return (
     <Layout>
       <Head>
-        <title>Anasayfa burası</title>
+        <title>Davetiyem.co | Dijital Düğün Davetiyesi</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <meta
+          name="description"
+          content="Davetiyem.co ile çok kolay bir şekilde dijital davetiyenizi oluşturabilirsiniz. Üstelik dijital düğün davetiyenize online bir şekilde ulaşabilirsiniz."
+        />
       </Head>
-      <div>Welcome to Next.js!</div>
+      <Header />
+      <Body />
+      <Bottom />
     </Layout>
   )
 }
