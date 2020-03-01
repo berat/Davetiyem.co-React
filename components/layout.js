@@ -1,4 +1,14 @@
 import Head from 'next/head'
+import GA from 'react-ga'
+import { hotjar } from 'react-hotjar';
+
+// const isGAEnabled = process.env.NODE_ENV === 'production'
+
+// if (isGAEnabled) {
+  // GA.initialize('UA-132339332-1')  
+  // hotjar.initialize(1285342, 6);
+
+// }
 
 function Layout({ children }) {
   return (
