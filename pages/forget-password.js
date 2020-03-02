@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import images from '../public/images/image'
 
-function ResetPassword() {
+function ForgetPassword() {
   return (
     <div id="column" className="ui grid doubling two column row">
       <div className="six wide column forms">
@@ -12,26 +12,16 @@ function ResetPassword() {
           </span>
           <div className="form">
             <div className="ui input">
-              <input
-                type="password"
-                placeholder="Parola"
-              />
-            </div>
-            <div className="ui input">
-              <input
-                type="password"
-                placeholder="Parolayı Onaylayın"
-              />
+              <input type="email" placeholder="E-mail adresiniz" />
             </div>
             <button className="ui blue button">ŞİFRENİ SIFIRLA</button>
             <small>
-              <Link href="/giris">
-                <a>Hatırladın mı? Hemen giriş yap.</a>
-              </Link>
+              <Link href="/giris"><a>Hatırladın mı? Hemen giriş yap.</a></Link>
             </small>
             <div className="ui horizontal divider">Ya da</div>
-            <Link href="/katil">
-              <a className="ui red button small basic kayit-ol">KAYIT OL</a>
+            <Link href="/katil"><a className="ui red button small basic kayit-ol">
+              KAYIT OL
+            </a>
             </Link>
           </div>
         </div>
@@ -43,4 +33,4 @@ function ResetPassword() {
   )
 }
 
-export default ResetPassword
+export default ForgetPassword
