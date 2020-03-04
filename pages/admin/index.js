@@ -1,5 +1,5 @@
 function HomePage() {
-  return <div>Admin Sayfasına hoş geldin</div>
+  return <div>Admin Sayfasına hoşnnghoş geldin</div>
 }
 
 export default HomePage

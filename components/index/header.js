@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import Navigation from './navigation'
-import images from '../../public/images/image'
+import images from '../../assets/image'
 
 function Header() {
   return (

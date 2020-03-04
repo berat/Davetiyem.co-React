@@ -5,6 +5,11 @@ import Header from '../components/index/header'
 import Body from '../components/index/body'
 import Bottom from '../components/index/bottom'
 
+import "../assets/reset.css"
+import "../assets/index/animate.min.css"
+import "../assets/index/style.css"
+
+
 function HomePage() {
   return (
     <Layout>

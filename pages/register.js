@@ -5,6 +5,10 @@ import { useForm } from 'react-hook-form'
 
 import images from '../public/images/image'
 
+import "../assets/normalize.css"
+import "../assets/auth/semantic.min.css"
+import "../assets/auth/auth.css"
+
 function Register() {
   const { register, handleSubmit, watch, errors } = useForm()
   const onSubmit = data => {

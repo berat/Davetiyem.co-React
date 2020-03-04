@@ -1,6 +1,10 @@
 import Link from 'next/link'
 import images from '../public/images/image'
 
+import "../assets/normalize.css"
+import "../assets/auth/semantic.min.css"
+import "../assets/auth/auth.css"
+
 function ResetPassword() {
   return (
     <div id="column" className="ui grid doubling two column row">
