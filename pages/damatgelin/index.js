@@ -1,9 +1,11 @@
 import Layout from '../../components/users/layout'
-import Head from 'next/head'
+
+import '../../assets/reset.css'
+import "../../assets/users/style.css"
+import "../../assets/users/responsive.css"
 
 function HomePage() {
-    return <Layout></Layout>
-  }
-  
-  export default HomePage
-  
+  return <Layout></Layout>
+}
+
+export default HomePage

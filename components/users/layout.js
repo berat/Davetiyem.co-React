@@ -2,6 +2,10 @@ import Head from 'next/head'
 import GA from 'react-ga'
 import { hotjar } from 'react-hotjar'
 import Header from './header'
+import Bio from './bio'
+import Galeri from './galeri'
+import Comments from './comments'
+import Days from './days'
 
 // const isGAEnabled = process.env.NODE_ENV === 'production'
 
@@ -14,7 +18,7 @@ import Header from './header'
 
 function Layout({ children }) {
   return (
-    <div>
+    <div id="userPage">
       <Head>
         <title>Örnek Düğün Davetiyesi</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -57,6 +61,10 @@ function Layout({ children }) {
         <meta name="og:type" content="website" />
       </Head>
       <Header />
+      <Bio />
+      <Comments />
+      <Galeri />
+      <Days />
       {children}
     </div>
   )

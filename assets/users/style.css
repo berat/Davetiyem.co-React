@@ -1,0 +1,507 @@
+#userPage header {
+    background: url(/images/user/bg.png);
+    background-position: center center;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 580px;
+    position: relative;
+}
+
+#userPage .header {
+    background: linear-gradient(to right, rgba(41, 128, 185, 0.85), rgba(44, 62, 80, 0.85));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 100%;
+    height: 580px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#userPage .ortala {
+    width: 550px;
+    height: 580px;
+    margin: 0px auto;
+    display: table;
+}
+
+#userPage .dikey {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#userPage .giris {
+    display: flex;
+    width: 550px;
+    margin: 0px auto;
+}
+
+#userPage .kisi {
+    width: 202px;
+    display: inline-grid;
+}
+
+#userPage .kisi img {
+    width: 152px;
+    height: 152px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+#userPage .orta {
+    font-size: 120px;
+    color: #f0feff;
+    font-weight: 200;
+    font-style: italic;
+    margin-right: 50px;
+    padding-top: 20px;
+}
+
+#userPage .kisi span {
+    font-size: 25px;
+    color: #f0feff;
+    font-weight: 200;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 300;
+}
+
+#userPage .saat {
+    background: rgba(44, 62, 80, 0.5);
+    border-radius: 40px;
+    max-width: min-content;
+    height: 55px;
+    padding: 15px 35px;
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 40px;
+    display: flex;
+    line-height: 50px;
+}
+
+#userPage .saat {
+    font-size: 30px;
+    font-weight: 400;
+    color: #f0feff;
+}
+
+#userPage .saat div {
+    display: flex;
+}
+
+#userPage .saat div span {
+    font-size: 24px;
+    padding-top: 5px;
+    line-height: 44px;
+    font-weight: 100;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#userPage .saat i {
+    font-size: 24px;
+    padding-top: 5px;
+    line-height: 44px;
+    font-weight: 100;
+}
+
+#userPage .saat span#suan {
+    font-size: 23px;
+    width: max-content;
+    line-height: 54px;
+    height: 0px;
+    padding: 0 20px;
+}
+
+#userPage span#saat,
+#userPage span#tarih {
+    display: none;
+}
+
+.soz p {
+    font-size: 17px;
+    color: #f0feff;
+    text-align: center;
+    font-weight: 300;
+    font-style: italic;
+    margin-top: 40px;
+    line-height: 27px;
+}
+
+#userPage #bio {
+    background: #fff;
+    width: 100%;
+    height: auto;
+}
+
+#userPage .bio {
+    width: 1100px;
+    margin: 0px auto;
+    display: flex;
+    padding: 70px 0
+}
+
+#userPage .woman {
+    width: 550px;
+    text-align: right;
+    display: flex;
+}
+
+#userPage .man {
+    width: 550px;
+    text-align: left;
+    display: flex;
+}
+
+#userPage .ptext {
+    display: block;
+    padding-top: 30px;
+}
+
+#userPage .pisim {
+    font-size: 17px;
+    color: #182736;
+    font-weight: 400;
+}
+
+#userPage .hakkinda {
+    padding-top: 20px;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 300;
+    color: #182736;
+    line-height: 26px;
+}
+
+#userPage .woman .hakkinda {
+    text-align: right;
+}
+
+#userPage .man .hakkinda {
+    text-align: left;
+}
+
+#userPage .pimg {
+    width: 215px;
+    height: 215px;
+    margin-left: 30px;
+}
+
+#userPage .pimg img {
+    width: 215px;
+    height: 215px;
+    border-radius: 50%;
+    object-fit: cover
+}
+
+#userPage .man .pimg {
+    margin-left: 0;
+    margin-right: 30px;
+}
+
+#userPage .man .hakkinda {
+    text-align-last: left;
+}
+
+#userPage .porta {
+    position: relative;
+    margin-left: -38px;
+    margin-right: -38px;
+    padding: 17px;
+    font-size: 35px;
+    color: #547a82;
+    height: 35px;
+    width: 35px;
+    font-weight: 300;
+    background: #fff;
+    margin-top: 70px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+#userPage #soz {
+    background: #ecf0f1;
+    width: 100%;
+    height: auto;
+}
+
+#userPage .soz {
+    width: 850px;
+    margin: 0px auto;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#userPage .soz p.icerik {
+    font-size: 24px;
+    color: #6c6e70;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 35px;
+    padding-bottom: 30px;
+}
+
+#userPage .soz span.sahibi {
+    font-size: 18px;
+    font-weight: 400;
+    color: #616365;
+    padding-left: 30px 0;
+    text-transform: uppercase;
+}
+
+#userPage .swiper-scrollbar {
+    background: none !important
+}
+
+#userPage .swiper-pagination-bullet {
+    width: 11px;
+    height: 11px;
+    background-color: #717171;
+}
+
+#userPage .swiper-pagination-bullet-active {
+    background: #807575;
+}
+
+#userPage .swiper-pagination {
+    position: inherit !important;
+    margin-top: 30px;
+}
+
+#userPage #gunler {
+    background: #fff;
+    width: 100%;
+    height: auto;
+}
+
+#userPage .gunler {
+    width: 970px;
+    margin: 0px auto;
+    padding: 50px 0px;
+}
+
+#userPage .gunler ul {
+    width: 972px;
+    float: left;
+}
+
+#userPage .gunler li {
+    float: left;
+    width: 405px;
+    margin-bottom: 40px;
+    height: auto;
+}
+
+#userPage .gunler ul li:nth-child(odd) {
+    border-right: 2px solid #e2e2e2;
+    padding-right: 80px;
+    margin-right: 80px;
+}
+
+#userPage .gbaslik {
+    background: #ecf0f1;
+    width: 405px;
+    text-align: center;
+    font-size: 17px;
+    color: #182736;
+    font-weight: 400;
+    padding: 15px 0;
+}
+
+#userPage .gust {
+    width: 360px;
+    margin: 0px auto;
+    padding: 20px 0;
+}
+
+#userPage .gtarih {
+    float: left;
+    padding: 5px 0;
+    text-align: center;
+}
+
+#userPage .gtarih span {
+    font-size: 17px;
+    text-align: center;
+    color: #182736;
+    font-weight: 400;
+}
+
+#userPage .gtarih i {
+    display: block;
+    font-size: 41px;
+    color: #182736;
+    line-height: 46px;
+    font-weight: 400;
+}
+
+#userPage .gadres {
+    width: 215px;
+    float: right;
+    font-size: 17px;
+    line-height: 20px;
+    color: #586067;
+    font-weight: 300;
+}
+
+#userPage .gmap {
+    padding-top: 20px;
+}
+
+#userPage .not {
+    padding-top: 40px;
+    text-align: center;
+}
+
+#userPage .not p {
+    padding-top: 10px;
+    font-size: 16px;
+    color: #586067;
+    font-weight: 300;
+    width: 70%;
+    margin: 0px auto;
+    text-align: center;
+}
+
+#userPage .not p strong {
+    font-size: 16px;
+    color: #363c43;
+    font-weight: 400;
+}
+
+#userPage #galeriSlider {
+    width: 100%;
+    height: 330px;
+    position: relative;
+}
+
+#userPage div.scrollWrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#userPage div.scrollableArea {
+    position: relative;
+    width: auto;
+    height: 100%;
+}
+
+#userPage #galeriSlider div.scrollableArea img {
+    position: relative;
+    float: left;
+    margin: 0;
+    object-fit: cover;
+    padding: 0;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#userPage ul.sparagraf {
+    position: relative;
+    width: 850px;
+    height: 200px;
+    overflow: hidden;
+}
+
+#userPage .swiper-container {
+    cursor: move
+}
+
+#userPage iframe {
+    width: 405px;
+    height: 175px
+}
+
+#userPage #aramizaKatil {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 4;
+}
+
+#userPage .aramizaKatil {
+    width: 100%;
+    background: #fbffd1;
+    height: auto;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+#userPage .aramizaKatil p {
+    font-size: 14px;
+    color: #35404c;
+    word-spacing: 1px;
+}
+
+#userPage .aramizaKatil p a {
+    color: #318bd0;
+}
+
+#userPage ::-moz-selection {
+    background: #ffffbb;
+}
+
+#userPage ::selection {
+    background: #ffffbb;
+}
+
+#userPage .socialMedia {
+    position: fixed;
+    right: 0;
+    top: 36%;
+    height: auto;
+    z-index: 6;
+    width: auto;
+}
+
+#userPage .socialMedia ul {
+    font-size: 28px;
+    line-height: 50px
+}
+
+#userPage .socialMedia a {
+    padding: 10px 20px 10px 20px;
+    color: white;
+    display: block;
+}
+
+#userPage .socialMedia li {
+    text-align: center;
+}
+
+#userPage .whatsapp {
+    background-color: #4FCE5D;
+}
+
+#userPage .whatsapp:hover {
+    background-color: #48c155;
+}
+
+#userPage .sms {
+    background-color: #ff7f30;
+}
+
+#userPage .sms:hover {
+    background-color: #ea742a;
+}
+
+#userPage .facebook {
+    background-color: #3B5998;
+}
+
+#userPage .facebook:hover {
+    background-color: #36528c;
+}
+
+#userPage .mail {
+    background-color: #D44638;
+}
+
+#userPage .mail:hover {
+    background-color: #b93b2f;
+}

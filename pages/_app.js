@@ -1,12 +1,13 @@
-// import '../public/css/reset.css'
-// import '../public/css/animate.min.css'
-// import '../public/fonts/font.css'
-// import '../public/css/semantic.min.css'
-// import '../public/css/style.css'
-// import '../public/css/responsive.css'
-// import '../public/css/main.css'
+import '../public/fonts/font.css'
+// import Router from 'next/router';
 
-// This default export is required in a new `pages/_app.js` file.
+// Router.events.on('routeChangeComplete', () => {
+//   if (process.env.NODE_ENV !== 'production') {
+//     const els = document.querySelectorAll('link[href*="/_next/static/css/styles.chunk.css"]');
+//     const timestamp = new Date().valueOf();
+//     els[0].href = '/_next/static/css/styles.chunk.css?v=' + timestamp;
+//   }
+// })
 export default function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
 }

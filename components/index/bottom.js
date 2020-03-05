@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import images from '../../assets/image'
+import images from '../../public/images/image'
 
 function Bottom() {
   return (

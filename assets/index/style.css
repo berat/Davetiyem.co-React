@@ -1,136 +1,162 @@
-.temizle{
+#index .temizle {
     clear: both;
 }
-header{
+
+#index header {
     background: url(/images/bg.jpg) no-repeat center;
     background-size: cover;
     height: 600px;
 }
-#header{
+
+#index #header {
     width: 1100px;
     margin: 0px auto;
 }
-.header{
+
+#index .header {
     padding-top: 40px;
 }
-.logo{
+
+#index .logo {
     float: left;
 }
-.menu{
+
+#index .menu {
     float: right;
 }
-.menu ul{
+
+#index .menu ul {
     display: flex;
 }
-.menu li a{
+
+#index .menu li a {
     font-size: 14px;
     color: #fff;
     font-weight: 400;
     padding: 10px 13px;
 }
-.menu li{
+
+#index .menu li {
     padding: 14px 0px;
     transition: .3s;
 }
-.menu li a:hover{
+
+#index .menu li a:hover {
     color: #ee6c4d;
     transition: .3s;
 }
-.menu li.aktif{
+
+#index .menu li.aktif {
     color: #ee6c4d;
     background: #ee6c4d;
     transition: .3s;
     margin-bottom: 4px;
 }
-.menu li.yaktif{
+
+#index .menu li.yaktif {
     color: #ee6c4d;
-    transition: .3s;        
+    transition: .3s;
     margin-right: 5px;
 }
-.menu li.aktif a{
+
+#index .menu li.aktif a {
     color: #fff;
     transition: .3s;
     border: 1px solid #ee6c4d;
 }
-.menu li.yaktif a{
+
+#index .menu li .yaktif a {
     color: #fff;
     transition: .3s;
     border: 1px solid #ee6c4d
 }
-li.aktif:hover{
+
+#index li.aktif:hover {
     background: rgba(225, 225, 225, 0.02);
     transition: .3s;
 }
-li.yaktif:hover{
-    background: rgba(225, 225, 225, 0.07);
+
+#index li.yaktif:hover {
+    background: rgba(225, 225, 225, 0 .07);
     transition: .3s;
 }
-.slider{
+
+#index .slider {
     width: 560px;
     height: 370px;
     display: table;
     margin: 0px auto;
     padding-top: 50px;
 }
-.sorta{
+
+#index .sorta {
     vertical-align: middle;
     display: table-cell;
 }
-.slider h1{
-font-size: 35px;
-color: #fff;
-font-family: 'DM Serif Display', serif;
-text-align: center;
-letter-spacing: 1px;
-line-height: 45px;
-padding-bottom: 25px;
+
+#index .slider h1 {
+    font-size: 35px;
+    color: #fff;
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 45px;
+    padding-bottom: 25px;
 }
-.slider h3{
-text-align: center;
-margin: 0px auto;
-line-height: 28px;
-font-size: 21px;
-font-weight: 300;
-font-style: italic;
-color: #dcdcdc;
-margin-bottom: 30px;
+
+#index .slider h3 {
+    text-align: center;
+    margin: 0px auto;
+    line-height: 28px;
+    font-size: 21px;
+    font-weight: 300;
+    font-style: italic;
+    color: #dcdcdc;
+    margin-bottom: 30px;
 }
-.buton{
-background: #ee6c4d;
-max-width: max-content;
-margin: 0px auto;
-margin-bottom: 15px;
--webkit-transition: .1s;
--o-transition: .1s;
-transition: .1s;
+
+#index .buton {
+    background: #ee6c4d;
+    max-width: max-content;
+    margin: 0px auto;
+    margin-bottom: 15px;
+    -webkit-transition: .1s;
+    -o-transition: .1s;
+    transition: .1s;
 }
-.buton a{
-font-size: 20px;
-color: white;
-display: block;
-padding: 20px 30px;
+
+#index .buton a {
+    font-size: 20px;
+    color: white;
+    display: block;
+    padding: 20px 30px;
 }
-.buton:hover{
-background-color: #ca5c42;
--webkit-transition: .1s;
--o-transition: .1s;
-transition: .1s;
+
+#index .buton:hover {
+    background-color: #ca5c42;
+    -webkit-transition: .1s;
+    -o-transition: .1s;
+    transition: .1s;
 }
-.sorta p{
-font-size:15px;
-font-weight: 300;
-color: #b7b7b7;
-text-align: center;
+
+#index .sorta p {
+    font-size: 15px;
+    font-weight: 300;
+    color: #b7b7b7;
+    text-align: center;
 }
-.sorta p a{
-color: #ee6c4d;
-font-size:15px;
-font-weight: 400;
+
+#index .sorta p a {
+    color: #ee6c4d;
+    font-size: 15px;
+    font-weight: 400;
 }
-.bolum{
-    padding:40px 0px;
+
+#index .bolum {
+    padding: 40px 0px;
 }
-.bolum .baslik{
+
+#index .bolum .baslik {
     font-size: 27px;
     color: #46494c;
     font-family: 'DM Serif Display', serif;
@@ -138,10 +164,12 @@ font-weight: 400;
     padding-bottom: 30px;
     font-weight: 500;
 }
-.bacikla{
+
+#index .bacikla {
     background: #f7f7f7;
 }
-.bolum .acikla{
+
+#index .bolum .acikla {
     font-size: 18px;
     width: 815px;
     margin: 0px auto;
@@ -151,40 +179,48 @@ font-weight: 400;
     padding-bottom: 40px;
     line-height: 28px;
 }
-.acikla b{
+
+#index .acikla b {
     font-weight: 300;
 }
-.bicerik ul{
+
+#index .bicerik ul {
     width: 740px;
     display: flex;
     margin: 0px auto;
 }
-.bicerik li{
+
+#index .bicerik li {
     border-right: 1px solid #ddd;
     margin-right: 40px;
     padding: 40px;
 }
-.bicerik li:last-child{
+
+#index .bicerik li:last-child {
     border: none;
     margin: none;
     padding: none;
 }
-.bust{
+
+#index .bust {
     display: flex;
     padding-bottom: 30px;
-    }
-    .icon{
+}
+
+#index .icon {
     padding-right: 30px;
-    }
-    .bisim{
+}
+
+#index .bisim {
     font-size: 15px;
     color: #173649;
     padding-top: 15px;
     font-weight: 400;
     padding-bottom: 20px;
     border-bottom: 1px solid #c5c3c6;
-    }
-    .bicerik li p{
+}
+
+#index .bicerik li p {
     width: 315px;
     text-align: center;
     margin-left: -40px;
@@ -193,74 +229,89 @@ font-weight: 400;
     padding-left: -50px;
     color: #173649;
     line-height: 28px;
-    }
-    #ornekler{
+}
+
+#ornekler {
     width: 100%;
     background: #f4f4f4;
-    }
-    .demo{
+}
+
+#index .demo {
     width: 810px;
     margin: 0px auto;
-    }
-    .demo ul{
+}
+
+#index .demo ul {
     display: flex;
     height: 590px;
     float: left;
-    }
-    .demo ul li{
+}
+
+#index .demo ul li {
     width: 695px;
-    
+
     position: absolute;
-    }
-    .git{
+}
+
+#index .git {
     max-width: 30%;
     margin: 0px auto;
     margin-top: 40px;
     border: 2px solid #c5c3c6;
     text-align: center;
-    }
-    .git a{
+}
+
+#index .git a {
     font-size: 15px;
-    padding: 15px 20px;	
+    padding: 15px 20px;
     font-weight: 500;
     color: #4c5c68;
     display: block;
-    }
-    .sbuton{
+}
+
+#index .sbuton {
     width: 195px;
     height: 55px;
     border: 2px solid #c5c3c6;
     text-align: center;
     margin: 0px auto;
-    }
-    .sbuton a{
+}
+
+#index .sbuton a {
     font-size: 16px;
     font-weight: 500;
     color: #46494c;
     transition: .3s;
     display: block;
     line-height: 55px;
-    }
-    .sbuton:hover,.sbuton:hover a{
+}
+
+#index .sbuton:hover,
+#index .sbuton:hover a {
     border-color: #ee6c4d;
     transition: .3s;
     color: #ee6c4d;
-    }
-    #iletisim{
+}
+
+#iletisim {
     background: #46494c;
     width: 100%;
-    }
-    .iletisim .baslik{
+}
+
+#index .iletisim .baslik {
     color: #fff;
-    }
-    .iletisim .acikla{
+}
+
+#index .iletisim .acikla {
     color: #fff;
-    }
-    .iletisim-form{
+}
+
+#index .iletisim-form {
     width: 885px;
     margin: 0px auto;
-    }
-    .iletisim-form .sol input{
+}
+
+#index .iletisim-form .sol input {
     display: block;
     background-color: #4c4e51;
     width: 328px;
@@ -272,21 +323,24 @@ font-weight: 400;
     padding-right: 15px;
     margin-bottom: 15px;
     outline: none;
-    }
-    .iletisim-form .sol input[type="submit"]{
+}
+
+#index .iletisim-form .sol input[type="submit"] {
     width: 360px;
     height: 45px;
     background-color: #3c3e41;
     font-size: 13px;
     font-weight: 400;
     color: #fff;
-    border:none
-    }
-    .iletisim-form .sol input[type="submit"]:hover{
+    border: none
+}
+
+#index .iletisim-form .sol input[type="submit"]:hover {
     cursor: pointer;
     background-color: #37393c;
-    }
-    .iletisim-form .sag textarea{
+}
+
+#index .iletisim-form .sag textarea {
     width: 465px;
     height: 195px;
     border: 1px solid #515255;
@@ -296,52 +350,64 @@ font-weight: 400;
     color: #afafaf;
     resize: none;
     outline: none;
-    }
-    .iletisim-form input[type="text"],.iletisim-form input[type="submit"],.iletisim-form textarea{
+}
+
+#index .iletisim-form input[type="text"],
+#index .iletisim-form input[type="submit"],
+#index .iletisim-form textarea {
     font-family: 'Lato', sans-serif;
-    }
-    .alt{
+}
+
+#index .alt {
     width: 300px;
     margin: 0px auto;
     margin-top: 40px;
     display: flex;
-    }
-    .alt-sosyal ul{
+}
+
+#index .alt-sosyal ul {
     display: flex;
     margin-left: 30px;
     padding-left: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
-    border-left:1px solid #383b3f;
-    }
-    .alt-sosyal li{
+    border-left: 1px solid #383b3f;
+}
+
+#index .alt-sosyal li {
     line-height: 20px;
     padding-right: 20px;
-    }
-    .alt-sosyal a{
+}
+
+#index .alt-sosyal a {
     font-size: 20px;
     color: #d9d9d9;
-    }
-    .hizmetler{
+}
+
+#index .hizmetler {
     width: 860px;
     margin: 0px auto;
-    }
-    .hizmetler ul{
+}
+
+#index .hizmetler ul {
     padding-bottom: 40px;
     display: flex;
     flex-wrap: wrap
-    }
-    .hizmetler li{
+}
+
+#index .hizmetler li {
     width: 185px;
     text-align: center;
     margin-right: 40px;
     padding-top: 10px;
     padding-bottom: 10px;
-    }
-    .hizmetler li:last-child{
+}
+
+#index .hizmetler li:last-child {
     margin-right: 0;
-    }
-    .hizmet-icon{
+}
+
+#index .hizmet-icon {
     width: 110px;
     height: 110px;
     border: 1px solid #a8a8a8;
@@ -353,13 +419,15 @@ font-weight: 400;
     margin: 0px auto;
     margin-bottom: 20px;
     transition: .4s
-    }
-    .hizmetler li span{
+}
+
+#index .hizmetler li span {
     font-size: 17px;
     color: #4f5051;
     font-weight: 600;
-    }
-    .hizmetler li p{
+}
+
+#index .hizmetler li p {
     padding-top: 15px;
     width: 200px;
     font-size: 14px;
@@ -368,39 +436,46 @@ font-weight: 400;
     text-align: center;
     color: #7c7c7c;
     line-height: 19px;
-    }
-    .hizmetler li:hover .hizmet-icon{
+}
+
+#index .hizmetler li:hover .hizmet-icon {
     background: #f8f8f8;
     transition: .4s
-    }
-    .acilan{
-    display: none;
-    float: right;
-    margin-top: 10px;
-    margin-right: 20px;
-    }
-    .acilan i{
-    font-size: 17px;
-    color: #fff;
-    }
-    .acilan:hover{
-    color: #ee6c4d;
-    cursor: pointer
-    }
-    .iletisim .acikla p{
-        font-weight: 200;
-    }
-    
-.kapan{
+}
+
+#index .acilan {
     display: none;
     float: right;
     margin-top: 10px;
     margin-right: 20px;
 }
-.kapan i{
+
+#index .acilan i {
+    font-size: 17px;
+    color: #fff;
+}
+
+#index .acilan:hover {
+    color: #ee6c4d;
+    cursor: pointer
+}
+
+#index .iletisim .acikla p {
+    font-weight: 200;
+}
+
+#index .kapan {
+    display: none;
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+#index .kapan i {
     font-size: 20px;
     color: #fff;
 }
-.kapan i:hover{
+
+#index .kapan i:hover {
     color: #ee6c4d;
 }

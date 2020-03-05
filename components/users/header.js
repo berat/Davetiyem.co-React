@@ -1,3 +1,5 @@
+import images from '../../public/images/image'
+
 function Header() {
   return (
     <header>
@@ -7,12 +9,12 @@ function Header() {
             <div className="dikey">
               <div className="giris">
                 <div className="kisi">
-                  <img src="https://davetiyem.co/static/invite/images/k1.png" alt="" />
+                  <img src={images.user.gelinFoto} alt="" />
                   <span> Leyla Bulut </span>
                 </div>
                 <div className="orta">&amp;</div>
                 <div className="kisi">
-                  <img src="https://davetiyem.co/static/invite/images/k1.png" alt="" />
+                  <img src={images.user.damatFoto} alt="" />
                   <span> Hasan Arslan </span>
                 </div>
               </div>
