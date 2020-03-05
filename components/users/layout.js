@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import GA from 'react-ga'
+import Link from 'next/link'
 import { hotjar } from 'react-hotjar'
 import Header from './header'
 import Bio from './bio'
@@ -15,12 +16,12 @@ import Days from './days'
 
 // }
 
-
 function Layout({ children }) {
   return (
     <div id="userPage">
       <Head>
         <title>Örnek Düğün Davetiyesi</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="keywords"
@@ -65,6 +66,55 @@ function Layout({ children }) {
       <Comments />
       <Galeri />
       <Days />
+      <div id="aramizaKatil">
+        <div className="aramizaKatil">
+          <p>
+            Birkaç dakika içerisinde sizde kendi davetiye sitenizi
+            oluşturabilirsiniz. Hemen{' '}
+            <Link href="/katil">
+              <a>Kayıt Olun</a>
+            </Link>{' '}
+            ve başlayın.
+          </p>
+        </div>
+      </div>
+      <div className="socialMedia">
+        <ul>
+          <li className="whatsapp">
+            <a
+              target="_blank"
+              href="whatsapp://send?abid=&text=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊"
+            >
+              <i className="fa fa-whatsapp" />
+            </a>
+          </li>
+          <li className="sms">
+            <a
+              target="_blank"
+              href="sms:?body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊"
+            >
+              <i className="fa fa-commenting" />
+            </a>
+          </li>
+          <li className="facebook">
+            <a
+              target="_blank"
+              href="http://www.facebook.com/sharer/sharer.php?u=http://davetiyem.co/damatgelin"
+            >
+              <i className="fa fa-facebook-f" />
+            </a>
+          </li>
+          <li className="mail">
+            <a
+              target="_blank"
+              href="mailto:?subject=Evleniyoruz, Düğünümüze Davetleisiniz?&body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊"
+            >
+              <i className="fa fa-envelope" />
+            </a>
+          </li>
+        </ul>
+      </div>
+
       {children}
     </div>
   )
