@@ -16,8 +16,8 @@ const Login = () => {
   const username = useRef()
   const password = useRef()
 
-  if(Cookies.get('login')){
-    Router.push('/admin')
+  if (Cookies.get('login')) {
+    Router.push(config.adminPage)
   }
 
   const beLogin = e => {
@@ -28,14 +28,18 @@ const Login = () => {
     }).then(response => {
       if (response.data.status == 201) {
         Cookies.set('login', response.data.token)
-        cogoToast.success('Giriş yapıldı. Admin sayfasına yönlendiriliyorsunuz.', {
-          onClick: (e) => {e.target.parentNode.parentNode.style.display = 'none'},
+        cogoToast.success(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
           position: 'top-left'
         })
-        Router.push('/admin')
+        Router.push(config.adminPage)
       } else {
         cogoToast.error(response.data.msg, {
-          onClick: (e) => {e.target.parentNode.parentNode.style.display = 'none'},
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
           position: 'top-left'
         })
       }
@@ -60,12 +64,12 @@ const Login = () => {
               GİRİŞ YAP
             </button>
             <small>
-              <Link href="/sifremi-sifirla">
+              <Link href={config.forgetPass}>
                 <a>Parolanı mı unuttun? Hemen sıfırla.</a>
               </Link>
             </small>
             <div className="ui horizontal divider">Ya da</div>
-            <Link href="/katil">
+            <Link href={config.registerPage}>
               <a className="ui red button small basic kayit-ol">KAYIT OL</a>
             </Link>
           </div>
