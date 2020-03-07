@@ -21,7 +21,12 @@ function Layout({ children }) {
     <div id="userPage">
       <Head>
         <title>Örnek Düğün Davetiyesi</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous"
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="keywords"
@@ -85,7 +90,7 @@ function Layout({ children }) {
               target="_blank"
               href="whatsapp://send?abid=&text=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊"
             >
-              <i className="fa fa-whatsapp" />
+              <i className="fab fa-whatsapp" />
             </a>
           </li>
           <li className="sms">
@@ -93,7 +98,7 @@ function Layout({ children }) {
               target="_blank"
               href="sms:?body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊"
             >
-              <i className="fa fa-commenting" />
+              <i className="fas fa-sms" />
             </a>
           </li>
           <li className="facebook">
@@ -101,15 +106,15 @@ function Layout({ children }) {
               target="_blank"
               href="http://www.facebook.com/sharer/sharer.php?u=http://davetiyem.co/damatgelin"
             >
-              <i className="fa fa-facebook-f" />
+              <i className="fab fa-facebook-f" />
             </a>
           </li>
           <li className="mail">
             <a
               target="_blank"
-              href="mailto:?subject=Evleniyoruz, Düğünümüze Davetleisiniz?&body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊"
+              href="mailto:?subject=Evleniyoruz, Düğünümüze Davetleisiniz?&body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/ dddd adresine gidebilirsiniz. Bekliyoruz 	😊"
             >
-              <i className="fa fa-envelope" />
+              <i className="fas fa-envelope" />
             </a>
           </li>
         </ul>

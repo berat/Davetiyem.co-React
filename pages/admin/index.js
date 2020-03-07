@@ -1,5 +1,7 @@
+import Layout from '../../components/admin/layout'
+
 function HomePage() {
-  return <div>Admin Sayfasına hoşnnghoş geldin</div>
+  return <Layout>Admin Sayfasına hoşnnghoş geldin</Layout>
 }
 
 export default HomePage
