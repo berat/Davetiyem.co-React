@@ -86,40 +86,35 @@ function Layout({ children }) {
       <div className="socialMedia">
         <ul>
           <li className="whatsapp">
-            <a
-              target="_blank"
-              href="whatsapp://send?abid=&text=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊"
-            >
-              <i className="fab fa-whatsapp" />
-            </a>
+            <Link href="whatsapp://send?abid=&text=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊">
+              <a target="_blank">
+                <i className="fab fa-whatsapp" />
+              </a>
+            </Link>
           </li>
           <li className="sms">
-            <a
-              target="_blank"
-              href="sms:?body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊"
-            >
-              <i className="fas fa-sms" />
-            </a>
+            <Link href="sms:?body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊">
+              <a target="_blank">
+                <i className="fas fa-sms" />
+              </a>
+            </Link>
           </li>
           <li className="facebook">
-            <a
-              target="_blank"
-              href="http://www.facebook.com/sharer/sharer.php?u=http://davetiyem.co/damatgelin"
-            >
-              <i className="fab fa-facebook-f" />
-            </a>
+            <Link href="http://www.facebook.com/sharer/sharer.php?u=http://davetiyem.co/damatgelin">
+              <a target="_blank">
+                <i className="fab fa-facebook-f" />
+              </a>
+            </Link>
           </li>
           <li className="mail">
-            <a
-              target="_blank"
-              href="mailto:?subject=Evleniyoruz, Düğünümüze Davetleisiniz?&body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/ dddd adresine gidebilirsiniz. Bekliyoruz 	😊"
-            >
-              <i className="fas fa-envelope" />
-            </a>
+            <Link href="mailto:?subject=Evleniyoruz, Düğünümüze Davetleisiniz?&body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/ dddd adresine gidebilirsiniz. Bekliyoruz 	😊">
+              <a target="_blank">
+                <i className="fas fa-envelope" />
+              </a>
+            </Link>
           </li>
         </ul>
       </div>
-
       {children}
     </div>
   )

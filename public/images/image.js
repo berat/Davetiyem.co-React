@@ -7,7 +7,8 @@ const images = {
         gelinFoto: '/images/user/b1.png',
         damatFoto: '/images/user/b2.png',
         galeri: '/images/user/galeri1.jpg' // Burayı kaldır sonra
-    }
+    },
+    adminLogo: '/images/admin/logo.png',
 }
 
 export default images;

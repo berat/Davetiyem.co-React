@@ -1,0 +1,325 @@
+body{
+    background: #eee;
+}
+.logo{
+    width: 120px;
+    margin: 0px auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center
+}
+.navbar{
+    padding: 0 !important;
+}
+.navbar-toggler{
+    margin: 10px 20px
+}
+.navbar-brand{
+    margin: 0px;
+    padding: 0px;
+}
+.navbar-brand i{
+    margin: 0px;
+    padding: 23px 25px;
+    font-size: 20px;
+    background: #272c31
+}
+.navbar li a{
+    font-size: 15px;
+    color: #fff !important;
+    font-weight: 300;
+    padding: 22px !important;
+}
+.nav-item i{
+    margin-right: 15px;
+}
+.nav-item a:hover,.active{
+    background-color: #272c31;
+    cursor: pointer
+}
+.bg-light{
+    background: #474747 !important;
+    height: auto;
+}
+.smenu li{
+    padding: 24px;
+}
+.edit{
+    width: 255px;
+    margin: 0px auto;
+    margin-bottom: 30px;
+} 
+.backsite{
+    height: 52px;
+    background: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+    margin-top: 30px;
+}
+.backsite a{
+    display: block;
+    font-size: 15px;
+    line-height: 52px;
+    font-weight: 500;
+    color: #313131;
+}
+.backsite:hover{
+    background: #f4f4f4;
+}
+.save{
+    height: 52px;
+    background: #008cba;
+    text-align: center;
+    margin-top: 20px;
+}
+.save:hover{
+    background: #0486b0;
+}
+.save a{
+    display: block;
+    font-size: 15px;
+    line-height: 52px;
+    font-weight: 500;
+    color: #fff;
+}
+.content{
+    margin: 0px auto;
+    height: auto;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-left: none;
+}
+.bilgi{
+    background: #a2d4ab;
+    width: 100%;
+    height: 53px;
+    margin-bottom: 10px;
+}
+.bilgi span{
+    font-size: 14px;
+    color: #424242;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 52px;
+    padding-left: 40px;
+}
+.icerik{
+    padding: 30px 40px;
+    background-color: #fff;
+    display: flex
+}
+.icerik ul li{
+    padding-right: 25px;
+    padding-left: 25px;
+}
+.btn-default{
+    background-color: #008cba;
+    color: #fff;
+    padding: 10px 0;
+}
+.btn-default:hover{
+    background-color: #0183ae
+}
+.icerik ul li:first-child{
+    border-right: 1px solid rgba(0,0,0,.1);
+}
+.siteyiGoruntule{
+    margin-top: 40px;
+    text-align: center;
+}
+.siteyiGoruntule a{
+    font-size: 13px;
+    color: #333;
+    background: #fff;
+    padding: 9px 17px;
+    border-radius: 7px;
+    border: 1px solid #cdd;
+    text-decoration: none
+}
+.cikisYap{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.cikisYap a{
+    font-size: 13px;
+    color: #fff;
+    background: #ba3535;
+    padding: 9px  17px;
+    border-radius: 7px;
+    text-decoration: none
+}
+.upload dd,.aupload{
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+.aupload input[type="file"]{
+	cursor: pointer;
+	font: 300 14px sans-serif;
+	width: 170px;
+	height: 230px;
+    border: 3px dashed #ddd;
+    border-radius: 10px;
+	position: relative;
+	z-index: 2;
+}
+.upload input[type="file"]{
+	cursor: pointer;
+	font: 300 14px sans-serif;
+	color: rgba(0, 0, 0, 0);
+	width: 130px;
+	height: 130px;
+	border-radius: 50%;
+	background:  rgba(0, 0, 0, 0);
+	border: 3px dashed #ddd;
+	position: relative;
+	z-index: 2;
+	display: block;
+	margin-top: -2px;
+}
+.upload input[type="file"]::-webkit-file-upload-button,.aupload input[type="file"]::-webkit-file-upload-button{
+    display: none
+} 
+.upload img.uploadImage,.aupload img.uploadImage{
+	position: absolute;
+	margin-top: 45px;
+	z-index: 1;
+	left: 70px;
+	width: 39px;
+}
+.aupload img.uploadImage{
+	position: relative;
+	margin-top: 95px;
+	z-index: 1;
+	left: 103px;
+    width: 39px;
+    height: 36px;
+}
+.aupload{
+    overflow: auto;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+.upload input[type="file"]:focus,.aupload input[type="file"]:focus{
+	outline: none !important;
+}
+.upload .preview img{
+	width: 130px;
+    height: 130px;
+    object-fit: cover;
+	border-radius: 50%;
+}
+.aupload .preview img{
+    border-radius: 10px;
+	width: 170px;
+    height: 230px;
+    object-fit: cover;
+}
+.upload .preview{
+    position: absolute;
+    height: 241px;
+    z-index: 5;
+    margin-top: -2px;
+}
+.aupload .preview{
+    margin-left: 20px;
+    width: 130px;
+    margin-right: 40px;
+}
+.upload .remove{
+	position: relative;
+	margin-left: -77px;
+	top: 9px;
+	color: #e21b1b;
+	font-size: 31px;
+}
+.aupload .remove{
+    position: relative;
+    top: -24px;
+    left: 70px;
+	color: #e21b1b;
+	font-size: 31px;
+}
+.aupload .kaldir{
+    position: relative;
+    top: -24px;
+    left: 70px;
+	color: #e21b1b;
+	font-size: 31px;
+}
+.remove i,.kaldir i{
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: white;
+}
+.remove:hover,.kaldir:hover{
+	cursor: pointer;
+}
+.socialMedia{
+    position: fixed;
+    right: 0;
+    top: 36%;
+    height: 69px;
+    z-index: 5;
+    width: auto; 
+}
+.socialMedia ul{
+    font-size: 28px;
+    line-height: 50px
+}
+.socialMedia a{
+    padding: 10px 20px 10px 20px;
+    color: white;
+    display: block;
+}
+.socialMedia li{
+    text-align: center;
+}
+.whatsapp{
+    background-color: #4FCE5D;
+}
+.whatsapp:hover{
+    background-color: #48c155;
+}
+.sms{
+    background-color: #ff7f30;
+}
+.sms:hover{
+    background-color: #ea742a;
+}
+.facebook{
+    background-color: #3B5998;
+}
+.facebook:hover{
+    background-color: #36528c;
+}
+.mail{
+    background-color: #D44638;
+}
+.mail:hover{
+    background-color: #b93b2f;
+}
+
+@media only screen and (max-width: 576px) {
+	.socialMedia{bottom:0;right: auto;top: auto;width: 100%}
+	.socialMedia ul{display: flex}
+	.socialMedia li{width: 25%}
+    .socialMedia li{width: 25%}
+    .container{margin-bottom: 85px;}
+}
+@media only screen and (max-width: 768px) { 
+	.socialMedia{bottom:0;right: auto;top: auto;width: 100%}
+	.socialMedia ul{display: flex}
+	.socialMedia li{width: 25%}
+    .container{margin-bottom: 85px;}
+ }
+@media only screen and (max-width: 992px) { 
+	.socialMedia{bottom:0;right: auto;top: auto;width: 100%}
+	.socialMedia ul{display: flex}
+	.socialMedia li{width: 25%}
+    .container{margin-bottom: 85px;}
+ }
+ .form-control[readonly]{
+     background-color: white !important;
+ }
