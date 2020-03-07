@@ -1,5 +1,7 @@
+import Layout from '../../components/admin/layout'
+
 const Wedding = () => {
-    return "wedding"
+    return <Layout>wedding"</Layout>
 }
 
 export default Wedding;

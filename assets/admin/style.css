@@ -30,8 +30,8 @@ body{
     font-weight: 300;
     padding: 22px !important;
 }
-.nav-item i{
-    margin-right: 15px;
+.nav-link i{
+    margin-right: 13px;
 }
 .nav-item a:hover,.active{
     background-color: #272c31;
