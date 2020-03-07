@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import Axios from 'axios'
 
 import Link from 'next/link'
-import { useForm } from 'react-hook-form'
 import cogoToast from 'cogo-toast'
 import Router from 'next/router'
 

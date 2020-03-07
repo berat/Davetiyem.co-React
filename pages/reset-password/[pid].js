@@ -1,24 +1,27 @@
+import React, { useEffect, useRef } from 'react'
 import Axios from 'axios'
-import React, { useRef } from 'react'
-import Link from 'next/link'
-import images from '../public/images/image'
-import config from '../config'
-
+import config from '../../config'
 import cogoToast from 'cogo-toast'
-import Router from 'next/router'
+import Link from 'next/link'
+import images from '../../public/images/image'
+import Router, { useRouter } from 'next/router'
+import '../../assets/normalize.css'
+import '../../assets/auth/semantic.min.css'
+import '../../assets/auth/auth.css'
 
-import '../assets/auth/semantic.min.css'
-import '../assets/auth/auth.css'
+const ResetPassword = () => {
+  const password = useRef(),
+    confirmPassword = useRef()
 
-const ForgetPassword = () => {
-  const email = useRef()
+  const router = useRouter()
+  const id = router.query.pid
 
-  const sendPassword = e => {
+  const changePassword = e => {
     e.preventDefault()
-    Axios.put(`http://${config.apiURL}${config.version}sifremi-unuttum`, {
-      email: email.current.value
+    Axios.put(`http://${config.apiURL}${config.version}sifremi-sifirla/${id}`, {
+      password: password.current.value,
+      valPassword: confirmPassword.current.value
     }).then(response => {
-      console.log(response.data)
       if (response.data.status == 201) {
         cogoToast.success(response.data.msg, {
           onClick: e => {
@@ -26,7 +29,15 @@ const ForgetPassword = () => {
           },
           position: 'top-left'
         })
-        Router.push(config.home)
+        Router.push(config.loginPage)
+      } else if (response.data.status == 405) {
+        cogoToast.error(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+        Router.push(config.forgetPass)
       } else {
         cogoToast.error(response.data.msg, {
           onClick: e => {
@@ -34,6 +45,7 @@ const ForgetPassword = () => {
           },
           position: 'top-left'
         })
+        Router.push(config.loginPage)
       }
     })
   }
@@ -48,14 +60,16 @@ const ForgetPassword = () => {
           </span>
           <div className="form">
             <div className="ui input">
+              <input type="password" ref={password} placeholder="Parola" />
+            </div>
+            <div className="ui input">
               <input
-                type="email"
-                placeholder="E-mail adresiniz"
-                ref={email}
-                required
+                type="password"
+                ref={confirmPassword}
+                placeholder="Parolayı Onaylayın"
               />
             </div>
-            <button onClick={sendPassword} className="ui blue button">
+            <button onClick={changePassword} className="ui blue button">
               ŞİFRENİ SIFIRLA
             </button>
             <small>
@@ -77,4 +91,4 @@ const ForgetPassword = () => {
   )
 }
 
-export default ForgetPassword
+export default ResetPassword
