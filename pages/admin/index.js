@@ -4,6 +4,7 @@ import Axios from 'axios'
 import config from '../../config'
 import Cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
+import cogoToast from 'cogo-toast'
 
 function HomePage() {
   const gelinAdi = useRef(),
@@ -28,7 +29,21 @@ function HomePage() {
         }
       }
     ).then(response => {
-      console.log(response)
+      if (response.data.status == 201) {
+        cogoToast.success(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      } else {
+        cogoToast.error(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      }
     })
   }
 
@@ -44,7 +59,21 @@ function HomePage() {
         }
       }
     ).then(response => {
-      console.log(response)
+      if (response.data.status == 201) {
+        cogoToast.success(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      } else {
+        cogoToast.error(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      }
     })
   }
 
@@ -57,7 +86,21 @@ function HomePage() {
       damatBio: damatBio.current.value,
       userid: userid
     }).then(response => {
-      console.log(response)
+      if (response.data.status == 201) {
+        cogoToast.success(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      } else {
+        cogoToast.error(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      }
     })
   }
 
