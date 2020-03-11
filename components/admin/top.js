@@ -3,6 +3,9 @@ import Link from 'next/link'
 import images from '../../public/images/image'
 
 const Top = () => {
+
+  // Axios ile aktifHesap usernameyi  çek token gönder
+
   return (
     <div className="row justify-content-md-center">
       <div className="siteyiGoruntule col-lg-3 col-sm-12 col-md-12">
