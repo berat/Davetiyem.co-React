@@ -10,6 +10,8 @@ import cogoToast from 'cogo-toast'
 function HomePage() {
   const [gelinPreview, setGelinPreview] = useState()
   const [damatPreview, setDamatPreview] = useState()
+  const [damat, setDamat] = useState(false)
+  const [gelin, setGelin] = useState(false)
 
   const gelinAdi = useRef(),
     damatAdi = useRef(),
@@ -33,7 +35,7 @@ function HomePage() {
         }
       }
     ).then(response => {
-      setGelinPreview(response.data.data.path)
+      setGelinPreview(response.data.data.filename)
       if (response.data.status == 201) {
         cogoToast.success(response.data.msg, {
           onClick: e => {
@@ -110,6 +112,31 @@ function HomePage() {
     })
   }
 
+  const remove = e => {
+    Axios.post(`http://${config.apiURL}${config.version}fotoSil`, {
+      who: damat ? 'damatFoto' : 'gelinFoto',
+      fileName: damat ? damatPreview : gelinPreview,
+      userid: userid
+    }).then(response => {
+      if (response.data.status == 201) {
+        damat ? setDamat(false) : setGelin(false)
+        damat ? setDamatPreview(false) : setGelinPreview(false)
+        cogoToast.success(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      } else {
+        cogoToast.error(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      }
+    })
+  }
   return (
     <Layout>
       <div className="content row">
@@ -160,7 +187,13 @@ function HomePage() {
                             src={`../${gelinPreview}`}
                             title="undefined"
                           />
-                          <span className="remove">
+                          <span
+                            className="remove"
+                            onClick={() => {
+                              setGelin(true)
+                              remove()
+                            }}
+                          >
                             <i className="fa fa-times" />
                           </span>
                         </div>
@@ -231,7 +264,13 @@ function HomePage() {
                             src={`../${damatPreview}`}
                             title="undefined"
                           />
-                          <span className="remove">
+                          <span
+                            className="remove"
+                            onClick={() => {
+                              setDamat(true)
+                              remove()
+                            }}
+                          >
                             <i className="fa fa-times" />
                           </span>
                         </div>
