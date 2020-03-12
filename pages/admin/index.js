@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import Layout from '../../components/admin/layout'
+import images from '../../public/images/image'
 import Axios from 'axios'
 import config from '../../config'
 import Cookies from 'js-cookie'
@@ -137,11 +138,7 @@ function HomePage() {
                     Gelinin Fotoğrafı :{' '}
                   </label>
                   <div className="upload">
-                    <img
-                      src="/static/admin/images/upload.png"
-                      className="uploadImage"
-                      alt=""
-                    />
+                    <img src={images.upload} className="uploadImage" alt="" />
                     <dd>
                       <input
                         accept=".png,.jpg,.jpeg"
@@ -200,11 +197,7 @@ function HomePage() {
                     Damatın Fotoğrafı :{' '}
                   </label>
                   <div className="upload">
-                    <img
-                      src="/static/admin/images/upload.png"
-                      className="uploadImage"
-                      alt=""
-                    />
+                    <img src={images.upload} className="uploadImage" alt="" />
                     <dd>
                       <input
                         accept=".png,.jpg,.jpeg"

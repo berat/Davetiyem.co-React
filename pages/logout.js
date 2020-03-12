@@ -11,9 +11,9 @@ const Logout = () => {
   useEffect(() => {
     if (Cookies.get('login')) {
       Cookies.remove('login')
-      Router.push(config.home)
+      Router.replace(config.home)
     } else {
-      Router.push(config.loginPage)
+      Router.replace(config.loginPage)
     }
   }, [Cookies.get('login')])
   return <div>"gelloe"</div>

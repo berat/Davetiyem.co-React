@@ -9,6 +9,7 @@ const images = {
         galeri: '/images/user/galeri1.jpg' // Burayı kaldır sonra
     },
     adminLogo: '/images/admin/logo.png',
+    upload: 'images/admin/upload.png'
 }
 
 export default images;
