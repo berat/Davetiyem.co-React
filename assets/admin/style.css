@@ -1,8 +1,8 @@
 body {
-    background: #eee;
+    background: #eee !important;
 }
 
-.logo {
+#AdminPanel .logo {
     width: 120px;
     margin: 0px auto;
     margin-top: 50px;
@@ -10,65 +10,65 @@ body {
     text-align: center
 }
 
-.navbar {
+#AdminPanel .navbar {
     padding: 0 !important;
 }
 
-.navbar-toggler {
+#AdminPanel .navbar-toggler {
     margin: 10px 20px
 }
 
-.navbar-brand {
+#AdminPanel .navbar-brand {
     margin: 0px;
     padding: 0px;
 }
 
-.navbar-brand i {
+#AdminPanel .navbar-brand i {
     margin: 0px;
     padding: 23px 25px;
     font-size: 20px;
     background: #272c31
 }
 
-label {
+#AdminPanel label {
     display: inline-block;
     margin-bottom: .5rem;
     font-size: 15px;
 }
 
-.navbar li a {
+#AdminPanel .navbar li a {
     font-size: 15px;
     color: #fff !important;
     font-weight: 300;
     padding: 22px !important;
 }
 
-.nav-link i {
+#AdminPanel .nav-link i {
     margin-right: 13px;
 }
 
-.nav-item a:hover,
-.active {
+#AdminPanel .nav-item a:hover,
+#AdminPanel .active {
     background-color: #272c31;
     cursor: pointer
 }
 
-.bg-light {
+#AdminPanel .bg-light {
     background: #474747 !important;
     height: auto;
 }
 
-.smenu li {
+#AdminPanel .smenu li {
     padding: 24px;
 }
 
-.edit {
+#AdminPanel .edit {
     width: 255px;
     margin: 0px auto;
     margin-bottom: 30px;
 }
 
-.backsite {
+#AdminPanel .backsite {
     height: 52px;
     background: #fff;
     border: 1px solid #ddd;
@@ -76,7 +76,7 @@ label {
     margin-top: 30px;
 }
 
-.backsite a {
+#AdminPanel .backsite a {
     display: block;
     font-size: 15px;
     line-height: 52px;
@@ -84,22 +84,22 @@ label {
     color: #313131;
 }
 
-.backsite:hover {
+#AdminPanel .backsite:hover {
     background: #f4f4f4;
 }
 
-.save {
+#AdminPanel .save {
     height: 52px;
     background: #008cba;
     text-align: center;
     margin-top: 20px;
 }
 
-.save:hover {
+#AdminPanel .save:hover {
     background: #0486b0;
 }
 
-.save a {
+#AdminPanel .save a {
     display: block;
     font-size: 15px;
     line-height: 52px;
@@ -107,7 +107,7 @@ label {
     color: #fff;
 }
 
-.content {
+#AdminPanel .content {
     margin: 0px auto;
     height: auto;
     margin-top: 20px;
@@ -115,14 +115,14 @@ label {
     border-left: none;
 }
 
-.bilgi {
+#AdminPanel .bilgi {
     background: #a2d4ab;
     width: 100%;
     height: 53px;
     margin-bottom: 10px;
 }
 
-.bilgi span {
+#AdminPanel .bilgi span {
     font-size: 14px;
     color: #424242;
     font-weight: 400;
@@ -131,37 +131,37 @@ label {
     padding-left: 40px;
 }
 
-.icerik {
+#AdminPanel .icerik {
     padding: 30px 40px;
     background-color: #fff;
     display: flex
 }
 
-.icerik ul li {
+#AdminPanel .icerik ul li {
     padding-right: 25px;
     padding-left: 25px;
 }
 
-.btn-default {
+#AdminPanel .btn-default {
     background-color: #008cba;
     color: #fff;
     padding: 10px 0;
 }
 
-.btn-default:hover {
+#AdminPanel .btn-default:hover {
     background-color: #0183ae
 }
 
-.icerik ul li:first-child {
+#AdminPanel .icerik ul li:first-child {
     border-right: 1px solid rgba(0, 0, 0, .1);
 }
 
-.siteyiGoruntule {
+#AdminPanel .siteyiGoruntule {
     margin-top: 40px;
     text-align: center;
 }
 
-.siteyiGoruntule a {
+#AdminPanel .siteyiGoruntule a {
     font-size: 13px;
     color: #333;
     background: #fff;
@@ -171,13 +171,13 @@ label {
     text-decoration: none
 }
 
-.cikisYap {
+#AdminPanel .cikisYap {
     margin-top: 40px;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.cikisYap a {
+#AdminPanel .cikisYap a {
     font-size: 13px;
     color: #fff;
     background: #ba3535;
@@ -186,14 +186,14 @@ label {
     text-decoration: none
 }
 
-.upload dd,
-.aupload {
+#AdminPanel .upload dd,
+#AdminPanel .aupload {
     display: flex;
     position: relative;
     z-index: 1;
 }
 
-.aupload input[type="file"] {
+#AdminPanel .aupload input[type="file"] {
     cursor: pointer;
     font: 300 14px sans-serif;
     width: 170px;
@@ -204,7 +204,7 @@ label {
     z-index: 2;
 }
 
-.upload input[type="file"] {
+#AdminPanel .upload input[type="file"] {
     cursor: pointer;
     font: 300 14px sans-serif;
     color: rgba(0, 0, 0, 0);
@@ -219,13 +219,13 @@ label {
     margin-top: -2px;
 }
 
-.upload input[type="file"]::-webkit-file-upload-button,
-.aupload input[type="file"]::-webkit-file-upload-button {
+#AdminPanel .upload input[type="file"]::-webkit-file-upload-button,
+#AdminPanel .aupload input[type="file"]::-webkit-file-upload-button {
     display: none
 }
 
-.upload img.uploadImage,
-.aupload img.uploadImage {
+#AdminPanel .upload img.uploadImage,
+#AdminPanel .aupload img.uploadImage {
     position: absolute;
     margin-top: 45px;
     z-index: 1;
@@ -233,7 +233,7 @@ label {
     width: 39px;
 }
 
-.aupload img.uploadImage {
+#AdminPanel .aupload img.uploadImage {
     position: relative;
     margin-top: 95px;
     z-index: 1;
@@ -242,46 +242,46 @@ label {
     height: 36px;
 }
 
-.aupload {
+#AdminPanel .aupload {
     overflow: auto;
     margin-bottom: 40px;
     position: relative;
     z-index: 1;
 }
 
-.upload input[type="file"]:focus,
-.aupload input[type="file"]:focus {
+#AdminPanel .upload input[type="file"]:focus,
+#AdminPanel .aupload input[type="file"]:focus {
     outline: none !important;
 }
 
-.upload .preview img {
+#AdminPanel .upload .preview img {
     width: 130px;
     height: 130px;
     object-fit: cover;
     border-radius: 50%;
 }
 
-.aupload .preview img {
+#AdminPanel .aupload .preview img {
     border-radius: 10px;
     width: 170px;
     height: 230px;
     object-fit: cover;
 }
 
-.upload .preview {
+#AdminPanel .upload .preview {
     position: absolute;
     height: 241px;
     z-index: 5;
     margin-top: -2px;
 }
 
-.aupload .preview {
+#AdminPanel .aupload .preview {
     margin-left: 20px;
     width: 130px;
     margin-right: 40px;
 }
 
-.upload .remove {
+#AdminPanel .upload .remove {
     position: relative;
     margin-left: -77px;
     top: 9px;
@@ -289,7 +289,7 @@ label {
     font-size: 31px;
 }
 
-.aupload .remove {
+#AdminPanel .aupload .remove {
     position: relative;
     top: -24px;
     left: 70px;
@@ -297,7 +297,7 @@ label {
     font-size: 31px;
 }
 
-.aupload .kaldir {
+#AdminPanel .aupload .kaldir {
     position: relative;
     top: -24px;
     left: 70px;
@@ -305,18 +305,18 @@ label {
     font-size: 31px;
 }
 
-.remove i,
-.kaldir i {
+#AdminPanel .remove i,
+#AdminPanel .kaldir i {
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: white;
 }
 
-.remove:hover,
-.kaldir:hover {
+#AdminPanel .remove:hover,
+#AdminPanel .kaldir:hover {
     cursor: pointer;
 }
 
-.socialMedia {
+#AdminPanel .socialMedia {
     position: fixed;
     right: 0;
     top: 36%;
@@ -325,120 +325,120 @@ label {
     width: auto;
 }
 
-.socialMedia ul {
+#AdminPanel .socialMedia ul {
     font-size: 28px;
     line-height: 50px
 }
 
-.socialMedia a {
+#AdminPanel .socialMedia a {
     padding: 10px 20px 10px 20px;
     color: white;
     display: block;
 }
 
-.socialMedia li {
+#AdminPanel .socialMedia li {
     text-align: center;
 }
 
-.whatsapp {
+#AdminPanel .whatsapp {
     background-color: #4FCE5D;
 }
 
-.whatsapp:hover {
+#AdminPanel .whatsapp:hover {
     background-color: #48c155;
 }
 
-.sms {
+#AdminPanel .sms {
     background-color: #ff7f30;
 }
 
-.sms:hover {
+#AdminPanel .sms:hover {
     background-color: #ea742a;
 }
 
-.facebook {
+#AdminPanel .facebook {
     background-color: #3B5998;
 }
 
-.facebook:hover {
+#AdminPanel .facebook:hover {
     background-color: #36528c;
 }
 
-.mail {
+#AdminPanel .mail {
     background-color: #D44638;
 }
 
-.mail:hover {
+#AdminPanel .mail:hover {
     background-color: #b93b2f;
 }
 
 @media only screen and (max-width: 576px) {
-    .socialMedia {
+    #AdminPanel .socialMedia {
         bottom: 0;
         right: auto;
         top: auto;
         width: 100%
     }
 
-    .socialMedia ul {
+    #AdminPanel .socialMedia ul {
         display: flex
     }
 
-    .socialMedia li {
+    #AdminPanel .socialMedia li {
         width: 25%
     }
 
-    .socialMedia li {
+    #AdminPanel .socialMedia li {
         width: 25%
     }
 
-    .container {
+    #AdminPanel .container {
         margin-bottom: 85px;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .socialMedia {
+    #AdminPanel .socialMedia {
         bottom: 0;
         right: auto;
         top: auto;
         width: 100%
     }
 
-    .socialMedia ul {
+    #AdminPanel .socialMedia ul {
         display: flex
     }
 
-    .socialMedia li {
+    #AdminPanel .socialMedia li {
         width: 25%
     }
 
-    .container {
+    #AdminPanel .container {
         margin-bottom: 85px;
     }
 }
 
 @media only screen and (max-width: 992px) {
-    .socialMedia {
+    #AdminPanel .socialMedia {
         bottom: 0;
         right: auto;
         top: auto;
         width: 100%
     }
 
-    .socialMedia ul {
+    #AdminPanel .socialMedia ul {
         display: flex
     }
 
-    .socialMedia li {
+    #AdminPanel .socialMedia li {
         width: 25%
     }
 
-    .container {
+    #AdminPanel .container {
         margin-bottom: 85px;
     }
 }
 
-.form-control[readonly] {
+#AdminPanel .form-control[readonly] {
     background-color: white !important;
 }

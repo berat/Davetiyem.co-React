@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Layout from '../../components/admin/layout'
 import images from '../../public/images/image'
 import Axios from 'axios'
@@ -8,6 +8,9 @@ import jwtDecode from 'jwt-decode'
 import cogoToast from 'cogo-toast'
 
 function HomePage() {
+  const [gelinPreview, setGelinPreview] = useState()
+  const [damatPreview, setDamatPreview] = useState()
+
   const gelinAdi = useRef(),
     damatAdi = useRef(),
     gelinBio = useRef(),
@@ -30,6 +33,7 @@ function HomePage() {
         }
       }
     ).then(response => {
+      setGelinPreview(response.data.data.path)
       if (response.data.status == 201) {
         cogoToast.success(response.data.msg, {
           onClick: e => {
@@ -60,6 +64,7 @@ function HomePage() {
         }
       }
     ).then(response => {
+      setDamatPreview(response.data.data.path)
       if (response.data.status == 201) {
         cogoToast.success(response.data.msg, {
           onClick: e => {
@@ -148,6 +153,18 @@ function HomePage() {
                         type="file"
                         onChange={uploadImage}
                       />
+                      {gelinPreview ? (
+                        <div className="preview">
+                          <img
+                            className="uploadImg"
+                            src={`../${gelinPreview}`}
+                            title="undefined"
+                          />
+                          <span className="remove">
+                            <i className="fa fa-times" />
+                          </span>
+                        </div>
+                      ) : null}
                     </dd>
                   </div>
                   <small id="emailHelp" className="form-text text-muted">
@@ -207,6 +224,18 @@ function HomePage() {
                         type="file"
                         onChange={uploadImageGroom}
                       />
+                      {damatPreview ? (
+                        <div className="preview">
+                          <img
+                            className="uploadImg"
+                            src={`../${damatPreview}`}
+                            title="undefined"
+                          />
+                          <span className="remove">
+                            <i className="fa fa-times" />
+                          </span>
+                        </div>
+                      ) : null}
                     </dd>
                   </div>
                   <small id="emailHelp" className="form-text text-muted">

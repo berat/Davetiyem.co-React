@@ -36,7 +36,7 @@ const Register = () => {
               },
               position: 'top-left'
             })
-            Router.push(config.loginPage)
+            Router.replace(config.loginPage)
           } else {
             cogoToast.error(response.data.msg, {
               onClick: e => {

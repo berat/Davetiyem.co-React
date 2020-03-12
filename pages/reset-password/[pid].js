@@ -29,7 +29,7 @@ const ResetPassword = () => {
           },
           position: 'top-left'
         })
-        Router.push(config.loginPage)
+        Router.replace(config.loginPage)
       } else if (response.data.status == 405) {
         cogoToast.error(response.data.msg, {
           onClick: e => {
@@ -37,7 +37,7 @@ const ResetPassword = () => {
           },
           position: 'top-left'
         })
-        Router.push(config.forgetPass)
+        Router.replace(config.forgetPass)
       } else {
         cogoToast.error(response.data.msg, {
           onClick: e => {
@@ -45,7 +45,7 @@ const ResetPassword = () => {
           },
           position: 'top-left'
         })
-        Router.push(config.loginPage)
+        Router.replace(config.loginPage)
       }
     })
   }

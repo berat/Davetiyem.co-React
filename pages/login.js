@@ -17,7 +17,7 @@ const Login = () => {
   const password = useRef()
 
   if (Cookies.get('login')) {
-    Router.push(config.adminPage)
+    Router.replace(config.adminPage)
   }
 
   const beLogin = e => {
@@ -34,7 +34,7 @@ const Login = () => {
           },
           position: 'top-left'
         })
-        Router.push(config.adminPage)
+        Router.replace(config.adminPage)
       } else {
         cogoToast.error(response.data.msg, {
           onClick: e => {
