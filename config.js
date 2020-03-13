@@ -5,5 +5,5 @@ module.exports = {
   loginPage: '/login',
   registerPage: '/register',
   forgetPass: '/forget-password',
-  adminPage: '/admin'
+  adminPage: '/admin',
 }

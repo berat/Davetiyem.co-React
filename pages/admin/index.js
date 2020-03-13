@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Layout from '../../components/admin/layout'
 import images from '../../public/images/image'
 import Axios from 'axios'
@@ -8,20 +8,48 @@ import jwtDecode from 'jwt-decode'
 import cogoToast from 'cogo-toast'
 
 function HomePage() {
+  const [bilgi, setBilgi] = useState()
   const [gelinPreview, setGelinPreview] = useState()
   const [damatPreview, setDamatPreview] = useState()
   const [damat, setDamat] = useState(false)
   const [gelin, setGelin] = useState(false)
 
-  const gelinAdi = useRef(),
-    damatAdi = useRef(),
-    gelinBio = useRef(),
-    damatBio = useRef()
-
   const userid =
     Cookies.get('login') != undefined
       ? jwtDecode(Cookies.get('login')).userid
       : null
+
+  useEffect(() => {
+    Axios.get(`http://${config.apiURL}${config.version}kisisel/${userid}`).then(
+      response => {
+        if (response.data.status == 201) {
+          setBilgi(response.data.data)
+          setGelinPreview(
+            response.data.data[0].gelinFoto != null
+              ? `/uploads/users/${response.data.username}/profil/${
+                  response.data.data[0].gelinFoto != null
+                    ? response.data.data[0].gelinFoto
+                    : false
+                }`
+              : false
+          )
+          setDamatPreview(
+            response.data.data[0].damatFoto != null
+              ? `/uploads/users/${response.data.username}/profil/${
+                  response.data.data[0].damatFoto != null
+                    ? response.data.data[0].damatFoto
+                    : false
+                }`
+              : false
+          )
+        }
+      }
+    )
+  }, [setBilgi])
+  const gelinAdi = useRef(),
+    damatAdi = useRef(),
+    gelinBio = useRef(),
+    damatBio = useRef()
 
   const uploadImage = e => {
     const formData = new FormData()
@@ -66,7 +94,7 @@ function HomePage() {
         }
       }
     ).then(response => {
-      setDamatPreview(response.data.data.path)
+      setDamatPreview(response.data.data.filename)
       if (response.data.status == 201) {
         cogoToast.success(response.data.msg, {
           onClick: e => {
@@ -114,13 +142,12 @@ function HomePage() {
 
   const remove = e => {
     Axios.post(`http://${config.apiURL}${config.version}fotoSil`, {
-      who: damat ? 'damatFoto' : 'gelinFoto',
-      fileName: damat ? damatPreview : gelinPreview,
+      who: e == 'damat' ? 'damatFoto' : 'gelinFoto',
+      fileName: e == 'damat' ? damatPreview : gelinPreview,
       userid: userid
     }).then(response => {
       if (response.data.status == 201) {
-        damat ? setDamat(false) : setGelin(false)
-        damat ? setDamatPreview(false) : setGelinPreview(false)
+        e == 'damat' ? setDamatPreview(false) : setGelinPreview(false)
         cogoToast.success(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -157,7 +184,9 @@ function HomePage() {
                       placeholder="Gelin İsmi"
                       type="text"
                       ref={gelinAdi}
-                      defaultValue="Leyla Bulut"
+                      defaultValue={
+                        bilgi != undefined ? bilgi[0].gelinAdi : null
+                      }
                     />
                   </dd>
                   <small id="emailHelp" className="form-text text-muted">
@@ -184,14 +213,13 @@ function HomePage() {
                         <div className="preview">
                           <img
                             className="uploadImg"
-                            src={`../${gelinPreview}`}
-                            title="undefined"
+                            src={gelinPreview}
+                            title=""
                           />
                           <span
                             className="remove"
                             onClick={() => {
-                              setGelin(true)
-                              remove()
+                              remove('gelin')
                             }}
                           >
                             <i className="fa fa-times" />
@@ -215,7 +243,7 @@ function HomePage() {
                     rows={3}
                     id="gelinBio"
                     placeholder="Gelin hakkında bilgi giriniz"
-                    defaultValue={''}
+                    defaultValue={bilgi != undefined ? bilgi[0].gelinBio : null}
                     ref={gelinBio}
                   />
                   <small id="emailHelp" className="form-text text-muted">
@@ -233,7 +261,9 @@ function HomePage() {
                       name="damatAdi"
                       placeholder="Damat İsmi"
                       type="text"
-                      defaultValue="Hasan Arslan"
+                      defaultValue={
+                        bilgi != undefined ? bilgi[0].damatAdi : null
+                      }
                       ref={damatAdi}
                     />
                   </dd>
@@ -261,14 +291,13 @@ function HomePage() {
                         <div className="preview">
                           <img
                             className="uploadImg"
-                            src={`../${damatPreview}`}
-                            title="undefined"
+                            src={damatPreview}
+                            title=""
                           />
                           <span
                             className="remove"
                             onClick={() => {
-                              setDamat(true)
-                              remove()
+                              remove('damat')
                             }}
                           >
                             <i className="fa fa-times" />
@@ -292,7 +321,7 @@ function HomePage() {
                     rows={3}
                     id="damatBio"
                     placeholder="Damat hakkında bilgi giriniz"
-                    defaultValue={''}
+                    defaultValue={bilgi != undefined ? bilgi[0].damatBio : null}
                     ref={damatBio}
                   />
                   <small id="emailHelp" className="form-text text-muted">
