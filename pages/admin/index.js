@@ -11,8 +11,6 @@ function HomePage() {
   const [bilgi, setBilgi] = useState()
   const [gelinPreview, setGelinPreview] = useState()
   const [damatPreview, setDamatPreview] = useState()
-  const [damat, setDamat] = useState(false)
-  const [gelin, setGelin] = useState(false)
 
   const userid =
     Cookies.get('login') != undefined
