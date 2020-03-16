@@ -11,7 +11,7 @@ const Header = () => {
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <Link href="/admin" className={router.pathname == "/admin" ? "active" : ""}>
+      <Link href="/admin">
         <a className="navbar-brand">
           <i className="fa fa-home" />
         </a>

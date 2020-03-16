@@ -19,7 +19,7 @@ function Navigation() {
         </Link>
       </li>
       <li>
-        <Link href="https://blog.davetiyem.co/">
+        <Link href="https://blog.davetiyem.co/" prefetch={false}>
           <a>BLOG</a>
         </Link>
       </li>

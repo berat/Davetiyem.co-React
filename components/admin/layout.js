@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div class="container">
+      <div className="container">
           <Top />
       <Header />
       {children}

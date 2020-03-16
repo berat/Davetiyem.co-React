@@ -84,21 +84,21 @@ function Bottom() {
             <div className="alt-sosyal">
               <ul>
                 <li>
-                  <Link href="https://www.instagram.com/davetiyemco/">
+                  <Link href="https://www.instagram.com/davetiyemco/" prefetch={false}>
                     <a>
                       <i className="fa fa-instagram" />
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://twitter.com/davetiyemco">
+                  <Link href="https://twitter.com/davetiyemco" prefetch={false}>
                     <a>
                       <i className="fa fa-twitter" />
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://www.facebook.com/onlinedugundavetiyesi/">
+                  <Link href="https://www.facebook.com/onlinedugundavetiyesi/" prefetch={false}>
                     <a>
                       <i className="fa fa-facebook" />
                     </a>
