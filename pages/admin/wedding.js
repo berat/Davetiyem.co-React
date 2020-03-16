@@ -2,23 +2,22 @@ import React, { useRef, useEffect, useState } from 'react'
 import Layout from '../../components/admin/layout'
 import CKEditor from 'ckeditor4-react'
 import Axios from 'axios'
-import config from '../../config'
-import '../../assets/admin/dark.css'
 import Flatpickr from 'react-flatpickr'
 import Cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 import cogoToast from 'cogo-toast'
-import { set } from 'react-ga'
+
+import config from '../../config'
+import '../../assets/admin/dark.css'
 
 const Wedding = () => {
   const [bilgi, setBilgi] = useState()
-  // const [sendData, setSendData] = useState()
   const [dipNot, setDipNot] = useState()
+  const [tarihBir, setTarihBir] = useState()
+  const [tarihIki, setTarihIki] = useState()
 
   const baslikBir = useRef(),
     baslikIki = useRef(),
-    tarihBir = useRef(),
-    tarihIki = useRef(),
     iframeBir = useRef(),
     iframeIki = useRef(),
     adresBir = useRef(),
@@ -34,6 +33,8 @@ const Wedding = () => {
       response => {
         if (response.data.status == 201) {
           setBilgi(response.data.data)
+          setTarihBir(response.data.data[0].dtarih)
+          setTarihIki(response.data.data[1].dtarih)
         }
       }
     )
@@ -46,14 +47,14 @@ const Wedding = () => {
         userid: userid,
         baslik: baslikBir.current.value,
         adres: adresBir.current.value,
-        tarih: tarihBir.current.value,
+        tarih: tarihBir,
         iframe: iframeBir.current.value
       },
       {
         userid: userid,
         baslik: baslikIki.current.value,
         adres: adresIki.current.value,
-        tarih: tarihIki.current.value,
+        tarih: tarihIki,
         iframe: iframeIki.current.value
       }
     ]
@@ -99,7 +100,6 @@ const Wedding = () => {
       })
     }
   }
-
   return (
     <Layout>
       <div className="content row">
@@ -108,162 +108,318 @@ const Wedding = () => {
         </div>
         <div className="icerik col-12">
           <form method="post" onSubmit={onSubmit} className="col-12">
-            <ul className="row">
-              <li className="col-xs-6 col-lg-6">
-                <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">Başlık</label>
-                  <dd>
-                    <input
-                      className="form-control"
-                      id="baslikBir"
-                      name="baslikBir"
-                      placeholder="Kına Gecesi"
-                      type="text"
-                      //   defaultValue={bilgi != undefined ? bilgi.}
-                      ref={baslikBir}
+            {bilgi != undefined ? (
+              <ul className="row">
+                <li className="col-xs-6 col-lg-6">
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Başlık</label>
+                    <dd>
+                      <input
+                        className="form-control"
+                        id="baslikBir"
+                        name="baslikBir"
+                        placeholder="Kına Gecesi"
+                        type="text"
+                        defaultValue={bilgi[0].dbaslik}
+                        ref={baslikBir}
+                      />
+                    </dd>
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
+                      Kına Gecesi
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label className="control-label" htmlFor="date">
+                      Tarih
+                    </label>
+                    <Flatpickr
+                      className="form-text"
+                      value={tarihBir == undefined ? new Date() : tarihBir}
+                      options={{
+                        minDate: new Date(),
+                        dateFormat: 'j F Y',
+                        locale: config.date,
+                        altFormat: 'j F Y',
+                        altInput: true
+                      }}
+                      onChange={(selectedDates, dateStr, instance) => {
+                        selectedDates.forEach(function(date) {
+                          console.log(instance.formatDate(date, 'j F Y'))
+                          setTarihBir(instance.formatDate(date, 'j F Y'))
+                        })
+                      }}
                     />
-                  </dd>
-                  <small id="emailHelp" className="form-text text-muted">
-                    Düğün Bilgileri kısmında gözükecek olacak başlık. Örn: Kına
-                    Gecesi
-                  </small>
-                </div>
-                <div className="form-group">
-                  <label className="control-label" htmlFor="date">
-                    Tarih
-                  </label>
-                  <Flatpickr
-                    className="form-text text-muted"
-                    value={new Date()}
-                    options={{
-                      minDate: new Date(),
-                      dateFormat: 'j F Y',
-                      locale: config.date,
-                      altFormat: 'F j, Y'
-                    }}
-                    ref={tarihBir}
-                  />
-                  <small id="emailHelp" className="form-text text-muted">
-                    Düğün tarihini giriniz.
-                  </small>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleFormControlTextarea1">
-                    Adresi Girin
-                  </label>
-                  <textarea
-                    name="adresBir"
-                    className="form-control"
-                    id="adresBir"
-                    rows={3}
-                    placeholder="Adresi yazın"
-                    defaultValue={
-                      'Şentepe Mahallesi, Atasoy Cd. No:18, 06900 Polatlı/Ankara'
-                    }
-                    ref={adresBir}
-                  />
-                  <small id="emailHelp" className="form-text text-muted">
-                    Düğünün yapılacağı adresi girin
-                  </small>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">
-                    Google Maps İframe Kodu
-                  </label>
-                  <textarea
-                    name="iframeBir"
-                    className="form-control"
-                    id="iframeBir"
-                    rows={3}
-                    placeholder="Google'dan aldığınız iframe kodunu girin."
-                    defaultValue={
-                      '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8127.620741171537!2d32.13232713492433!3d39.56319856398057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe67a0e1b4e75ad1a!2zTWsgRMO8xJ_DvG4gVmUgVG9wbGFudMSxIFNhbG9udQ!5e0!3m2!1str!2str!4v1547663814910" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>'
-                    }
-                    ref={iframeBir}
-                  />
-                  <small id="emailHelp" className="form-text text-muted">
-                    Google Maps'den aldığınız kod
-                  </small>
-                </div>
-              </li>
-              <li className="col-xs-6 col-lg-6">
-                <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">Başlık</label>
-                  <dd>
-                    <input
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğün tarihini giriniz.
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlTextarea1">
+                      Adresi Girin
+                    </label>
+                    <textarea
+                      name="adresBir"
                       className="form-control"
-                      id="baslikIki"
-                      name="baslikIki"
-                      placeholder="Düğün Gecesi"
-                      type="text"
-                      defaultValue="Düğün Gecesi"
-                      ref={baslikIki}
+                      id="adresBir"
+                      rows={3}
+                      placeholder="Adresi yazın"
+                      defaultValue={bilgi[0].dadres}
+                      ref={adresBir}
                     />
-                  </dd>
-                  <small id="emailHelp" className="form-text text-muted">
-                    Düğün Bilgileri kısmında gözükecek olacak başlık. Örn: Kına
-                    Gecesi
-                  </small>
-                </div>
-                <div className="form-group">
-                  <label className="control-label" htmlFor="date">
-                    Tarih
-                  </label>
-                  <Flatpickr
-                    className="form-text text-muted"
-                    value={new Date()}
-                    options={{
-                      minDate: new Date(),
-                      dateFormat: 'j F Y',
-                      locale: config.date,
-                      altFormat: 'F j, Y'
-                    }}
-                    ref={tarihIki}
-                  />
-                  <small id="emailHelp" className="form-text text-muted">
-                    Düğün tarihini giriniz.
-                  </small>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleFormControlTextarea1">
-                    Adresi Girin
-                  </label>
-                  <textarea
-                    name="adresIki"
-                    className="form-control"
-                    id="adresIki"
-                    rows={3}
-                    placeholder="Adresi yazın"
-                    defaultValue={
-                      'Gülveren Mahallesi, Gençlik Cd., 06900 Polatlı/Ankara'
-                    }
-                    ref={adresIki}
-                  />
-                  <small id="emailHelp" className="form-text text-muted">
-                    Düğünün yapılacağı adresi girin
-                  </small>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">
-                    Google Maps İframe Kodu
-                  </label>
-                  <textarea
-                    name="iframeIki"
-                    className="form-control"
-                    id="iframeIki"
-                    rows={3}
-                    placeholder="Google'dan aldığınız iframe kodunu girin."
-                    defaultValue={
-                      '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6881.475340003867!2d32.12912850771315!3d39.56873568692161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x50b0ca69793c9c65!2zxLBraSBBbHlhbnMgRMO8xJ_DvG4gU2Fsb25sYXLEsQ!5e0!3m2!1str!2str!4v1547665856765" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>'
-                    }
-                    ref={iframeIki}
-                  />
-                  <small id="emailHelp" className="form-text text-muted">
-                    Google Maps'den aldığınız kod
-                  </small>
-                </div>
-              </li>
-            </ul>
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğünün yapılacağı adresi girin
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">
+                      Google Maps İframe Kodu
+                    </label>
+                    <textarea
+                      name="iframeBir"
+                      className="form-control"
+                      id="iframeBir"
+                      rows={3}
+                      placeholder="Google'dan aldığınız iframe kodunu girin."
+                      defaultValue={bilgi[0].diframe}
+                      ref={iframeBir}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">
+                      Google Maps'den aldığınız kod
+                    </small>
+                  </div>
+                </li>
+                <li className="col-xs-6 col-lg-6">
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Başlık</label>
+                    <dd>
+                      <input
+                        className="form-control"
+                        id="baslikIki"
+                        name="baslikIki"
+                        placeholder="Düğün Gecesi"
+                        type="text"
+                        defaultValue={bilgi[1].dbaslik}
+                        ref={baslikIki}
+                      />
+                    </dd>
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
+                      Kına Gecesi
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label className="control-label" htmlFor="date">
+                      Tarih
+                    </label>
+                    <Flatpickr
+                      className="form-text"
+                      value={tarihIki == undefined ? new Date() : tarihIki}
+                      options={{
+                        minDate: new Date(),
+                        dateFormat: 'j F Y',
+                        locale: config.date,
+                        altFormat: 'j F Y'
+                      }}
+                      onChange={(selectedDates, dateStr, instance) => {
+                        selectedDates.forEach(function(date) {
+                          setTarihIki(instance.formatDate(date, 'j F Y'))
+                        })
+                      }}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğün tarihini giriniz.
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlTextarea1">
+                      Adresi Girin
+                    </label>
+                    <textarea
+                      name="adresIki"
+                      className="form-control"
+                      id="adresIki"
+                      rows={3}
+                      placeholder="Adresi yazın"
+                      defaultValue={bilgi[1].dadres}
+                      ref={adresIki}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğünün yapılacağı adresi girin
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">
+                      Google Maps İframe Kodu
+                    </label>
+                    <textarea
+                      name="iframeIki"
+                      className="form-control"
+                      id="iframeIki"
+                      rows={3}
+                      placeholder="Google'dan aldığınız iframe kodunu girin."
+                      defaultValue={bilgi[1].diframe}
+                      ref={iframeIki}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">
+                      Google Maps'den aldığınız kod
+                    </small>
+                  </div>
+                </li>
+              </ul>
+            ) : (
+              <ul className="row">
+                <li className="col-xs-6 col-lg-6">
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Başlık</label>
+                    <dd>
+                      <input
+                        className="form-control"
+                        id="baslikBir"
+                        name="baslikBir"
+                        placeholder="Kına Gecesi"
+                        type="text"
+                        ref={baslikBir}
+                      />
+                    </dd>
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
+                      Kına Gecesi
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label className="control-label" htmlFor="date">
+                      Tarih
+                    </label>
+                    <Flatpickr
+                      className="form-text"
+                      value={tarihBir == undefined ? new Date() : tarihBir}
+                      options={{
+                        minDate: new Date(),
+                        dateFormat: 'j F Y',
+                        locale: config.date,
+                        altFormat: 'j F Y',
+                        altInput: true
+                      }}
+                      onChange={(selectedDates, dateStr, instance) => {
+                        selectedDates.forEach(function(date) {
+                          setTarihBir(instance.formatDate(date, 'j F Y'))
+                        })
+                      }}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğün tarihini giriniz.
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlTextarea1">
+                      Adresi Girin
+                    </label>
+                    <textarea
+                      name="adresBir"
+                      className="form-control"
+                      id="adresBir"
+                      rows={3}
+                      placeholder="Adresi yazın"
+                      ref={adresBir}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğünün yapılacağı adresi girin
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">
+                      Google Maps İframe Kodu
+                    </label>
+                    <textarea
+                      name="iframeBir"
+                      className="form-control"
+                      id="iframeBir"
+                      rows={3}
+                      placeholder="Google'dan aldığınız iframe kodunu girin."
+                      ref={iframeBir}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">
+                      Google Maps'den aldığınız kod
+                    </small>
+                  </div>
+                </li>
+                <li className="col-xs-6 col-lg-6">
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Başlık</label>
+                    <dd>
+                      <input
+                        className="form-control"
+                        id="baslikIki"
+                        name="baslikIki"
+                        placeholder="Düğün Gecesi"
+                        type="text"
+                        ref={baslikIki}
+                      />
+                    </dd>
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
+                      Kına Gecesi
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label className="control-label" htmlFor="date">
+                      Tarih
+                    </label>
+                    <Flatpickr
+                      className="form-text"
+                      value={tarihIki == undefined ? new Date() : tarihIki}
+                      options={{
+                        minDate: new Date(),
+                        dateFormat: 'j F Y',
+                        locale: config.date,
+                        altFormat: 'j F Y'
+                      }}
+                      onChange={(selectedDates, dateStr, instance) => {
+                        selectedDates.forEach(function(date) {
+                          setTarihIki(instance.formatDate(date, 'j F Y'))
+                        })
+                      }}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğün tarihini giriniz.
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlTextarea1">
+                      Adresi Girin
+                    </label>
+                    <textarea
+                      name="adresIki"
+                      className="form-control"
+                      id="adresIki"
+                      rows={3}
+                      placeholder="Adresi yazın"
+                      ref={adresIki}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">
+                      Düğünün yapılacağı adresi girin
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">
+                      Google Maps İframe Kodu
+                    </label>
+                    <textarea
+                      name="iframeIki"
+                      className="form-control"
+                      id="iframeIki"
+                      rows={3}
+                      placeholder="Google'dan aldığınız iframe kodunu girin."
+                      ref={iframeIki}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">
+                      Google Maps'den aldığınız kod
+                    </small>
+                  </div>
+                </li>
+              </ul>
+            )}
             <div className="form-group">
               <label htmlFor="exampleFormControlTextarea1">Dip Not</label>
               <CKEditor
