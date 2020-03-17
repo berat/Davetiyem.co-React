@@ -9,6 +9,8 @@ import cogoToast from 'cogo-toast'
 
 const Album = () => {
   const [dizi, setDizi] = useState()
+  const [preview, setPreview] = useState([])
+  const [username, setUsername] = useState()
 
   const userid =
     Cookies.get('login') != undefined
@@ -20,11 +22,46 @@ const Album = () => {
       response => {
         console.log(response.data)
         if (response.data.status == 201) {
+          setPreview(response.data.photos)
+          setUsername(response.data.username)
           setDizi(response.data.fotos)
         }
       }
     )
   }, [setDizi, userid])
+
+  const uploadAlbum = e => {
+    const formData = new FormData()
+    for (var i = 0; i < e.target.files.length; i++) {
+      formData.append('album', e.target.files[i])
+    }
+    Axios.post(
+      `http://${config.apiURL}${config.version}galeriYukle/${userid}`,
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+    ).then(response => {
+      if (response.data.status == 201) {
+        setPreview(response.data.filename)
+        cogoToast.success(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      } else {
+        cogoToast.error(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      }
+    })
+  }
 
   const onSubmit = e => {
     e.preventDefault()
@@ -53,22 +90,26 @@ const Album = () => {
                 multiple
                 name="files"
                 type="file"
+                onChange={uploadAlbum}
               />
-              <div className="preview">
-                <img
-                  className="uploadImg"
-                  src="/static/uploads/damatgelin/galeri1"
-                  title="undefined"
-                />
-                <div
-                  className="kaldir"
-                  onClick={() => {
-                    console.log('yakında kaldırılacak')
-                  }}
-                >
-                  <i className="fa fa-times" />
-                </div>
-              </div>
+              {preview != undefined
+                ? preview.map(item => (
+                    <div className="preview">
+                      <img
+                        className="uploadImg"
+                        src={`/uploads/users/${username}/${item.foto}`}
+                      /> {console.log(item)}
+                      <div
+                        className="kaldir"
+                        onClick={() => {
+                          console.log('yakında kaldırılacak')
+                        }}
+                      >
+                        <i className="fa fa-times" />
+                      </div>
+                    </div>
+                  ))
+                : null}
             </div>
             <input
               type="reset"
