@@ -168,7 +168,11 @@ const Album = () => {
                       <div
                         className="kaldir"
                         onClick={() => {
-                          deleteImg(item.fotoid)
+                          deleteImg(
+                            item.fotoid != undefined
+                              ? item.fotoid
+                              : item.filename
+                          )
                         }}
                       >
                         <i
