@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from '../../components/admin/layout'
 import images from '../../public/images/image'
 import Axios from 'axios'
@@ -10,28 +10,33 @@ import cogoToast from 'cogo-toast'
 const Album = () => {
   const [dizi, setDizi] = useState()
   const [preview, setPreview] = useState([])
-  const [uploaded, setUploaded] = useState([])
   const [username, setUsername] = useState()
+  const [uploaded, setUploaded] = useState()
+  const [say, setSay] = useState(0)
+
+  var Iuploaded = []
 
   const userid =
     Cookies.get('login') != undefined
       ? jwtDecode(Cookies.get('login')).userid
       : null
 
-  useState(() => {
+  useEffect(() => {
     Axios.get(`http://${config.apiURL}${config.version}galeri/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setPreview(response.data.photos)
           setUsername(response.data.username)
           setDizi(response.data.fotos)
+        } else {
+          setUsername(response.data.username)
         }
       }
     )
   }, [setDizi])
 
   const uploadAlbum = e => {
-    if (preview.length + e.target.files.length <= 8) {
+    if (preview.length + e.target.files.length + say <= 8) {
       const formData = new FormData()
       for (var i = 0; i < e.target.files.length; i++) {
         formData.append('album', e.target.files[i])
@@ -78,6 +83,7 @@ const Album = () => {
       userid: userid
     }).then(response => {
       if (response.data.status == 201) {
+        setSay(say - 1)
         cogoToast.success(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -102,13 +108,14 @@ const Album = () => {
 
   const reset = e => {
     e.preventDefault()
-    if (preview.length + uploaded.length != 0) {
+    if (preview != null ? preview.length : null + uploaded.length != 0) {
       Axios.post(`http://${config.apiURL}${config.version}topluSil`, {
         userid: userid
       }).then(response => {
         if (response.data.status == 201) {
-          setPreview(undefined)
-          setUploaded(undefined)
+          setPreview([])
+          Iuploaded = []
+          setUploaded(Iuploaded)
           cogoToast.success(response.data.msg, {
             onClick: e => {
               e.target.parentNode.parentNode.style.display = 'none'
@@ -124,9 +131,8 @@ const Album = () => {
           })
         }
       })
-    }
-    else{
-      cogoToast.success("Tüm fotoğraflarınız zaten kaldırıldı.", {
+    } else {
+      cogoToast.success('Tüm fotoğraflarınız zaten kaldırıldı.', {
         onClick: e => {
           e.target.parentNode.parentNode.style.display = 'none'
         },
@@ -155,25 +161,25 @@ const Album = () => {
                 type="file"
                 onChange={uploadAlbum}
               />
-              {uploaded != undefined
+              {uploaded != null
                 ? uploaded.map(item => (
                     <div className="preview">
-                      <img
-                        className="uploadImg"
-                        src={`/uploads/users/${username}/${item.filename}`}
-                      />
+                      <img className="uploadImg" src={item.filename} />
                       <div
                         className="kaldir"
                         onClick={() => {
                           deleteImg(item.fotoid)
                         }}
                       >
-                        <i key={item.fotoid} className="fa fa-times" />
+                        <i
+                          key={item.fotoid}
+                          onClick={removePreview}
+                          className="fa fa-times"
+                        />
                       </div>
                     </div>
                   ))
-                : null}
-              {preview != undefined
+                : preview != null
                 ? preview.map(item => (
                     <div className="preview">
                       <img
@@ -195,6 +201,28 @@ const Album = () => {
                     </div>
                   ))
                 : null}
+              {/* {preview != null
+                ? preview.map(item => (
+                    <div className="preview">
+                      <img
+                        className="uploadImg"
+                        src={`/uploads/users/${username}/${item.foto}`}
+                      />
+                      <div
+                        className="kaldir"
+                        onClick={() => {
+                          deleteImg(item.fotoid)
+                        }}
+                      >
+                        <i
+                          key={item.fotoid}
+                          onClick={removePreview}
+                          className="fa fa-times"
+                        />
+                      </div>
+                    </div>
+                  ))
+                : null} */}
             </div>
             <input
               type="reset"
