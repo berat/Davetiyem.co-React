@@ -33,7 +33,7 @@ body {
 #AdminPanel label {
     display: inline-block;
     margin-bottom: .5rem;
-    font-size: 15px;
+    font-size: 15.5px;
 }
 
 #AdminPanel .navbar li a {
@@ -133,8 +133,17 @@ body {
 
 #AdminPanel .icerik {
     padding: 30px 40px;
+    margin-bottom: 30px;
     background-color: #fff;
     display: flex
+}
+
+#AdminPanel .icerik ul{
+    margin-bottom: 20px;
+}
+
+#AdminPanel .form-control{
+    height: auto;
 }
 
 #AdminPanel .icerik ul li {
@@ -152,7 +161,7 @@ body {
     background-color: #0183ae
 }
 
-#AdminPanel .icerik ul li:first-child {
+#AdminPanel .icerik ul li:nth-child(odd) {
     border-right: 1px solid rgba(0, 0, 0, .1);
 }
 
