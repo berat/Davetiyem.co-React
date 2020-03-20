@@ -22,17 +22,17 @@ module.exports = {
     months: {
       longhand: [
         'Ocak',
-        'Şubat',
+        'Subat',
         'Mart',
         'Nisan',
-        'Mayıs',
+        'Mayis',
         'Haziran',
         'Temmuz',
         'Ağustos',
-        'Eylül',
+        'Eylul',
         'Ekim',
-        'Kasım',
-        'Aralık'
+        'Kasim',
+        'Aralik'
       ],
       shorthand: [
         'Oca',
@@ -42,7 +42,7 @@ module.exports = {
         'May',
         'Haz',
         'Tem',
-        'Ağu',
+        'Agu',
         'Eyl',
         'Eki',
         'Kas',

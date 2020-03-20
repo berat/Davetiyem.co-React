@@ -138,10 +138,6 @@ body {
     display: flex
 }
 
-#AdminPanel .icerik ul{
-    margin-bottom: 20px;
-}
-
 #AdminPanel .form-control{
     height: auto;
 }
