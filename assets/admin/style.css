@@ -151,6 +151,7 @@ body {
     background-color: #008cba;
     color: #fff;
     padding: 10px 0;
+    margin-top: 15px;
 }
 
 #AdminPanel .btn-default:hover {
