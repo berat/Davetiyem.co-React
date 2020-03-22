@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const Header = ({ kisisel, tarih, username }) => {
+const Header = ({ kisisel, tarih, username, genel }) => {
   const calculateTimeLeft = () => {
     const difference = +new Date(tarih) - +new Date()
     let timeLeft = {}
@@ -104,10 +104,11 @@ const Header = ({ kisisel, tarih, username }) => {
                 )}
               </div>
               <div className="soz">
+                {genel != [] ? genel.map(item => (
                 <p>
-                  'Mutluluk gele dursun, dostlara haber olsun. Düğünümüz var,
-                  bizi sevenler buyursun.'
+                  {item.dugunSozu}
                 </p>
+                )) : null}
               </div>
             </div>
           </div>

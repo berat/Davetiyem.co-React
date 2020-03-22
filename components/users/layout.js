@@ -149,7 +149,7 @@ const Layout = ({ children }) => {
         <meta name="og:locale" content="tr_TR" />
         <meta name="og:type" content="website" />
       </Head>
-      <Header kisisel={kisisel} tarih={dugunTarih} username={username} />
+      <Header kisisel={kisisel} genel={genel} tarih={dugunTarih} username={username} />
       <Bio kisisel={kisisel} username={username}/>
       <Comments yorum={yorum} />
       <Galeri galeri={galeri} username={username} />

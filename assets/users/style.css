@@ -73,12 +73,9 @@
     padding: 15px 35px;
     text-align: center;
     margin: 0px auto;
-    margin-top: 40px;
+    margin-top: 60px;
     display: flex;
     line-height: 50px;
-}
-
-#userPage .saat {
     font-size: 30px;
     font-weight: 400;
     color: #f0feff;
@@ -117,7 +114,7 @@
     display: none;
 }
 
-.soz p {
+#userPage .soz p {
     font-size: 17px;
     color: #f0feff;
     text-align: center;
