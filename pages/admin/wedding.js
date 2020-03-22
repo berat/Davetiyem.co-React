@@ -138,15 +138,14 @@ const Wedding = () => {
                       value={tarihBir == undefined ? new Date() : tarihBir}
                       options={{
                         minDate: new Date(),
-                        dateFormat: 'j F Y',
+                        dateFormat: 'd F Y',
                         locale: config.date,
-                        altFormat: 'j F Y',
+                        altFormat: 'd F Y',
                         altInput: true
                       }}
                       onChange={(selectedDates, dateStr, instance) => {
                         selectedDates.forEach(function(date) {
-                          console.log(instance.formatDate(date, 'j F Y'))
-                          setTarihBir(instance.formatDate(date, 'j F Y'))
+                          setTarihBir(instance.formatDate(date, 'd F Y'))
                         })
                       }}
                     />
@@ -217,13 +216,13 @@ const Wedding = () => {
                       value={tarihIki == undefined ? new Date() : tarihIki}
                       options={{
                         minDate: new Date(),
-                        dateFormat: 'j F Y',
+                        dateFormat: 'd F Y',
                         locale: config.date,
-                        altFormat: 'j F Y'
+                        altFormat: 'd F Y'
                       }}
                       onChange={(selectedDates, dateStr, instance) => {
                         selectedDates.forEach(function(date) {
-                          setTarihIki(instance.formatDate(date, 'j F Y'))
+                          setTarihIki(instance.formatDate(date, 'd F Y'))
                         })
                       }}
                     />
