@@ -32,6 +32,8 @@ const Layout = ({ children }) => {
   const [yorum, setYorum] = useState([])
   const [kisisel, setKisisel] = useState([])
 
+  const [dugunTarih, setDugunTarih] = useState()
+
   const trDate = [
     'Ocak',
     'Subat',
@@ -62,9 +64,8 @@ const Layout = ({ children }) => {
           const gun = response.data.data[0].tarih.slice(0, 2)
           const yil = response.data.data[0].tarih.slice(-4)
           const aySayisi = (trDate.findIndex( item =>item == ayAdi))+1
-          const editTarih = new Date(`${aySayisi}/${gun}/${yil}`)
-          console.log(editTarih)
-          // Yukarıdaki tarihi alıp harmanlayıp new date ile uyumlu hale getir ve sonra gün hesabını davetiyem.co ya göre yap
+          const editTarih = `${yil}-${aySayisi}-${gun}`
+          setDugunTarih(editTarih)
         }
       }
     )
@@ -148,7 +149,7 @@ const Layout = ({ children }) => {
         <meta name="og:locale" content="tr_TR" />
         <meta name="og:type" content="website" />
       </Head>
-      <Header kisisel={kisisel} tarih={genel} username={username} />
+      <Header kisisel={kisisel} tarih={dugunTarih} username={username} />
       <Bio kisisel={kisisel} username={username}/>
       <Comments yorum={yorum} />
       <Galeri galeri={galeri} username={username} />
