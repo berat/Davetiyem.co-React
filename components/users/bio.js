@@ -1,9 +1,10 @@
 import React from 'react'
+import images from'../../public/images/image'
 
 const Bio = ({ kisisel, username }) => {
   return (
     <div id="bio">
-      {kisisel != [] ? (
+      {kisisel.length != 0 ? (
         kisisel.map(item => (
           <div className="bio" key={item.kisiselid}>
             <div className="woman">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import images from'../../public/images/image'
 
 const Header = ({ kisisel, tarih, username, genel }) => {
   const calculateTimeLeft = () => {
@@ -45,7 +46,7 @@ const Header = ({ kisisel, tarih, username, genel }) => {
         <div className="header">
           <div className="ortala">
             <div className="dikey">
-              {kisisel != [] ? (
+              {kisisel.length != 0 ? (
                 kisisel.map(item => (
                   <div className="giris" key={item.kisiselid}>
                     <div className="kisi">

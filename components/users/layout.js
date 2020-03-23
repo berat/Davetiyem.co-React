@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import config from '../../config'
 import Axios from 'axios'
 import Cookies from 'js-cookie'
@@ -24,7 +25,7 @@ import Days from './days'
 
 // }
 
-const Layout = ({ children }) => {
+const Layout = ({ children, userid }) => {
   const [username, setUsername] = useState()
   const [galeri, setGaleri] = useState([])
   const [gunler, setGunler] = useState([])
@@ -49,23 +50,25 @@ const Layout = ({ children }) => {
     'Aralik'
   ]
 
-  const userid =
-    Cookies.get('login') != undefined
-      ? jwtDecode(Cookies.get('login')).userid
-      : null
+  // const userid =
+  //   Cookies.get('login') != undefined
+  //     ? jwtDecode(Cookies.get('login')).userid
+  //     : null
 
   useEffect(() => {
+    console.log(userid)
     Axios.get(`http://${config.apiURL}${config.version}genel/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setGenel(response.data.data)
-          console.log(response.data.data[0].tarih)
-          const ayAdi = (response.data.data[0].tarih.slice(0, -5)).slice(2,)
-          const gun = response.data.data[0].tarih.slice(0, 2)
-          const yil = response.data.data[0].tarih.slice(-4)
-          const aySayisi = (trDate.findIndex( item =>item == ayAdi))+1
-          const editTarih = `${yil}-${aySayisi}-${gun}`
-          setDugunTarih(editTarih)
+          if (response.data.data.length != 0) {
+            const ayAdi = response.data.data[0].tarih.slice(0, -5).slice(2)
+            const gun = response.data.data[0].tarih.slice(0, 2)
+            const yil = response.data.data[0].tarih.slice(-4)
+            const aySayisi = trDate.findIndex(item => item == ayAdi) + 1
+            const editTarih = `${yil}-${aySayisi}-${gun}`
+            setDugunTarih(editTarih)
+          }
         }
       }
     )
@@ -98,7 +101,7 @@ const Layout = ({ children }) => {
         }
       }
     )
-  }, [setYorum])
+  }, [userid])
 
   return (
     <div id="userPage">
@@ -149,8 +152,13 @@ const Layout = ({ children }) => {
         <meta name="og:locale" content="tr_TR" />
         <meta name="og:type" content="website" />
       </Head>
-      <Header kisisel={kisisel} genel={genel} tarih={dugunTarih} username={username} />
-      <Bio kisisel={kisisel} username={username}/>
+      <Header
+        kisisel={kisisel}
+        genel={genel}
+        tarih={dugunTarih}
+        username={username}
+      />
+      <Bio kisisel={kisisel} username={username} />
       <Comments yorum={yorum} />
       <Galeri galeri={galeri} username={username} />
       <Days gunler={gunler} not={genel} />
