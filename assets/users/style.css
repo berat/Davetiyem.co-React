@@ -94,6 +94,11 @@
     padding-right: 10px;
 }
 
+#userPage .saat span.nullTarih{
+    font-size: 22px;
+    width: 175px;
+}
+
 #userPage .saat i {
     font-size: 24px;
     padding-top: 5px;

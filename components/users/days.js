@@ -4,7 +4,6 @@ const Days = ({ gunler, not }) => {
   return gunler.length != 0 ? (
     <div id="gunler">
       <div className="gunler">
-        {console.log(gunler)}
         <ul>
           {gunler.map(item => (
             <li key={item.dugunid}>

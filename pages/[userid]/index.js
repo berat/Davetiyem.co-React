@@ -26,7 +26,6 @@ const HomePage = () => {
       }
     )
   }, [userid])
-  console.log(checkUserID)
   return check != false ? <Layout userid={checkUserID}></Layout> : <Hata></Hata>
 }
 

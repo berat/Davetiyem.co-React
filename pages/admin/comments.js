@@ -115,7 +115,6 @@ const Comments = () => {
               <ul className="row">
                 {listele.map((item, index) => (
                   <li className="col-xs-6 col-lg-6">
-                    {console.log(item)}
                     <div className="form-group">
                       <label htmlFor="exampleFormControlText">
                         Yorum Sahibi
@@ -125,7 +124,7 @@ const Comments = () => {
                           className="form-control"
                           id="yorumSahibi1"
                           name="yorumSahibi1"
-                          placeholder="Yorum sahibini girin"
+                          placeholder="Yorum kime ait?"
                           type="text"
                           ref={() =>
                             index == 0
@@ -151,7 +150,7 @@ const Comments = () => {
                         name="yorumu1"
                         id="yorumu1"
                         className="form-control"
-                        placeholder="Yorumunu girin"
+                        placeholder="Yorumu girin"
                         rows={3}
                         ref={() =>
                           index == 0
@@ -182,7 +181,7 @@ const Comments = () => {
                         className="form-control"
                         id="yorumSahibi1"
                         name="yorumSahibi1"
-                        placeholder="Yorum sahibini girin"
+                        placeholder="Yorum kime ait?"
                         type="text"
                         ref={yorumSahibiBir}
                       />
@@ -199,7 +198,7 @@ const Comments = () => {
                       name="yorumu1"
                       id="yorumu1"
                       className="form-control"
-                      placeholder="Yorumunu girin"
+                      placeholder="Yorumu girin"
                       rows={3}
                       ref={yorumuBir}
                     />
@@ -217,7 +216,7 @@ const Comments = () => {
                         className="form-control"
                         id="yorumSahibi1"
                         name="yorumSahibi1"
-                        placeholder="Yorum sahibini girin"
+                        placeholder="Yorum kime ait?"
                         type="text"
                         ref={yorumSahibiIki}
                       />
@@ -234,7 +233,7 @@ const Comments = () => {
                       name="yorumu1"
                       id="yorumu1"
                       className="form-control"
-                      placeholder="Yorumunu girin"
+                      placeholder="Yorumu girin"
                       rows={3}
                       ref={yorumuIki}
                     />
@@ -252,7 +251,7 @@ const Comments = () => {
                         className="form-control"
                         id="yorumSahibi1"
                         name="yorumSahibi1"
-                        placeholder="Yorum sahibini girin"
+                        placeholder="Yorum kime ait?"
                         type="text"
                         ref={yorumSahibiUc}
                       />
@@ -269,7 +268,7 @@ const Comments = () => {
                       name="yorumu1"
                       id="yorumu1"
                       className="form-control"
-                      placeholder="Yorumunu girin"
+                      placeholder="Yorumu girin"
                       rows={3}
                       ref={yorumuUc}
                     />
@@ -287,7 +286,7 @@ const Comments = () => {
                         className="form-control"
                         id="yorumSahibi1"
                         name="yorumSahibi1"
-                        placeholder="Yorum sahibini girin"
+                        placeholder="Yorum kime ait?"
                         type="text"
                         ref={yorumSahibiDort}
                       />
@@ -304,7 +303,7 @@ const Comments = () => {
                       name="yorumu1"
                       id="yorumu1"
                       className="form-control"
-                      placeholder="Yorumunu girin"
+                      placeholder="Yorumu girin"
                       rows={3}
                       ref={yorumuDort}
                     />

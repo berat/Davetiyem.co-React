@@ -205,28 +205,6 @@ const Album = () => {
                     </div>
                   ))
                 : null}
-              {/* {preview != null
-                ? preview.map(item => (
-                    <div className="preview">
-                      <img
-                        className="uploadImg"
-                        src={`/uploads/users/${username}/${item.foto}`}
-                      />
-                      <div
-                        className="kaldir"
-                        onClick={() => {
-                          deleteImg(item.fotoid)
-                        }}
-                      >
-                        <i
-                          key={item.fotoid}
-                          onClick={removePreview}
-                          className="fa fa-times"
-                        />
-                      </div>
-                    </div>
-                  ))
-                : null} */}
             </div>
             <input
               type="reset"

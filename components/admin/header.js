@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'
 
 const Header = () => {
   const [mobilMenu, setMobilMenu] = useState(false)
-  const router = useRouter();
+  const router = useRouter()
 
   const mobileMenuClick = () => {
     setMobilMenu(!mobilMenu)
@@ -33,7 +33,10 @@ const Header = () => {
         style={mobilMenu == true ? { display: 'inline' } : { display: 'none' }}
       >
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item" className={router.pathname == "/admin" ? "active" : ""}>
+          <li
+            className="nav-item"
+            className={router.pathname == '/admin' ? 'active' : ''}
+          >
             <Link href="/admin">
               <a className="nav-link">
                 <i className="fa fa-user" />
@@ -41,7 +44,10 @@ const Header = () => {
               </a>
             </Link>
           </li>
-          <li className="nav-item" className={router.pathname == "/admin/wedding" ? "active" : ""}>
+          <li
+            className="nav-item"
+            className={router.pathname == '/admin/wedding' ? 'active' : ''}
+          >
             <Link href="/admin/wedding">
               <a className="nav-link">
                 <i className="fa fa-bookmark" />
@@ -49,7 +55,10 @@ const Header = () => {
               </a>
             </Link>
           </li>
-          <li className="nav-item" className={router.pathname == "/admin/album" ? "active" : ""}>
+          <li
+            className="nav-item"
+            className={router.pathname == '/admin/album' ? 'active' : ''}
+          >
             <Link href="/admin/album">
               <a className="nav-link">
                 <i className="fa fa-image" />
@@ -57,7 +66,10 @@ const Header = () => {
               </a>
             </Link>
           </li>
-          <li className="nav-item" className={router.pathname == "/admin/comments" ? "active" : ""}>
+          <li
+            className="nav-item"
+            className={router.pathname == '/admin/comments' ? 'active' : ''}
+          >
             <Link href="/admin/comments">
               <a className="nav-link">
                 <i className="fa fa-comment" />
@@ -65,7 +77,10 @@ const Header = () => {
               </a>
             </Link>
           </li>
-          <li className="nav-item" className={router.pathname == "/admin/general" ? "active" : ""}>
+          <li
+            className="nav-item"
+            className={router.pathname == '/admin/general' ? 'active' : ''}
+          >
             <Link href="/admin/general">
               <a className="nav-link">
                 <i className="fa fa-cog" />
@@ -73,7 +88,10 @@ const Header = () => {
               </a>
             </Link>
           </li>
-          <li className="nav-item" className={router.pathname == "/admin/account" ? "active" : ""}>
+          <li
+            className="nav-item"
+            className={router.pathname == '/admin/account' ? 'active' : ''}
+          >
             <Link href="/admin/account">
               <a className="nav-link">
                 <i className="fa fa-at" />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import images from'../../public/images/image'
+import images from '../../public/images/image'
 
 const Header = ({ kisisel, tarih, username, genel }) => {
   const calculateTimeLeft = () => {
@@ -98,18 +98,18 @@ const Header = ({ kisisel, tarih, username, genel }) => {
                 </div>
               )}
               <div className="saat">
-                {timerComponents.length ? (
-                  timerComponents
-                ) : (
-                  <span>EVLENDİK!</span>
-                )}
+                {tarih != undefined ? (
+                  timerComponents.length ? (
+                    timerComponents
+                  ) : (
+                    <span>EVLENDİK!</span>
+                  )
+                ) : <span className="nullTarih">Tarih Eklenmedi!</span>}
               </div>
               <div className="soz">
-                {genel != [] ? genel.map(item => (
-                <p>
-                  {item.dugunSozu}
-                </p>
-                )) : null}
+                {genel != []
+                  ? genel.map(item => <p>{item.dugunSozu}</p>)
+                  : null}
               </div>
             </div>
           </div>

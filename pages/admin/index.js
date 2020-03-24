@@ -173,13 +173,13 @@ function HomePage() {
             <ul className="row">
               <li className="col-xs-6 col-lg-6">
                 <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">Gelin İsmi : </label>
+                  <label htmlFor="exampleInputEmail1">Gelin Adı: </label>
                   <dd>
                     <input
                       className="form-control"
                       id="gelinAdi"
                       name="gelinAdi"
-                      placeholder="Gelin İsmi"
+                      placeholder="Gelin Adı"
                       type="text"
                       ref={gelinAdi}
                       defaultValue={
@@ -194,7 +194,7 @@ function HomePage() {
                 <hr />
                 <div className="form-group">
                   <label htmlFor="exampleFormControlFile1">
-                    Gelinin Fotoğrafı :{' '}
+                    Gelinin Fotoğrafı :
                   </label>
                   <div className="upload">
                     <img src={images.upload} className="uploadImage" alt="" />
@@ -251,13 +251,13 @@ function HomePage() {
               </li>
               <li className="col-xs-6 col-lg-6">
                 <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">Damatın İsmi : </label>
+                  <label htmlFor="exampleInputEmail1">Damatın Adı: </label>
                   <dd>
                     <input
                       className="form-control"
                       id="damatAdi"
                       name="damatAdi"
-                      placeholder="Damat İsmi"
+                      placeholder="Damatın Adı"
                       type="text"
                       defaultValue={
                         bilgi != undefined ? bilgi[0].damatAdi : null
@@ -272,7 +272,7 @@ function HomePage() {
                 <hr />
                 <div className="form-group">
                   <label htmlFor="exampleFormControlFile1">
-                    Damatın Fotoğrafı :{' '}
+                    Damatın Fotoğrafı :
                   </label>
                   <div className="upload">
                     <img src={images.upload} className="uploadImage" alt="" />

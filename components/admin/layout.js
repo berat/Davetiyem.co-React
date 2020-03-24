@@ -21,10 +21,10 @@ const Layout = ({ children }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className="container">
-          <Top />
-      <Header />
-      {children}
-      <Social />
+        <Top />
+        <Header />
+        {children}
+        <Social />
       </div>
     </div>
   )

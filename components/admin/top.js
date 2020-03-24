@@ -21,12 +21,14 @@ const Top = () => {
         if (
           response.data.uyeler.filter(item => item.userid == userid).length == 1
         ) {
-          setUsername(response.data.uyeler.filter(item => item.userid == userid)[0].username)
+          setUsername(
+            response.data.uyeler.filter(item => item.userid == userid)[0]
+              .username
+          )
         }
       }
     )
   }, [setUsername])
-
 
   return (
     <div className="row justify-content-md-center">

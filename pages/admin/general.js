@@ -132,7 +132,7 @@ const General = () => {
                         className="form-control"
                         id="title"
                         name="title"
-                        placeholder="Derya Denizi & Halis Mulis"
+                        placeholder="Gelin Adi & Damat Adi"
                         type="text"
                         ref={baslik}
                         defaultValue={liste[0].title}
@@ -148,7 +148,7 @@ const General = () => {
                       name="desc"
                       id="desc"
                       className="form-control"
-                      placeholder="Google'da gözükecek olan açıklama metni"
+                      placeholder="Google'da gözükecek olan açıklama metni. Örn: Bu mutlu günümüzde sizleri de aramızdan görmekten mutluluk duyarız. Gelin/Damat"
                       rows={3}
                       ref={aciklama}
                       defaultValue={liste[0].desc}
@@ -166,7 +166,7 @@ const General = () => {
                   maxLength={150}
                   id="dugunSozu"
                   className="form-control"
-                  placeholder="Düğün sözünü girin"
+                  placeholder="Davetiye sözünü girin"
                   rows={6}
                   ref={soz}
                   defaultValue={liste[0].dugunSozu}
@@ -244,7 +244,7 @@ const General = () => {
                         className="form-control"
                         id="title"
                         name="title"
-                        placeholder="Derya Denizi & Halis Mulis"
+                        placeholder="Gelin Adi & Damat Adi"
                         type="text"
                         ref={baslik}
                       />
@@ -259,7 +259,7 @@ const General = () => {
                       name="desc"
                       id="desc"
                       className="form-control"
-                      placeholder="Google'da gözükecek olan açıklama metni"
+                      placeholder="Google'da gözükecek olan açıklama metni. Örn: Bu mutlu günümüzde sizleri de aramızdan görmekten mutluluk duyarız. Gelin/Damat"
                       rows={3}
                       ref={aciklama}
                     />
@@ -276,7 +276,7 @@ const General = () => {
                   maxLength={150}
                   id="dugunSozu"
                   className="form-control"
-                  placeholder="Düğün sözünü girin"
+                  placeholder="Davetiye sözünü girin"
                   rows={6}
                   ref={soz}
                 />

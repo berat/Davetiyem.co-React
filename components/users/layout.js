@@ -15,8 +15,6 @@ import Galeri from './galeri'
 import Comments from './comments'
 import Days from './days'
 
-// Buradan tüm istekleri çağır ve sonra component'e gönder. Bu şekilde herhangi bir karışıklık çıkmaz ve kullanabilirsin
-
 // const isGAEnabled = process.env.NODE_ENV === 'production'
 
 // if (isGAEnabled) {
@@ -50,13 +48,7 @@ const Layout = ({ children, userid }) => {
     'Aralik'
   ]
 
-  // const userid =
-  //   Cookies.get('login') != undefined
-  //     ? jwtDecode(Cookies.get('login')).userid
-  //     : null
-
   useEffect(() => {
-    console.log(userid)
     Axios.get(`http://${config.apiURL}${config.version}genel/${userid}`).then(
       response => {
         if (response.data.status == 201) {
@@ -165,11 +157,11 @@ const Layout = ({ children, userid }) => {
       <div id="aramizaKatil">
         <div className="aramizaKatil">
           <p>
-            Birkaç dakika içerisinde sizde kendi davetiye sitenizi
-            oluşturabilirsiniz. Hemen{' '}
-            <Link href="/katil">
-              <a>Kayıt Olun</a>
-            </Link>{' '}
+            Birkaç dakika içerisinde siz de kendi davetiye sitenizi
+            oluşturabilirsiniz. Hemen
+            <Link href="/register">
+              <a> Kayıt Olun </a>
+            </Link>
             ve başlayın.
           </p>
         </div>

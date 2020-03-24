@@ -84,7 +84,10 @@ function Bottom() {
             <div className="alt-sosyal">
               <ul>
                 <li>
-                  <Link href="https://www.instagram.com/davetiyemco/" prefetch={false}>
+                  <Link
+                    href="https://www.instagram.com/davetiyemco/"
+                    prefetch={false}
+                  >
                     <a>
                       <i className="fa fa-instagram" />
                     </a>
@@ -98,7 +101,10 @@ function Bottom() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://www.facebook.com/onlinedugundavetiyesi/" prefetch={false}>
+                  <Link
+                    href="https://www.facebook.com/onlinedugundavetiyesi/"
+                    prefetch={false}
+                  >
                     <a>
                       <i className="fa fa-facebook" />
                     </a>

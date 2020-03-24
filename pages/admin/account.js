@@ -32,64 +32,78 @@ const Account = () => {
     )
   }, [setUsername, setEmail])
 
+  const usernameValid = RegExp(/^[a-zA-Z0-9]+$/i)
+
   const onSubmit = e => {
     e.preventDefault()
-    if (password.current.value === cPassword.current.value) {
-      Axios.get(`http://${config.apiURL}${config.version}uyeCek`).then(
-        response => {
-          if (
-            response.data.uyeler.filter(
-              item => item.username == kullaniciAdi.current.value
-            ).length == 0 ||
-            response.data.uyeler.filter(
-              item => item.username == kullaniciAdi.current.value
-            )[0].userid == userid
-          ) {
+    if (usernameValid.test(kullaniciAdi.current.value)) {
+      if (password.current.value === cPassword.current.value) {
+        Axios.get(`http://${config.apiURL}${config.version}uyeCek`).then(
+          response => {
             if (
               response.data.uyeler.filter(
-                item => item.email == mail.current.value
+                item => item.username == kullaniciAdi.current.value
               ).length == 0 ||
               response.data.uyeler.filter(
-                item => item.email == mail.current.value
+                item => item.username == kullaniciAdi.current.value
               )[0].userid == userid
             ) {
-              Axios.put(
-                `http://${config.apiURL}${config.version}hesapGuncelle`,
-                {
-                  userid: userid,
-                  kullaniciAdi: kullaniciAdi.current.value,
-                  mail: mail.current.value,
-                  sifre: password.current.value
-                }
-              ).then(response => {
-                if (response.data.status == 201) {
-                  cogoToast.success(response.data.msg, {
-                    onClick: e => {
-                      e.target.parentNode.parentNode.style.display = 'none'
-                    },
-                    position: 'top-left'
-                  })
-                  if (password.current.value.length > 3) {
-                    Router.replace('/logout')
-                      cogoToast.success("Lütfen tekrar giriş yapın", {
+              if (
+                response.data.uyeler.filter(
+                  item => item.email == mail.current.value
+                ).length == 0 ||
+                response.data.uyeler.filter(
+                  item => item.email == mail.current.value
+                )[0].userid == userid
+              ) {
+                Axios.put(
+                  `http://${config.apiURL}${config.version}hesapGuncelle`,
+                  {
+                    userid: userid,
+                    kullaniciAdi: kullaniciAdi.current.value,
+                    mail: mail.current.value,
+                    sifre: password.current.value
+                  }
+                ).then(response => {
+                  if (response.data.status == 201) {
+                    cogoToast.success(response.data.msg, {
+                      onClick: e => {
+                        e.target.parentNode.parentNode.style.display = 'none'
+                      },
+                      position: 'top-left'
+                    })
+                    if (password.current.value.length > 3) {
+                      Router.replace('/logout')
+                      cogoToast.success('Lütfen tekrar giriş yapın', {
                         onClick: e => {
                           e.target.parentNode.parentNode.style.display = 'none'
                         },
                         position: 'top-left'
                       })
+                    }
+                  } else {
+                    cogoToast.error(response.data.msg, {
+                      onClick: e => {
+                        e.target.parentNode.parentNode.style.display = 'none'
+                      },
+                      position: 'top-left'
+                    })
                   }
-                } else {
-                  cogoToast.error(response.data.msg, {
+                })
+              } else {
+                cogoToast.error(
+                  'Mail adresiniz başkası tarafından kullanılmakta. Farklı bir şey seçin.',
+                  {
                     onClick: e => {
                       e.target.parentNode.parentNode.style.display = 'none'
                     },
                     position: 'top-left'
-                  })
-                }
-              })
+                  }
+                )
+              }
             } else {
               cogoToast.error(
-                'Mail adresiniz başkası tarafından kullanılmakta. Farklı bir şey seçin.',
+                'Kullanıcı adı başkası tarafından kullanılmakta. Farklı bir şey seçin.',
                 {
                   onClick: e => {
                     e.target.parentNode.parentNode.style.display = 'none'
@@ -98,19 +112,9 @@ const Account = () => {
                 }
               )
             }
-          } else {
-            cogoToast.error(
-              'Kullanıcı adı başkası tarafından kullanılmakta. Farklı bir şey seçin.',
-              {
-                onClick: e => {
-                  e.target.parentNode.parentNode.style.display = 'none'
-                },
-                position: 'top-left'
-              }
-            )
           }
-        }
-      )
+        )
+      }
     } else {
       cogoToast.error('Yeni şifreleriniz birbiri ile eşleşmiyor', {
         onClick: e => {
@@ -146,14 +150,11 @@ const Account = () => {
                     className="form-control"
                     minLength={4}
                     maxLength={15}
-                    pattern="^[a-zA-Z0-9]+$"
                     id="username"
                     name="username"
-                    placeholder="Username"
+                    placeholder="damatgelin"
                     ref={kullaniciAdi}
                     defaultValue={username}
-                    oninvalid="this.setCustomValidity('İzin verilmeyen karakter kullanıldı. öçşiğü+%&*/ gibi karakter kullanılmaz.')"
-                    oninput="this.setCustomValidity('')"
                   />
                 </div>
                 <small id="emailHelp" className="form-text text-muted">
@@ -167,7 +168,7 @@ const Account = () => {
                     className="form-control"
                     id="mail"
                     name="mail"
-                    placeholder="Email"
+                    placeholder="Email adresiniz"
                     ref={mail}
                     defaultValue={email}
                   />
@@ -205,7 +206,6 @@ const Account = () => {
                     id="cpassword"
                     name="cpassword"
                     placeholder="Tekrar şifreniz"
-                    oninput="check(this)"
                     ref={cPassword}
                   />
                   <small id="emailHelp" className="form-text text-muted">
