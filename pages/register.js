@@ -3,6 +3,7 @@ import Axios from 'axios'
 import Head from 'next/head'
 
 import Link from 'next/link'
+import Cookies from 'js-cookie'
 import cogoToast from 'cogo-toast'
 import Router from 'next/router'
 
@@ -18,6 +19,11 @@ const Register = () => {
     email = useRef(),
     password = useRef(),
     confirmPassword = useRef()
+
+
+  if (Cookies.get('login')) {
+    Router.replace(config.adminPage)
+  }
 
   const usernameValid = RegExp(/^[a-zA-Z0-9]+$/i)
 

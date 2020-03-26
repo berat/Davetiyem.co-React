@@ -51,7 +51,7 @@ const Bio = ({ kisisel, username }) => {
                   {' '}
                   {item.damatAdi != '' && null
                     ? item.damatAdi
-                    : 'Damat Adı'}{' '}
+                    : 'Damat Adı'}
                 </span>
                 <p className="hakkinda">
                   {item.gelinBio != '' && null
