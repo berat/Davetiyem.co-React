@@ -1,7 +1,43 @@
+import React, { useRef } from 'react'
+import Axios from 'axios'
+import config from '../../config'
 import Link from 'next/link'
 import images from '../../public/images/image'
+import cogoToast from 'cogo-toast'
 
-function Bottom() {
+const Bottom = () => {
+  const isim = useRef(),
+    no = useRef(),
+    email = useRef(),
+    msg = useRef()
+
+  const onSubmit = e => {
+    console.log(e)
+    e.preventDefault()
+    Axios.post(`http://${config.apiURL}${config.version}mailGonder`, {
+      isim: isim.current.value,
+      email: email.current.value,
+      no: no.current.value,
+      msg: msg.current.value
+    }).then(response => {
+      if (response.data.status == 201) {
+        cogoToast.success(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      } else {
+        cogoToast.error(response.data.msg, {
+          onClick: e => {
+            e.target.parentNode.parentNode.style.display = 'none'
+          },
+          position: 'top-left'
+        })
+      }
+    })
+  }
+
   return (
     <>
       <div className="bolum bacikla animated fadeIn">
@@ -14,7 +50,7 @@ function Bottom() {
           </p>
         </div>
         <div className="sbuton">
-          <Link href="/katil">
+          <Link href="/register">
             <a>Davetiye Siteni Aç</a>
           </Link>
         </div>
@@ -29,7 +65,7 @@ function Bottom() {
             </p>
           </div>
           <div className="iletisim-form">
-            <form action="/mail-gonder" method="POST">
+            <form onSubmit={onSubmit} method="POST">
               <div className="sol">
                 <input
                   type="text"
@@ -37,12 +73,14 @@ function Bottom() {
                   name="ad"
                   required
                   placeholder="İsminiz"
+                  ref={isim}
                 />
                 <input
                   type="tel"
                   id="tel"
                   name="tel"
                   placeholder="Telefon numarınız"
+                  ref={no}
                 />
                 <input
                   type="email"
@@ -50,6 +88,7 @@ function Bottom() {
                   name="mail"
                   required
                   placeholder="Mail adresiniz"
+                  ref={email}
                 />
               </div>
               <div className="sag">
@@ -60,7 +99,7 @@ function Bottom() {
                   name="mesaj"
                   required
                   placeholder="Bir şeyler yazabilirsiniz"
-                  defaultValue={''}
+                  ref={msg}
                 />
               </div>
               <div className="sol">
@@ -111,7 +150,7 @@ function Bottom() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="mailto:destek@davetiyem.co">
+                  <Link href="mailto:destek@davetiyem.co" prefetch={false}>
                     <a>
                       <i className="fa fa-envelope-o" />
                     </a>

@@ -14,7 +14,7 @@ const Logout = () => {
       Router.replace(config.loginPage)
     }
   }, [Cookies.get('login')])
-  return
+  return ("")
 }
 
 export default Logout

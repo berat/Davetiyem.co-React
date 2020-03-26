@@ -65,7 +65,7 @@
     border: 1px solid #ee6c4d;
 }
 
-#index .menu li .yaktif a {
+#index .menu li.yaktif a {
     color: #fff;
     transition: .3s;
     border: 1px solid #ee6c4d

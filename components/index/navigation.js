@@ -1,6 +1,14 @@
+import React from 'react'
 import Link from 'next/link'
+import Cookies from 'js-cookie'
+import jwtDecode from 'jwt-decode'
 
-function Navigation() {
+const Navigation = () => {
+  const userid =
+    Cookies.get('login') != undefined
+      ? jwtDecode(Cookies.get('login')).userid
+      : null
+
   return (
     <ul>
       <li>
@@ -33,27 +41,33 @@ function Navigation() {
           <a>İLETİŞİM</a>
         </Link>
       </li>
-
-      <li className="yaktif">
-        <Link href="/giris">
-          <a>GİRİŞ YAP</a>
-        </Link>
-      </li>
-      <li className="aktif">
-        <Link href="/katil">
-          <a>OLUŞTUR</a>
-        </Link>
-      </li>
-      <li className="yaktif">
-        <Link href="/cikis">
-          <a>ÇIKIŞ YAP</a>
-        </Link>
-      </li>
-      <li className="aktif">
-        <Link href="/admin">
-          <a>YÖNETİM</a>
-        </Link>
-      </li>
+      {userid == null ? (
+        <>
+          <li className="yaktif">
+            <Link href="/login">
+              <a>{"GİRİŞ YAP"}</a>
+            </Link>
+          </li>
+          <li className="aktif">
+            <Link href="/register">
+              <a>OLUŞTUR</a>
+            </Link>
+          </li>
+        </>
+      ) : (
+        <>
+          <li className="yaktif">
+            <Link href="/logout">
+              <a>{"ÇIKIŞ YAP"}</a>
+            </Link>
+          </li>
+          <li className="aktif">
+            <Link href="/admin">
+              <a>YÖNETİM</a>
+            </Link>
+          </li>
+        </>
+      )}
     </ul>
   )
 }

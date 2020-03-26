@@ -94,7 +94,6 @@ function HomePage() {
         }
       }
     ).then(response => {
-      console.log(response.data.data.path.slice(9))
       setDamatPreview(response.data.data.path.slice(9))
       if (response.data.status == 201) {
         cogoToast.success(response.data.msg, {
