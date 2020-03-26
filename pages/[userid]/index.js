@@ -1,5 +1,7 @@
 import react, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Error from "../_error.js";
+
 import config from '../../config'
 import Axios from 'axios'
 import Layout from '../../components/users/layout'
@@ -26,7 +28,7 @@ const HomePage = () => {
       }
     )
   }, [userid,setCheck,setCheckUserID])
-  return check != false ? <Layout userid={checkUserID}></Layout> : <Hata></Hata>
+  return check != false ? <Layout userid={checkUserID}></Layout> : <Error statusCode={404} />
 }
 
 export default HomePage
