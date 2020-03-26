@@ -52,7 +52,7 @@ const Header = ({ kisisel, tarih, username, genel }) => {
                     <div className="kisi">
                       <img
                         src={
-                          item.gelinFoto != '' || null
+                          item.gelinFoto != null
                             ? `/uploads/users/${username}/profil/${item.gelinFoto}`
                             : images.user.gelinFoto
                         }
@@ -62,14 +62,14 @@ const Header = ({ kisisel, tarih, username, genel }) => {
                         {' '}
                         {item.gelinAdi != '' || null
                           ? item.gelinAdi
-                          : 'Gelin Adı'}{' '}
+                          : 'Gelin Adı'}
                       </span>
                     </div>
                     <div className="orta">&amp;</div>
                     <div className="kisi">
                       <img
                         src={
-                          item.damatFoto != '' || null
+                          item.damatFoto != null
                             ? `/uploads/users/${username}/profil/${item.damatFoto}`
                             : images.user.damatFoto
                         }

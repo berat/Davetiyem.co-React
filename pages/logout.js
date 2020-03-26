@@ -6,7 +6,6 @@ import Router from 'next/router'
 // Burası en son kalkacaktır.
 
 const Logout = () => {
-
   useEffect(() => {
     if (Cookies.get('login')) {
       Cookies.remove('login')
@@ -15,7 +14,7 @@ const Logout = () => {
       Router.replace(config.loginPage)
     }
   }, [Cookies.get('login')])
-  return <div>"gelloe"</div>
+  return
 }
 
 export default Logout

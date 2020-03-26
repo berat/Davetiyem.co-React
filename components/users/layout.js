@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import config from '../../config'
 import Axios from 'axios'
-import Cookies from 'js-cookie'
-import jwtDecode from 'jwt-decode'
 import Head from 'next/head'
 import GA from 'react-ga'
 import Link from 'next/link'
@@ -53,6 +50,7 @@ const Layout = ({ children, userid }) => {
       response => {
         if (response.data.status == 201) {
           setGenel(response.data.data)
+          console.log(response.data.data)
           if (response.data.data.length != 0) {
             const ayAdi = response.data.data[0].tarih.slice(0, -5).slice(2)
             const gun = response.data.data[0].tarih.slice(0, 2)
@@ -98,7 +96,13 @@ const Layout = ({ children, userid }) => {
   return (
     <div id="userPage">
       <Head>
-        <title>Örnek Düğün Davetiyesi</title>
+        <title>
+          {genel.length != 0
+            ? genel.map(item =>
+                item.title != '' ? item.title : 'Örnek Düğün Davetiyesi'
+              )
+            : 'Örnek Düğün Davetiyesi'}
+        </title>
         <link
           rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -113,7 +117,15 @@ const Layout = ({ children, userid }) => {
 
         <meta
           name="description"
-          content="davetiyem.co olarak online düğün davetiyesinin nasıl olduğunu gösteren örnek bir davetiye."
+          content={
+            genel.length != 0
+              ? genel.map(item =>
+                  item.desc != ''
+                    ? item.desc
+                    : 'davetiyem.co olarak online düğün davetiyesinin nasıl olduğunu gösteren örnek bir davetiye.'
+                )
+              : 'davetiyem.co olarak online düğün davetiyesinin nasıl olduğunu gösteren örnek bir davetiye.'
+          }
         />
         <meta
           name="image"
@@ -126,7 +138,7 @@ const Layout = ({ children, userid }) => {
           content="davetiyem.co olarak online düğün davetiyesinin nasıl olduğunu gösteren örnek bir davetiye."
         />
         <meta name="twitter:site" content="@davetiyemco" />
-        <meta name="twitter:url" content="https://davetiyem.co/damatgelin" />
+        <meta name="twitter:url" content={`https://davetiyem.co/${username}`} />
         <meta
           name="twitter:image:src"
           content="https://davetiyem.co/static/uploads/davetiye.png"
@@ -140,7 +152,7 @@ const Layout = ({ children, userid }) => {
           name="og:image"
           content="https://davetiyem.co/static/uploads/davetiye.png"
         />
-        <meta name="og:url" content="https://davetiyem.co/damatgelin" />
+        <meta name="og:url" content={`https://davetiyem.co/${username}`} />
         <meta name="og:locale" content="tr_TR" />
         <meta name="og:type" content="website" />
       </Head>
@@ -170,7 +182,7 @@ const Layout = ({ children, userid }) => {
         <ul>
           <li className="whatsapp">
             <Link
-              href="whatsapp://send?abid=&text=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊"
+              href={`whatsapp://send?abid=&text=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/${username} adresine gidebilirsiniz. Bekliyoruz 	😊`}
               prefetch={false}
             >
               <a target="_blank">
@@ -180,7 +192,7 @@ const Layout = ({ children, userid }) => {
           </li>
           <li className="sms">
             <Link
-              href="sms:?body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/damatgelin adresine gidebilirsiniz. Bekliyoruz 	😊"
+              href={`sms:?body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/${username} adresine gidebilirsiniz. Bekliyoruz 	😊`}
               prefetch={false}
             >
               <a target="_blank">
@@ -190,7 +202,7 @@ const Layout = ({ children, userid }) => {
           </li>
           <li className="facebook">
             <Link
-              href="http://www.facebook.com/sharer/sharer.php?u=http://davetiyem.co/damatgelin"
+              href={`http://www.facebook.com/sharer/sharer.php?u=http://davetiyem.co/${username}`}
               prefetch={false}
             >
               <a target="_blank">
@@ -200,7 +212,7 @@ const Layout = ({ children, userid }) => {
           </li>
           <li className="mail">
             <Link
-              href="mailto:?subject=Evleniyoruz, Düğünümüze Davetleisiniz?&body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/ dddd adresine gidebilirsiniz. Bekliyoruz 	😊"
+              href={`mailto:?subject=Evleniyoruz, Düğünümüze Davetleisiniz?&body=Merhaba, yakın zamanda evleniyoruz. 🎉 Sizi de aramızda görmek isteriz. Davetiyemizi online olarak ulaşmak için : http://davetiyem.co/${username} adresine gidebilirsiniz. Bekliyoruz 	😊`}
               prefetch={false}
             >
               <a target="_blank">

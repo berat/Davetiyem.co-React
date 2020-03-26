@@ -6,6 +6,7 @@ import Flatpickr from 'react-flatpickr'
 import Cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 import cogoToast from 'cogo-toast'
+import Router from 'next/router'
 
 import config from '../../config'
 import '../../assets/admin/dark.css'
@@ -29,6 +30,7 @@ const Wedding = () => {
       : null
 
   useEffect(() => {
+    userid == null ? Router.replace(config.loginPage) : null
     Axios.get(`http://${config.apiURL}${config.version}dugun/${userid}`).then(
       response => {
         if (response.data.status == 201) {
@@ -38,7 +40,7 @@ const Wedding = () => {
         }
       }
     )
-  }, [setBilgi])
+  }, [userid, setBilgi])
 
   const onSubmit = async e => {
     e.preventDefault()

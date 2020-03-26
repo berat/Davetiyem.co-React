@@ -12,21 +12,21 @@ const Galeri = ({ galeri, username }) => {
       hide: false
     }
   }
-  return galeri.length != 0
-    ? galeri.map(item => (
-        <div id="galeriSlider">
-          <Swiper {...params}>
-            <img
-              key={item.fotoid}
-              src={`/uploads/users/${username}/${item.foto}`}
-              width={350}
-              height={325}
-              alt=""
-            />
-          </Swiper>
-        </div>
-      ))
-    : null
+  return galeri.length != 0 ? (
+    <div id="galeriSlider">
+      <Swiper {...params}>
+        {galeri.map(item => (
+          <img
+            key={item.fotoid}
+            src={`/uploads/users/${username}/${item.foto}`}
+            width={350}
+            height={325}
+            alt=""
+          />
+        ))}
+      </Swiper>
+    </div>
+  ) : null
 }
 
 export default Galeri

@@ -12,8 +12,8 @@ const Days = ({ gunler, not }) => {
               </div>
               <div className="gust">
                 <div className="gtarih">
-                  <span>{item.dtarih.slice(0, -4)}</span>
-                  <i>{item.dtarih.slice(-4)}</i>
+                  <span>{item.dtarih != null ? item.dtarih.slice(0, -4): null}</span>
+                  <i>{item.dtarih != null ? item.dtarih.slice(-4) : null}</i>
                 </div>
                 <div className="gadres">
                   <p>{item.dadres}</p>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import Axios from 'axios'
 import Head from 'next/head'
 import Cookies from 'js-cookie'

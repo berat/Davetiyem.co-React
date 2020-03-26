@@ -4,6 +4,7 @@ import Axios from 'axios'
 import Cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 import cogoToast from 'cogo-toast'
+import Router from 'next/router'
 
 import config from '../../config'
 
@@ -26,6 +27,7 @@ const Comments = () => {
       : null
 
   useEffect(() => {
+    userid == null ? Router.replace(config.loginPage) : null
     Axios.get(`http://${config.apiURL}${config.version}yorum/${userid}`).then(
       response => {
         if (response.data.status == 201) {
@@ -33,7 +35,7 @@ const Comments = () => {
         }
       }
     )
-  }, [setListele])
+  }, [userid, setListele])
 
   const onSubmit = e => {
     e.preventDefault()

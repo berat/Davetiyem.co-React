@@ -6,6 +6,7 @@ import config from '../../config'
 import Cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 import cogoToast from 'cogo-toast'
+import Router from 'next/router'
 
 const Album = () => {
   const [dizi, setDizi] = useState()
@@ -22,6 +23,8 @@ const Album = () => {
       : null
 
   useEffect(() => {
+    userid == null ? Router.replace(config.loginPage) : null
+
     Axios.get(`http://${config.apiURL}${config.version}galeri/${userid}`).then(
       response => {
         if (response.data.status == 201) {
@@ -33,7 +36,7 @@ const Album = () => {
         }
       }
     )
-  }, [setDizi])
+  }, [ userid, setDizi])
 
   const uploadAlbum = e => {
     if (preview.length + e.target.files.length + say <= 8) {

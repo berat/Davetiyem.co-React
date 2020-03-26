@@ -49,7 +49,7 @@ module.exports = {
         'Ara'
       ]
     },
-    today: 'Bugün',
+    today: 'Bugun',
     clear: 'Temizle'
   }
 }

@@ -5,19 +5,21 @@ import Axios from 'axios'
 import config from '../../config'
 import Cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
+import Router from 'next/router'
 import cogoToast from 'cogo-toast'
 
 function HomePage() {
   const [bilgi, setBilgi] = useState()
   const [gelinPreview, setGelinPreview] = useState()
   const [damatPreview, setDamatPreview] = useState()
-
   const userid =
     Cookies.get('login') != undefined
       ? jwtDecode(Cookies.get('login')).userid
       : null
 
   useEffect(() => {
+    userid == null ? Router.replace(config.loginPage) : null
+
     Axios.get(`http://${config.apiURL}${config.version}kisisel/${userid}`).then(
       response => {
         if (response.data.status == 201) {
@@ -43,7 +45,7 @@ function HomePage() {
         }
       }
     )
-  }, [setBilgi])
+  }, [userid, setBilgi])
   const gelinAdi = useRef(),
     damatAdi = useRef(),
     gelinBio = useRef(),
@@ -61,7 +63,7 @@ function HomePage() {
         }
       }
     ).then(response => {
-      setGelinPreview(response.data.data.filename)
+      setGelinPreview(response.data.data.path.slice(9))
       if (response.data.status == 201) {
         cogoToast.success(response.data.msg, {
           onClick: e => {
@@ -92,7 +94,8 @@ function HomePage() {
         }
       }
     ).then(response => {
-      setDamatPreview(response.data.data.filename)
+      console.log(response.data.data.path.slice(9))
+      setDamatPreview(response.data.data.path.slice(9))
       if (response.data.status == 201) {
         cogoToast.success(response.data.msg, {
           onClick: e => {
@@ -115,7 +118,7 @@ function HomePage() {
     e.preventDefault()
     Axios.post(`http://${config.apiURL}${config.version}kisisel`, {
       gelinAdi: gelinAdi.current.value,
-      damatAdi: damatBio.current.value,
+      damatAdi: damatAdi.current.value,
       gelinBio: gelinBio.current.value,
       damatBio: damatBio.current.value,
       userid: userid

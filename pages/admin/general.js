@@ -5,6 +5,7 @@ import Flatpickr from 'react-flatpickr'
 import Cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 import cogoToast from 'cogo-toast'
+import Router from 'next/router'
 
 import config from '../../config'
 import '../../assets/admin/dark.css'
@@ -12,7 +13,7 @@ import '../../assets/admin/dark.css'
 const General = () => {
   const [tarih, setTarih] = useState()
   const [saat, setSaat] = useState()
-  const [liste, setListe] = useState()
+  const [liste, setListe] = useState([])
 
   const baslik = useRef(),
     aciklama = useRef(),
@@ -24,9 +25,11 @@ const General = () => {
       : null
 
   useEffect(() => {
+    userid == null ? Router.replace(config.loginPage) : null
     Axios.get(`http://${config.apiURL}${config.version}genel/${userid}`).then(
       response => {
-        if (response.data.status == 201) {
+        if (response.data.status == 201 && response.data.data.length != 0) {
+          console.log(response.data.data)
           setListe(response.data.data)
           setTarih(response.data.data[0].tarih)
           setSaat(response.data.data[0].saat)
@@ -70,7 +73,7 @@ const General = () => {
           <span>Genel ayarları buradan düzenleyebilirsiniz.</span>
         </div>
         <div className="icerik col-12">
-          {liste != undefined ? (
+          {liste.length != 0 ? (
             <form onSubmit={onSubmit} method="post" className="col-12">
               <ul className="row">
                 <li className="col-xs-6 col-lg-6">

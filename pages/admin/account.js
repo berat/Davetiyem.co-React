@@ -22,6 +22,7 @@ const Account = () => {
       : null
 
   useEffect(() => {
+    userid == null ? Router.replace(config.loginPage) : null
     Axios.get(`http://${config.apiURL}${config.version}hesap/${userid}`).then(
       response => {
         if (response.data.status == 201) {
@@ -30,7 +31,7 @@ const Account = () => {
         }
       }
     )
-  }, [setUsername, setEmail])
+  }, [userid, setUsername, setEmail])
 
   const usernameValid = RegExp(/^[a-zA-Z0-9]+$/i)
 
