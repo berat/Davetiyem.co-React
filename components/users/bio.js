@@ -11,12 +11,12 @@ const Bio = ({ kisisel, username }) => {
               <div className="ptext">
                 <span className="pisim">
                   {' '}
-                  {item.gelinAdi != '' || null
+                  {item.gelinAdi != '' && null
                     ? item.gelinAdi
                     : 'Gelin Adı'}{' '}
                 </span>
                 <p className="hakkinda">
-                  {item.gelinBio != '' || null
+                  {item.gelinBio != '' && null
                     ? item.gelinBio
                     : 'Gelini tanıtan bir kaç cümle burada yer alacak. Lütfen yönetim panelinizden gerekli düzenlemeleri yapın.'}
                 </p>
@@ -24,7 +24,7 @@ const Bio = ({ kisisel, username }) => {
               <div className="pimg">
                 <img
                   src={
-                    item.gelinFoto != '' || null
+                    item.gelinFoto != null
                       ? `/uploads/users/${username}/profil/${item.gelinFoto}`
                       : images.user.gelinFoto
                   }
@@ -39,7 +39,7 @@ const Bio = ({ kisisel, username }) => {
               <div className="pimg">
                 <img
                   src={
-                    item.damatFoto != '' || null
+                    item.damatFoto != null
                       ? `/uploads/users/${username}/profil/${item.damatFoto}`
                       : images.user.damatFoto
                   }
@@ -49,12 +49,12 @@ const Bio = ({ kisisel, username }) => {
               <div className="ptext">
                 <span className="pisim">
                   {' '}
-                  {item.damatAdi != '' || null
+                  {item.damatAdi != '' && null
                     ? item.damatAdi
                     : 'Damat Adı'}{' '}
                 </span>
                 <p className="hakkinda">
-                  {item.gelinBio != '' || null
+                  {item.gelinBio != '' && null
                     ? item.gelinBio
                     : 'Damatı tanıtan bir kaç cümle burada yer alacak. Lütfen yönetim panelinizden gerekli düzenlemeleri yapın.'}
                 </p>

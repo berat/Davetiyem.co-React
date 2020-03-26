@@ -4,10 +4,18 @@ import Head from 'next/head'
 import Header from '../components/index/header'
 import Body from '../components/index/body'
 import Bottom from '../components/index/bottom'
+import dynamic from 'next/dynamic'
 
 import '../assets/reset.css'
 import '../assets/index/animate.min.css'
 import '../assets/index/style.css'
+
+const DynamicComponentWithCustomLoading = dynamic(
+  () => import('../components/index/header'),
+  { loading: () => <p>geliyor</p> }
+)
+
+
 
 function HomePage() {
   return (

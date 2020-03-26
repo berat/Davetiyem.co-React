@@ -25,7 +25,7 @@ const HomePage = () => {
         }
       }
     )
-  }, [userid])
+  }, [userid,setCheck,setCheckUserID])
   return check != false ? <Layout userid={checkUserID}></Layout> : <Hata></Hata>
 }
 

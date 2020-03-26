@@ -12,7 +12,6 @@ const Bottom = () => {
     msg = useRef()
 
   const onSubmit = e => {
-    console.log(e)
     e.preventDefault()
     Axios.post(`http://${config.apiURL}${config.version}mailGonder`, {
       isim: isim.current.value,
