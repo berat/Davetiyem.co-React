@@ -25,7 +25,7 @@ const Days = ({ gunler, not }) => {
                 </div>
               </div>
               <div className="temizle" />
-              <div className="gmap">{item.diframe}</div>
+              <div className="gmap"dangerouslySetInnerHTML={{ __html: item.diframe}}></div>
             </li>
           )}
         </ul>
