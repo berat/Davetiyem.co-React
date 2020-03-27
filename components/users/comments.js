@@ -14,20 +14,20 @@ const Comments = ({ yorum }) => {
     }
   }
 
-  return yorum.length != 0
-    ? yorum.map(item => (
-        <div id="soz">
-          <div className="soz">
-            <Swiper {...params}>
-              <div className="sozIcerik" key={item.yorumid}>
-                <p className="icerik">{item.yorumu}</p>
-                <span className="sahibi">{item.yorumSahibi}</span>
-              </div>
-            </Swiper>
+  return yorum.length != 0 ? (
+    <div id="soz">
+      <div className="soz">
+        <Swiper {...params}>
+          {yorum.map(item => (
+          <div className="sozIcerik" key={item.yorumid}>
+            <p className="icerik">{item.yorumu}</p>
+            <span className="sahibi">{item.yorumSahibi}</span>
           </div>
-        </div>
-      ))
-    : null
+          ))}
+        </Swiper>
+      </div>
+    </div>
+  ) : null
 }
 
 export default Comments

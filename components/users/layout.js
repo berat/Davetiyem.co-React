@@ -50,7 +50,6 @@ const Layout = ({ children, userid }) => {
       response => {
         if (response.data.status == 201) {
           setGenel(response.data.data)
-          console.log(response.data.data)
           if (response.data.data.length != 0) {
             const ayAdi = response.data.data[0].tarih.slice(0, -5).slice(2)
             const gun = response.data.data[0].tarih.slice(0, 2)

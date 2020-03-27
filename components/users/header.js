@@ -59,7 +59,7 @@ const Header = ({ kisisel, tarih, username, genel }) => {
                         alt=""
                       />
                       <span>
-                        {item.gelinAdi != '' && null
+                        {item.gelinAdi != ''
                           ? item.gelinAdi
                           : 'Gelin Adı'}
                       </span>
@@ -76,7 +76,7 @@ const Header = ({ kisisel, tarih, username, genel }) => {
                       />
                       <span>
                         {' '}
-                        {item.damatAdi != '' && null
+                        {item.damatAdi != ''
                           ? item.damatAdi
                           : 'Damat Adı'}{' '}
                       </span>

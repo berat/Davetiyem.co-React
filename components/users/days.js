@@ -6,7 +6,7 @@ const Days = ({ gunler, not }) => {
       <div className="gunler">
         <ul>
           {gunler.map(item => 
-            {item.dtarih != '' && item.dbaslik != '' && item.dadres != '' && item.diframe != '' ? (
+            
             <li key={item.dugunid}>
               {item.dbaslik != '' ? (
               <div className="gbaslik">
@@ -27,7 +27,6 @@ const Days = ({ gunler, not }) => {
               <div className="temizle" />
               <div className="gmap">{item.diframe}</div>
             </li>
-            ) : null}
           )}
         </ul>
         <div

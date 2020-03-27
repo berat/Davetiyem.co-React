@@ -20,7 +20,6 @@ const HomePage = () => {
   useEffect(() => {
     Axios.get(`https://${config.apiURL}${config.version}uyeCek/${userid}`).then(
       response => {
-        console.log(response.data)
         if (response.data.status == 201) {
           setCheck(true)
           setLoad(true)

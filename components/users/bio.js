@@ -11,12 +11,12 @@ const Bio = ({ kisisel, username }) => {
               <div className="ptext">
                 <span className="pisim">
                   {' '}
-                  {item.gelinAdi != '' && null
+                  {item.gelinAdi != ''
                     ? item.gelinAdi
-                    : 'Gelin Adı'}{' '}
+                    : 'Gelin Adı'}
                 </span>
                 <p className="hakkinda">
-                  {item.gelinBio != '' && null
+                  {item.gelinBio != ''
                     ? item.gelinBio
                     : 'Gelini tanıtan bir kaç cümle burada yer alacak. Lütfen yönetim panelinizden gerekli düzenlemeleri yapın.'}
                 </p>
@@ -49,12 +49,12 @@ const Bio = ({ kisisel, username }) => {
               <div className="ptext">
                 <span className="pisim">
                   {' '}
-                  {item.damatAdi != '' && null
+                  {item.damatAdi != ''
                     ? item.damatAdi
                     : 'Damat Adı'}
                 </span>
                 <p className="hakkinda">
-                  {item.gelinBio != '' && null
+                  {item.gelinBio != ''
                     ? item.gelinBio
                     : 'Damatı tanıtan bir kaç cümle burada yer alacak. Lütfen yönetim panelinizden gerekli düzenlemeleri yapın.'}
                 </p>
