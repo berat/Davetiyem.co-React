@@ -2,5 +2,5 @@ node_modules
 davetiyem.co-api
 .next
 
-
+public/uploads
 package-lock.json
