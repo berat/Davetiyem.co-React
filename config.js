@@ -1,5 +1,5 @@
 module.exports = {
-  apiURL: 'localhost:3100',
+  apiURL: '138.68.52.195',
   version: '/v1/auth/',
   home: '/',
   loginPage: '/login',

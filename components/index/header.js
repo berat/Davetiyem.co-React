@@ -74,7 +74,7 @@ const Header = () => {
                 Yaşantınızın her gününde bugünü hatırlatacak Dijital Davetiye
               </h1>
               <div className="buton demo-incele">
-                <Link href="/katil">
+                <Link href="/register">
                   <a>Dijital Davetiyeni Hemen Oluştur</a>
                 </Link>
               </div>
