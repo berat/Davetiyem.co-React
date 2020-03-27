@@ -1,6 +1,7 @@
 import react, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Error from '../_error.js'
+import { Preloader, Puff } from 'react-preloader-icon'
 
 import config from '../../config'
 import Axios from 'axios'
@@ -22,9 +23,9 @@ const HomePage = () => {
       response => {
         if (response.data.status == 201) {
           setCheck(true)
-          setLoad(true)
           setCheckUserID(response.data.userid)
         }
+        setLoad(true)
       }
     )
   }, [userid, setCheck, setCheckUserID, setLoad])
@@ -32,11 +33,18 @@ const HomePage = () => {
     check != false ? (
       <Layout userid={checkUserID}></Layout>
     ) : (
-      // <Error />
-      "dewf"
+      <Error />
     )
-  ) : 
-  <Error  />
+  ) : (
+    <Preloader
+      style={{ position: 'absolute', top: '45%', left: '50%' }}
+      use={Puff}
+      size={100}
+      strokeWidth={6}
+      strokeColor="#29D"
+      duration={2000}
+    />
+  )
 }
 
 export default HomePage
