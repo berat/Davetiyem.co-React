@@ -31,7 +31,7 @@ const Register = () => {
     e.preventDefault()
     if (usernameValid.test(username.current.value)) {
       if (password.current.value === confirmPassword.current.value) {
-        Axios.post(`http://${config.apiURL}${config.version}kayitOl`, {
+        Axios.post(`https://${config.apiURL}${config.version}kayitOl`, {
           username: username.current.value,
           password: password.current.value,
           email: email.current.value

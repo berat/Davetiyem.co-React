@@ -18,7 +18,7 @@ const HomePage = () => {
   const { userid } = router.query
 
   useEffect(() => {
-    Axios.get(`http://${config.apiURL}${config.version}uyeCek/${userid}`).then(
+    Axios.get(`https://${config.apiURL}${config.version}uyeCek/${userid}`).then(
       response => {
         console.log(response.data)
         if (response.data.status == 201) {

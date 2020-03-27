@@ -13,7 +13,7 @@ const Bottom = () => {
 
   const onSubmit = e => {
     e.preventDefault()
-    Axios.post(`http://${config.apiURL}${config.version}mailGonder`, {
+    Axios.post(`https://${config.apiURL}${config.version}mailGonder`, {
       isim: isim.current.value,
       email: email.current.value,
       no: no.current.value,

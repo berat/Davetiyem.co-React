@@ -46,7 +46,7 @@ const Layout = ({ children, userid }) => {
   ]
 
   useEffect(() => {
-    Axios.get(`http://${config.apiURL}${config.version}genel/${userid}`).then(
+    Axios.get(`https://${config.apiURL}${config.version}genel/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setGenel(response.data.data)
@@ -62,14 +62,14 @@ const Layout = ({ children, userid }) => {
         }
       }
     )
-    Axios.get(`http://${config.apiURL}${config.version}yorum/${userid}`).then(
+    Axios.get(`https://${config.apiURL}${config.version}yorum/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setYorum(response.data.data)
         }
       }
     )
-    Axios.get(`http://${config.apiURL}${config.version}galeri/${userid}`).then(
+    Axios.get(`https://${config.apiURL}${config.version}galeri/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setGaleri(response.data.photos)
@@ -77,14 +77,14 @@ const Layout = ({ children, userid }) => {
         }
       }
     )
-    Axios.get(`http://${config.apiURL}${config.version}dugun/${userid}`).then(
+    Axios.get(`https://${config.apiURL}${config.version}dugun/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setGunler(response.data.data)
         }
       }
     )
-    Axios.get(`http://${config.apiURL}${config.version}kisisel/${userid}`).then(
+    Axios.get(`https://${config.apiURL}${config.version}kisisel/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setKisisel(response.data.data)

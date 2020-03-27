@@ -26,7 +26,7 @@ const General = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`http://${config.apiURL}${config.version}genel/${userid}`).then(
+    Axios.get(`https://${config.apiURL}${config.version}genel/${userid}`).then(
       response => {
         if (response.data.status == 201 && response.data.data.length != 0) {
           console.log(response.data.data)
@@ -40,7 +40,7 @@ const General = () => {
 
   const onSubmit = e => {
     e.preventDefault()
-    Axios.post(`http://${config.apiURL}${config.version}genel`, {
+    Axios.post(`https://${config.apiURL}${config.version}genel`, {
       userid: userid,
       tarih: tarih,
       saat: saat,

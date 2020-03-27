@@ -17,7 +17,7 @@ const Social = () => {
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
 
-    Axios.get(`http://${config.apiURL}${config.version}galeri/${userid}`).then(
+    Axios.get(`https://${config.apiURL}${config.version}galeri/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setUsername(response.data.username)

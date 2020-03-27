@@ -16,7 +16,7 @@ const ForgetPassword = () => {
 
   const sendPassword = e => {
     e.preventDefault()
-    Axios.put(`http://${config.apiURL}${config.version}sifremi-unuttum`, {
+    Axios.put(`https://${config.apiURL}${config.version}sifremi-unuttum`, {
       email: email.current.value
     }).then(response => {
       if (response.data.status == 201) {

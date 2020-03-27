@@ -23,7 +23,7 @@ const Login = () => {
 
   const beLogin = e => {
     e.preventDefault()
-    Axios.post(`http://${config.apiURL}${config.version}girisYap`, {
+    Axios.post(`https://${config.apiURL}${config.version}girisYap`, {
       username: username.current.value,
       password: password.current.value
     }).then(response => {
