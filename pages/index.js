@@ -7,6 +7,7 @@ import Bottom from '../components/index/bottom'
 
 import '../assets/reset.css'
 import '../assets/index/animate.min.css'
+import '../assets/index/responsive.css'
 import '../assets/index/style.css'
 
 function HomePage() {

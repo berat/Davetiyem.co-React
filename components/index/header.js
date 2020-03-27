@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Axios from 'axios'
 import Link from 'next/link'
 import Cookies from 'js-cookie'
@@ -9,6 +9,8 @@ import images from '../../public/images/image'
 
 const Header = () => {
   const [username, setUsername] = useState()
+  const [checkMobile, setCheckMobile] = useState(false)
+  const menu = useRef()
 
   const userid =
     Cookies.get('login') != undefined
@@ -40,7 +42,28 @@ const Header = () => {
               </a>
             </Link>
           </div>
-          <div className="menu">
+          {checkMobile == false ? (
+            <div className="acilan">
+              <i
+                onClick={() => {
+                  menu.current.style.display = 'block'
+                  setCheckMobile(!checkMobile)
+                }}
+                className="fa fa-bars"
+              ></i>
+            </div>
+          ) : (
+            <div className="kapan">
+              <i
+                onClick={() => {
+                  menu.current.style.display = 'none'
+                  setCheckMobile(!checkMobile)
+                }}
+                className="fa fa-times"
+              ></i>
+            </div>
+          )}
+          <div className="menu" ref={menu}>
             <Navigation />
           </div>
         </div>

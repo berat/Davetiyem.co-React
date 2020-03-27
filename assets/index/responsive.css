@@ -1,0 +1,55 @@
+@media only screen and (max-width: 768px) { 
+	#index header{width: 100%;height: auto;background: url(/images/bg-res.jpg) no-repeat center !important;background-size: cover !important;}
+	#index #header{width: 90% !important;}
+	#index .menu{display: none;float: none !important;background: #3d3f41 !important;margin-top: 50px !important;position: absolute !important;width: 90% !important;text-align: center !important;z-index:999 !important}
+	#index .menu ul{display: block;}
+	#index .menu li{padding: 0 !important;}
+	#index .menu li a{display: block; padding: 17px 0;}
+	#index .menu li.yaktif{margin-bottom: 5px;}
+	#index .acilan{display: none;}
+	#index .slider{width: 95% !important;padding-top: 35px !important;padding-bottom: 20px;}
+	#index .slider h1{padding-bottom: 45px;}
+	#index .slider h3{font-size: 20px;margin-bottom: 25px;}
+	#index .slider p{font-size: 16px;}
+	#index .buton{max-width: 100%;line-height: 34px;padding:12px 0px;}
+	#index .buton a{padding:0; text-align: center;font-size: 17px;display: block}
+	#index .hizmetler{width: 90% !important;}
+	#index .acikla{width: 90% !important;font-size:17px !important;}
+	#index .baslik{font-size:23px;}
+	#index .hizmetler{width: 90%;margin: 0px auto}
+	#index .hizmetler li{width: 50%;margin-right: 0}
+	#index .sol,#index .sag{width: 90%;}
+	#index .iletisim-form input{width: 90% !important;margin: 0px auto}
+	#index .iletisim-form,#index .iletisim-form textarea{width: 90% !important;margin: 0px auto;}
+	#index .iletisim-form textarea{width: 90% !important; margin: 0px auto; margin-left: 7px;}
+	#index .iletisim-form input[type="submit"]{margin-top: 10px;width: 90% !important ;}
+	#index .iletisim-form .sag{float: none;}
+	#index .iletisim-form .sol{float: none;}
+	#index .iletisim-form .sol,#index .iletisim-form .sag{margin: 0px auto;}
+ }
+
+ @media only screen and (max-width: 576px) {
+	#index #header{width: 90%;}
+	#index header{width: 100%;background: url(/images/bg-res.jpg) no-repeat center;background-size: cover;}
+	#index .menu{float: none !important;background: #3d3f41 !important;margin-top: 50px !important;position: absolute !important;width: 90% !important;text-align: center !important;}
+	#index .menu ul{display: block !important;}
+	#index .menu li{padding: 0 !important;}
+	#index .menu li a{display: block; padding: 17px 0;}
+	#index .acilan{display:block !important;}
+	#index .slider{width: 95%;}
+	#index .slider h1{padding-bottom: 45px;}
+	#index .slider h3{font-size: 20px;margin-bottom: 25px;}
+	#index .slider p{font-size: 16px;}
+	#index .buton{max-width: 100%;line-height: 34px;padding:12px 0px;}
+	#index .buton a{padding:0; text-align: center;font-size: 17px;display: block}
+	#index .hizmetler{width: 90%;}
+	#index .hizmetler li{width: 49.5%;}
+	#index .hizmetler li p{width: 100%;}
+	#index .acikla{width: 90% !important;font-size:17px !important;}
+	#index .baslik{font-size:23px;}
+	#index .iletisim-form,#index .iletisim-form textarea{width: 90% !important;margin: 0px auto}
+	#index .iletisim-form input[type="submit"]{margin-top: 10px;width:97% !important;}
+	#index .iletisim-form .sag{float: none;}
+	#index .iletisim-form .sol{float: none;}
+	#index .iletisim-form .sol,#index .iletisim-form .sag{margin: 0px auto;}
+ }

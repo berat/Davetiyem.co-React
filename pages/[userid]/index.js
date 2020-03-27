@@ -5,7 +5,6 @@ import Error from '../_error.js'
 import config from '../../config'
 import Axios from 'axios'
 import Layout from '../../components/users/layout'
-import Hata from '../404'
 
 import '../../assets/reset.css'
 import '../../assets/users/style.css'
