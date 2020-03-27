@@ -87,14 +87,14 @@ const General = () => {
                         value={tarih == undefined ? new Date() : tarih}
                         options={{
                           minDate: new Date(),
-                          dateFormat: 'd F Y',
+                          dateFormat: 'd m Y',
                           locale: config.date,
-                          altFormat: 'd F Y',
+                          altFormat: 'd m Y',
                           altInput: true
                         }}
                         onChange={(selectedDates, dateStr, instance) => {
                           selectedDates.forEach(function(date) {
-                            setTarih(instance.formatDate(date, 'd F Y'))
+                            setTarih(instance.formatDate(date, 'd m Y'))
                           })
                         }}
                       />

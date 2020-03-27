@@ -51,11 +51,11 @@ const Layout = ({ children, userid }) => {
         if (response.data.status == 201) {
           setGenel(response.data.data)
           if (response.data.data.length != 0) {
-            const ayAdi = response.data.data[0].tarih.slice(0, -5).slice(2)
+            const ayAdi = response.data.data[0].tarih.slice(0, -5).slice(3)
             const gun = response.data.data[0].tarih.slice(0, 2)
             const yil = response.data.data[0].tarih.slice(-4)
             const aySayisi = trDate.findIndex(item => item == ayAdi) + 1
-            const editTarih = `${yil}-${aySayisi}-${gun}`
+            const editTarih = `${yil}-${ayAdi}-${gun}`
             setDugunTarih(editTarih)
           }
         }
