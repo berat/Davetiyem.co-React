@@ -1,5 +1,5 @@
 module.exports = {
-  apiURL: '138.68.52.195:3100',
+  apiURL: 'http://138.68.52.195:3100',
   version: '/v1/auth/',
   home: '/',
   loginPage: '/login',

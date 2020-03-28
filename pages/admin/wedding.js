@@ -31,7 +31,7 @@ const Wedding = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`https://${config.apiURL}${config.version}dugun/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}dugun/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setBilgi(response.data.data)
@@ -60,7 +60,7 @@ const Wedding = () => {
         iframe: iframeIki.current.value
       }
     ]
-    Axios.post(`https://${config.apiURL}${config.version}dugun`, sendData).then(
+    Axios.post(`${config.apiURL}${config.version}dugun`, sendData).then(
       response => {
         if (response.data.status == 201) {
           cogoToast.success(response.data.msg, {
@@ -80,7 +80,7 @@ const Wedding = () => {
       }
     )
     if (dipNot != undefined) {
-      Axios.post(`https://${config.apiURL}${config.version}genel`, {
+      Axios.post(`${config.apiURL}${config.version}genel`, {
         userid: userid,
         dipNot: dipNot
       }).then(response => {

@@ -19,7 +19,7 @@ const ResetPassword = () => {
 
   const changePassword = e => {
     e.preventDefault()
-    Axios.put(`https://${config.apiURL}${config.version}sifremi-sifirla/${id}`, {
+    Axios.put(`${config.apiURL}${config.version}sifremi-sifirla/${id}`, {
       password: password.current.value,
       valPassword: confirmPassword.current.value
     }).then(response => {

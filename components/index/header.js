@@ -18,7 +18,7 @@ const Header = () => {
       : null
 
   useEffect(() => {
-    Axios.get(`https://${config.apiURL}${config.version}uyeCek`).then(
+    Axios.get(`${config.apiURL}${config.version}uyeCek`).then(
       response => {
         if (
           response.data.uyeler.filter(item => item.userid == userid).length == 1
