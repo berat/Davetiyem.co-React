@@ -28,7 +28,7 @@ const Comments = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`https://${config.apiURL}${config.version}yorum/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}yorum/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setListele(response.data.data)
@@ -62,7 +62,7 @@ const Comments = () => {
         yorumu: yorumuDort.current.value
       })
       if (liste.length != 0) {
-        Axios.post(`https://${config.apiURL}${config.version}yorum`, liste).then(
+        Axios.post(`${config.apiURL}${config.version}yorum`, liste).then(
           response => {
             if (response.data.status == 201) {
               cogoToast.success(response.data.msg, {
@@ -84,7 +84,7 @@ const Comments = () => {
       }
       if (liste.length == 0) {
         Axios.post(
-          `https://${config.apiURL}${config.version}yorum/${userid}`
+          `${config.apiURL}${config.version}yorum/${userid}`
         ).then(response => {
           if (response.data.status == 201) {
             cogoToast.success(response.data.msg, {

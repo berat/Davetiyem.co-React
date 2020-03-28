@@ -46,7 +46,7 @@ const Layout = ({ children, userid }) => {
   ]
 
   useEffect(() => {
-    Axios.get(`https://${config.apiURL}${config.version}genel/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}genel/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setGenel(response.data.data)
@@ -61,14 +61,14 @@ const Layout = ({ children, userid }) => {
         }
       }
     )
-    Axios.get(`https://${config.apiURL}${config.version}yorum/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}yorum/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setYorum(response.data.data)
         }
       }
     )
-    Axios.get(`https://${config.apiURL}${config.version}galeri/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}galeri/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setGaleri(response.data.photos)
@@ -76,14 +76,14 @@ const Layout = ({ children, userid }) => {
         }
       }
     )
-    Axios.get(`https://${config.apiURL}${config.version}dugun/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}dugun/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setGunler(response.data.data)
         }
       }
     )
-    Axios.get(`https://${config.apiURL}${config.version}kisisel/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}kisisel/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setKisisel(response.data.data)
@@ -104,7 +104,7 @@ const Layout = ({ children, userid }) => {
         </title>
         <link
           rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          href="use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
           crossorigin="anonymous"
         />
@@ -128,7 +128,7 @@ const Layout = ({ children, userid }) => {
         />
         <meta
           name="image"
-          content="https://davetiyem.co/static/uploads/davetiye.png"
+          content="davetiyem.co/static/uploads/davetiye.png"
         />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Örnek Düğün Davetiyesi  " />
@@ -137,10 +137,10 @@ const Layout = ({ children, userid }) => {
           content="davetiyem.co olarak online düğün davetiyesinin nasıl olduğunu gösteren örnek bir davetiye."
         />
         <meta name="twitter:site" content="@davetiyemco" />
-        <meta name="twitter:url" content={`https://davetiyem.co/${username}`} />
+        <meta name="twitter:url" content={`davetiyem.co/${username}`} />
         <meta
           name="twitter:image:src"
-          content="https://davetiyem.co/static/uploads/davetiye.png"
+          content="davetiyem.co/static/uploads/davetiye.png"
         />
         <meta name="og:title" content="Örnek Düğün Davetiyesi  " />
         <meta
@@ -149,9 +149,9 @@ const Layout = ({ children, userid }) => {
         />
         <meta
           name="og:image"
-          content="https://davetiyem.co/static/uploads/davetiye.png"
+          content="davetiyem.co/static/uploads/davetiye.png"
         />
-        <meta name="og:url" content={`https://davetiyem.co/${username}`} />
+        <meta name="og:url" content={`davetiyem.co/${username}`} />
         <meta name="og:locale" content="tr_TR" />
         <meta name="og:type" content="website" />
       </Head>

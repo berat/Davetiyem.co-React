@@ -13,7 +13,7 @@ const Bottom = () => {
 
   const onSubmit = e => {
     e.preventDefault()
-    Axios.post(`https://${config.apiURL}${config.version}mailGonder`, {
+    Axios.post(`${config.apiURL}${config.version}mailGonder`, {
       isim: isim.current.value,
       email: email.current.value,
       no: no.current.value,
@@ -123,7 +123,7 @@ const Bottom = () => {
               <ul>
                 <li>
                   <Link
-                    href="https://www.instagram.com/davetiyemco/"
+                    href="www.instagram.com/davetiyemco/"
                     prefetch={false}
                   >
                     <a>
@@ -132,7 +132,7 @@ const Bottom = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://twitter.com/davetiyemco" prefetch={false}>
+                  <Link href="twitter.com/davetiyemco" prefetch={false}>
                     <a>
                       <i className="fa fa-twitter" />
                     </a>
@@ -140,7 +140,7 @@ const Bottom = () => {
                 </li>
                 <li>
                   <Link
-                    href="https://www.facebook.com/onlinedugundavetiyesi/"
+                    href="www.facebook.com/onlinedugundavetiyesi/"
                     prefetch={false}
                   >
                     <a>

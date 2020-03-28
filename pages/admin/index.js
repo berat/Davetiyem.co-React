@@ -20,7 +20,7 @@ function HomePage() {
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
 
-    Axios.get(`https://${config.apiURL}${config.version}kisisel/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}kisisel/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setBilgi(response.data.data)
@@ -56,7 +56,7 @@ function HomePage() {
     formData.append('gelinFoto', e.target.files[0])
     console.log(formData)
     Axios.post(
-      `https://${config.apiURL}${config.version}gelin/${userid}`,
+      `${config.apiURL}${config.version}gelin/${userid}`,
       formData,
       {
         headers: {
@@ -87,7 +87,7 @@ function HomePage() {
     const formData = new FormData()
     formData.append('damatFoto', e.target.files[0])
     Axios.post(
-      `https://${config.apiURL}${config.version}damat/${userid}`,
+      `${config.apiURL}${config.version}damat/${userid}`,
       formData,
       {
         headers: {
@@ -116,7 +116,7 @@ function HomePage() {
 
   const onSubmit = e => {
     e.preventDefault()
-    Axios.post(`https://${config.apiURL}${config.version}kisisel`, {
+    Axios.post(`${config.apiURL}${config.version}kisisel`, {
       gelinAdi: gelinAdi.current.value,
       damatAdi: damatAdi.current.value,
       gelinBio: gelinBio.current.value,
@@ -142,7 +142,7 @@ function HomePage() {
   }
 
   const remove = e => {
-    Axios.post(`https://${config.apiURL}${config.version}fotoSil`, {
+    Axios.post(`${config.apiURL}${config.version}fotoSil`, {
       who: e == 'damat' ? 'damatFoto' : 'gelinFoto',
       fileName: e == 'damat' ? damatPreview : gelinPreview,
       userid: userid

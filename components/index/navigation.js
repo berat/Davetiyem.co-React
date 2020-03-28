@@ -27,7 +27,7 @@ const Navigation = () => {
         </Link>
       </li>
       <li>
-        <Link href="https://blog.davetiyem.co/" prefetch={false}>
+        <Link href="blog.davetiyem.co/" prefetch={false}>
           <a>BLOG</a>
         </Link>
       </li>

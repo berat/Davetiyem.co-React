@@ -25,7 +25,7 @@ const Album = () => {
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
 
-    Axios.get(`https://${config.apiURL}${config.version}galeri/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}galeri/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setPreview(response.data.photos)
@@ -45,7 +45,7 @@ const Album = () => {
         formData.append('album', e.target.files[i])
       }
       Axios.post(
-        `https://${config.apiURL}${config.version}galeriYukle/${userid}`,
+        `${config.apiURL}${config.version}galeriYukle/${userid}`,
         formData,
         {
           headers: {
@@ -81,7 +81,7 @@ const Album = () => {
   }
 
   const deleteImg = e => {
-    Axios.post(`https://${config.apiURL}${config.version}tekResimSil`, {
+    Axios.post(`${config.apiURL}${config.version}tekResimSil`, {
       fotoid: e,
       userid: userid
     }).then(response => {
@@ -112,7 +112,7 @@ const Album = () => {
   const reset = e => {
     e.preventDefault()
     if (preview != null ? preview.length : null + uploaded.length != 0) {
-      Axios.post(`https://${config.apiURL}${config.version}topluSil`, {
+      Axios.post(`${config.apiURL}${config.version}topluSil`, {
         userid: userid
       }).then(response => {
         if (response.data.status == 201) {

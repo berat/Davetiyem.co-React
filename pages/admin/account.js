@@ -23,7 +23,7 @@ const Account = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`https://${config.apiURL}${config.version}hesap/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}hesap/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setUsername(response.data.username)
@@ -39,7 +39,7 @@ const Account = () => {
     e.preventDefault()
     if (usernameValid.test(kullaniciAdi.current.value)) {
       if (password.current.value === cPassword.current.value) {
-        Axios.get(`https://${config.apiURL}${config.version}uyeCek`).then(
+        Axios.get(`${config.apiURL}${config.version}uyeCek`).then(
           response => {
             if (
               response.data.uyeler.filter(
@@ -58,7 +58,7 @@ const Account = () => {
                 )[0].userid == userid
               ) {
                 Axios.put(
-                  `https://${config.apiURL}${config.version}hesapGuncelle`,
+                  `${config.apiURL}${config.version}hesapGuncelle`,
                   {
                     userid: userid,
                     kullaniciAdi: kullaniciAdi.current.value,
