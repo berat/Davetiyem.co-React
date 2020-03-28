@@ -54,6 +54,7 @@ function HomePage() {
   const uploadImage = e => {
     const formData = new FormData()
     formData.append('gelinFoto', e.target.files[0])
+    console.log(formData)
     Axios.post(
       `https://${config.apiURL}${config.version}gelin/${userid}`,
       formData,
