@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "gonder": "npm run-script build || pm2 start npm --name 'nextv2' -- start --watch"
   },
   "keywords": [],
   "author": "",
