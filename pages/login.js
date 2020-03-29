@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import Axios from 'axios'
 import Head from 'next/head'
 import Cookies from 'js-cookie'
@@ -14,6 +14,7 @@ import '../assets/auth/auth.css'
 import Router from 'next/router'
 
 const Login = () => {
+  const [load, setLoad] = useState(false)
   const username = useRef()
   const password = useRef()
 
@@ -23,11 +24,13 @@ const Login = () => {
 
   const beLogin = e => {
     e.preventDefault()
+    setLoad(true)
     Axios.post(`${config.apiURL}${config.version}girisYap`, {
       username: username.current.value,
       password: password.current.value
     }).then(response => {
       if (response.data.status == 201) {
+        setLoad(false)
         Cookies.set('login', response.data.token)
         cogoToast.success(response.data.msg, {
           onClick: e => {
@@ -37,6 +40,7 @@ const Login = () => {
         })
         Router.replace(config.adminPage)
       } else {
+        setLoad(false)
         cogoToast.error(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -65,7 +69,13 @@ const Login = () => {
               <div className="ui input">
                 <input type="password" placeholder="Parola" ref={password} />
               </div>
-              <button className="ui blue button" onClick={beLogin}>
+              <button
+                type="submit"
+                className={`ui blue button ${
+                  load ? 'loading disabled' : null
+                }`}
+                onClick={beLogin}
+              >
                 GİRİŞ YAP
               </button>
               <small>

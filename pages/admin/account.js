@@ -10,6 +10,7 @@ import config from '../../config'
 const Account = () => {
   const [username, setUsername] = useState()
   const [email, setEmail] = useState()
+  const [load, setLoad] = useState(false)
 
   const kullaniciAdi = useRef(),
     mail = useRef(),
@@ -36,75 +37,65 @@ const Account = () => {
   const usernameValid = RegExp(/^[a-zA-Z0-9]+$/i)
 
   const onSubmit = e => {
+    setLoad(true)
     e.preventDefault()
     if (usernameValid.test(kullaniciAdi.current.value)) {
       if (password.current.value === cPassword.current.value) {
-        Axios.get(`${config.apiURL}${config.version}uyeCek`).then(
-          response => {
+        Axios.get(`${config.apiURL}${config.version}uyeCek`).then(response => {
+          if (
+            response.data.uyeler.filter(
+              item => item.username == kullaniciAdi.current.value
+            ).length == 0 ||
+            response.data.uyeler.filter(
+              item => item.username == kullaniciAdi.current.value
+            )[0].userid == userid
+          ) {
             if (
               response.data.uyeler.filter(
-                item => item.username == kullaniciAdi.current.value
+                item => item.email == mail.current.value
               ).length == 0 ||
               response.data.uyeler.filter(
-                item => item.username == kullaniciAdi.current.value
+                item => item.email == mail.current.value
               )[0].userid == userid
             ) {
-              if (
-                response.data.uyeler.filter(
-                  item => item.email == mail.current.value
-                ).length == 0 ||
-                response.data.uyeler.filter(
-                  item => item.email == mail.current.value
-                )[0].userid == userid
-              ) {
-                Axios.put(
-                  `${config.apiURL}${config.version}hesapGuncelle`,
-                  {
-                    userid: userid,
-                    kullaniciAdi: kullaniciAdi.current.value,
-                    mail: mail.current.value,
-                    sifre: password.current.value
-                  }
-                ).then(response => {
-                  if (response.data.status == 201) {
-                    cogoToast.success(response.data.msg, {
-                      onClick: e => {
-                        e.target.parentNode.parentNode.style.display = 'none'
-                      },
-                      position: 'top-left'
-                    })
-                    if (password.current.value.length > 3) {
-                      Router.replace('/logout')
-                      cogoToast.success('Lütfen tekrar giriş yapın', {
-                        onClick: e => {
-                          e.target.parentNode.parentNode.style.display = 'none'
-                        },
-                        position: 'top-left'
-                      })
-                    }
-                  } else {
-                    cogoToast.error(response.data.msg, {
-                      onClick: e => {
-                        e.target.parentNode.parentNode.style.display = 'none'
-                      },
-                      position: 'top-left'
-                    })
-                  }
-                })
-              } else {
-                cogoToast.error(
-                  'Mail adresiniz başkası tarafından kullanılmakta. Farklı bir şey seçin.',
-                  {
+              Axios.put(`${config.apiURL}${config.version}hesapGuncelle`, {
+                userid: userid,
+                kullaniciAdi: kullaniciAdi.current.value,
+                mail: mail.current.value,
+                sifre: password.current.value
+              }).then(response => {
+                if (response.data.status == 201) {
+                  setLoad(false)
+                  cogoToast.success(response.data.msg, {
                     onClick: e => {
                       e.target.parentNode.parentNode.style.display = 'none'
                     },
                     position: 'top-left'
+                  })
+                  if (password.current.value.length > 3) {
+                    setLoad(false)
+                    Router.replace('/logout')
+                    cogoToast.success('Lütfen tekrar giriş yapın', {
+                      onClick: e => {
+                        e.target.parentNode.parentNode.style.display = 'none'
+                      },
+                      position: 'top-left'
+                    })
                   }
-                )
-              }
+                } else {
+                  setLoad(false)
+                  cogoToast.error(response.data.msg, {
+                    onClick: e => {
+                      e.target.parentNode.parentNode.style.display = 'none'
+                    },
+                    position: 'top-left'
+                  })
+                }
+              })
             } else {
+              setLoad(false)
               cogoToast.error(
-                'Kullanıcı adı başkası tarafından kullanılmakta. Farklı bir şey seçin.',
+                'Mail adresiniz başkası tarafından kullanılmakta. Farklı bir şey seçin.',
                 {
                   onClick: e => {
                     e.target.parentNode.parentNode.style.display = 'none'
@@ -113,10 +104,22 @@ const Account = () => {
                 }
               )
             }
+          } else {
+            setLoad(false)
+            cogoToast.error(
+              'Kullanıcı adı başkası tarafından kullanılmakta. Farklı bir şey seçin.',
+              {
+                onClick: e => {
+                  e.target.parentNode.parentNode.style.display = 'none'
+                },
+                position: 'top-left'
+              }
+            )
           }
-        )
+        })
       }
     } else {
+      setLoad(false)
       cogoToast.error('Yeni şifreleriniz birbiri ile eşleşmiyor', {
         onClick: e => {
           e.target.parentNode.parentNode.style.display = 'none'
@@ -215,7 +218,12 @@ const Account = () => {
                 </div>
               </li>
             </ul>
-            <button type="submit" className="btn form-control btn-default">
+            <button
+              type="submit"
+              className={`btn form-control btn-default ${
+                load ? 'loading disabled' : null
+              }`}
+            >
               Kaydet
             </button>
           </form>

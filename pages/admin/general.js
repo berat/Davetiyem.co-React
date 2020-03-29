@@ -14,6 +14,7 @@ const General = () => {
   const [tarih, setTarih] = useState()
   const [saat, setSaat] = useState()
   const [liste, setListe] = useState([])
+  const [load, setLoad] = useState(false)
 
   const baslik = useRef(),
     aciklama = useRef(),
@@ -39,6 +40,7 @@ const General = () => {
   }, [setListe])
 
   const onSubmit = e => {
+    setLoad(true)
     e.preventDefault()
     Axios.post(`${config.apiURL}${config.version}genel`, {
       userid: userid,
@@ -49,6 +51,7 @@ const General = () => {
       desc: aciklama.current.value
     }).then(response => {
       if (response.data.status == 201) {
+        setLoad(false)
         cogoToast.success(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -56,6 +59,7 @@ const General = () => {
           position: 'top-left'
         })
       } else {
+        setLoad(false)
         cogoToast.error(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -288,7 +292,12 @@ const General = () => {
                   karakter)
                 </small>
               </div>
-              <button type="submit" className="btn form-control btn-default">
+              <button
+                type="submit"
+                className={`btn form-control btn-default ${
+                  load ? 'loading disabled' : null
+                }`}
+              >
                 Kaydet
               </button>
             </form>

@@ -10,6 +10,7 @@ import config from '../../config'
 
 const Comments = () => {
   const [listele, setListele] = useState([])
+  const [load, setLoad] = useState(false)
 
   const yorumSahibiBir = useRef(),
     yorumuBir = useRef(),
@@ -38,6 +39,7 @@ const Comments = () => {
   }, [userid, setListele])
 
   const onSubmit = e => {
+    setLoad(true)
     e.preventDefault()
     liste = []
     if (liste.length < 5) {
@@ -65,6 +67,7 @@ const Comments = () => {
         Axios.post(`${config.apiURL}${config.version}yorum`, liste).then(
           response => {
             if (response.data.status == 201) {
+              setLoad(false)
               cogoToast.success(response.data.msg, {
                 onClick: e => {
                   e.target.parentNode.parentNode.style.display = 'none'
@@ -72,6 +75,7 @@ const Comments = () => {
                 position: 'top-left'
               })
             } else {
+              setLoad(false)
               cogoToast.error(response.data.msg, {
                 onClick: e => {
                   e.target.parentNode.parentNode.style.display = 'none'
@@ -83,25 +87,27 @@ const Comments = () => {
         )
       }
       if (liste.length == 0) {
-        Axios.post(
-          `${config.apiURL}${config.version}yorum/${userid}`
-        ).then(response => {
-          if (response.data.status == 201) {
-            cogoToast.success(response.data.msg, {
-              onClick: e => {
-                e.target.parentNode.parentNode.style.display = 'none'
-              },
-              position: 'top-left'
-            })
-          } else {
-            cogoToast.error('Admin ile iletişime geçin.', {
-              onClick: e => {
-                e.target.parentNode.parentNode.style.display = 'none'
-              },
-              position: 'top-left'
-            })
+        Axios.post(`${config.apiURL}${config.version}yorum/${userid}`).then(
+          response => {
+            if (response.data.status == 201) {
+              setLoad(false)
+              cogoToast.success(response.data.msg, {
+                onClick: e => {
+                  e.target.parentNode.parentNode.style.display = 'none'
+                },
+                position: 'top-left'
+              })
+            } else {
+              setLoad(false)
+              cogoToast.error('Admin ile iletişime geçin.', {
+                onClick: e => {
+                  e.target.parentNode.parentNode.style.display = 'none'
+                },
+                position: 'top-left'
+              })
+            }
           }
-        })
+        )
       }
     }
   }
@@ -317,7 +323,12 @@ const Comments = () => {
                 </li>
               </ul>
             )}
-            <button type="submit" className="btn form-control btn-default">
+            <button
+              type="submit"
+              className={`btn form-control btn-default ${
+                load ? 'loading disabled' : null
+              }`}
+            >
               Kaydet
             </button>
           </form>

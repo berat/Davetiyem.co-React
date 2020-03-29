@@ -16,6 +16,7 @@ const Wedding = () => {
   const [dipNot, setDipNot] = useState()
   const [tarihBir, setTarihBir] = useState()
   const [tarihIki, setTarihIki] = useState()
+  const [load, setLoad] = useState(false)
 
   const baslikBir = useRef(),
     baslikIki = useRef(),
@@ -44,6 +45,7 @@ const Wedding = () => {
 
   const onSubmit = async e => {
     e.preventDefault()
+    setLoad(true)
     const sendData = [
       {
         userid: userid,
@@ -63,6 +65,7 @@ const Wedding = () => {
     Axios.post(`${config.apiURL}${config.version}dugun`, sendData).then(
       response => {
         if (response.data.status == 201) {
+          setLoad(false)
           cogoToast.success(response.data.msg, {
             onClick: e => {
               e.target.parentNode.parentNode.style.display = 'none'
@@ -70,6 +73,7 @@ const Wedding = () => {
             position: 'top-left'
           })
         } else {
+          setLoad(false)
           cogoToast.error(response.data.msg, {
             onClick: e => {
               e.target.parentNode.parentNode.style.display = 'none'
@@ -85,6 +89,7 @@ const Wedding = () => {
         dipNot: dipNot
       }).then(response => {
         if (response.data.status == 201) {
+          setLoad(false)
           cogoToast.success(response.data.msg, {
             onClick: e => {
               e.target.parentNode.parentNode.style.display = 'none'
@@ -92,6 +97,7 @@ const Wedding = () => {
             position: 'top-left'
           })
         } else {
+          setLoad(false)
           cogoToast.error(response.data.msg, {
             onClick: e => {
               e.target.parentNode.parentNode.style.display = 'none'
@@ -436,7 +442,12 @@ const Wedding = () => {
                 Damat/gelin evini ve saati belirtebilirisiniz..
               </small>
             </div>
-            <button type="submit" className="btn form-control btn-default">
+            <button
+              type="submit"
+              className={`btn form-control btn-default ${
+                load ? 'loading disabled' : null
+              }`}
+            >
               Kaydet
             </button>
           </form>

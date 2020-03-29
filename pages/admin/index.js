@@ -12,6 +12,8 @@ function HomePage() {
   const [bilgi, setBilgi] = useState()
   const [gelinPreview, setGelinPreview] = useState()
   const [damatPreview, setDamatPreview] = useState()
+  const [load, setLoad] = useState(false)
+
   const userid =
     Cookies.get('login') != undefined
       ? jwtDecode(Cookies.get('login')).userid
@@ -55,15 +57,11 @@ function HomePage() {
     const formData = new FormData()
     formData.append('gelinFoto', e.target.files[0])
     console.log(formData)
-    Axios.post(
-      `${config.apiURL}${config.version}gelin/${userid}`,
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+    Axios.post(`${config.apiURL}${config.version}gelin/${userid}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
       }
-    ).then(response => {
+    }).then(response => {
       setGelinPreview(response.data.data.path.slice(9))
       if (response.data.status == 201) {
         cogoToast.success(response.data.msg, {
@@ -86,15 +84,11 @@ function HomePage() {
   const uploadImageGroom = e => {
     const formData = new FormData()
     formData.append('damatFoto', e.target.files[0])
-    Axios.post(
-      `${config.apiURL}${config.version}damat/${userid}`,
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+    Axios.post(`${config.apiURL}${config.version}damat/${userid}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
       }
-    ).then(response => {
+    }).then(response => {
       setDamatPreview(response.data.data.path.slice(9))
       if (response.data.status == 201) {
         cogoToast.success(response.data.msg, {
@@ -115,6 +109,7 @@ function HomePage() {
   }
 
   const onSubmit = e => {
+    setLoad(true)
     e.preventDefault()
     Axios.post(`${config.apiURL}${config.version}kisisel`, {
       gelinAdi: gelinAdi.current.value,
@@ -124,6 +119,7 @@ function HomePage() {
       userid: userid
     }).then(response => {
       if (response.data.status == 201) {
+        setLoad(false)
         cogoToast.success(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -131,6 +127,7 @@ function HomePage() {
           position: 'top-left'
         })
       } else {
+        setLoad(false)
         cogoToast.error(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -331,7 +328,12 @@ function HomePage() {
                 </div>
               </li>
             </ul>
-            <button type="submit" className="btn form-control btn-default">
+            <button
+              type="submit"
+              className={`btn form-control btn-default ${
+                load ? 'loading disabled' : null
+              }`}
+            >
               Kaydet
             </button>
           </form>

@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import images from '../public/images/image'
@@ -12,14 +12,17 @@ import '../assets/auth/semantic.min.css'
 import '../assets/auth/auth.css'
 
 const ForgetPassword = () => {
+  const [load, setLoad] = useState(false)
   const email = useRef()
 
   const sendPassword = e => {
+    setLoad(true)
     e.preventDefault()
     Axios.put(`${config.apiURL}${config.version}sifremi-unuttum`, {
       email: email.current.value
     }).then(response => {
       if (response.data.status == 201) {
+        setLoad(false)
         cogoToast.success(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -28,6 +31,7 @@ const ForgetPassword = () => {
         })
         Router.push(config.home)
       } else {
+        setLoad(false)
         cogoToast.error(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -59,7 +63,13 @@ const ForgetPassword = () => {
                   required
                 />
               </div>
-              <button onClick={sendPassword} className="ui blue button">
+              <button
+                onClick={sendPassword}
+                type="submit"
+                className={`ui blue button ${
+                  load ? 'loading disabled' : null
+                }`}
+              >
                 ŞİFRENİ SIFIRLA
               </button>
               <small>

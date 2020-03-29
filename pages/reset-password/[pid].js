@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import Axios from 'axios'
 import config from '../../config'
 import Head from 'next/head'
@@ -11,6 +11,7 @@ import '../../assets/auth/semantic.min.css'
 import '../../assets/auth/auth.css'
 
 const ResetPassword = () => {
+  const [load, setLoad] = useState(false)
   const password = useRef(),
     confirmPassword = useRef()
 
@@ -18,12 +19,14 @@ const ResetPassword = () => {
   const id = router.query.pid
 
   const changePassword = e => {
+    setLoad(true)
     e.preventDefault()
     Axios.put(`${config.apiURL}${config.version}sifremi-sifirla/${id}`, {
       password: password.current.value,
       valPassword: confirmPassword.current.value
     }).then(response => {
       if (response.data.status == 201) {
+        setLoad(false)
         cogoToast.success(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -32,6 +35,7 @@ const ResetPassword = () => {
         })
         Router.replace(config.loginPage)
       } else if (response.data.status == 405) {
+        setLoad(false)
         cogoToast.error(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -40,6 +44,7 @@ const ResetPassword = () => {
         })
         Router.replace(config.forgetPass)
       } else {
+        setLoad(false)
         cogoToast.error(response.data.msg, {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -74,7 +79,13 @@ const ResetPassword = () => {
                   placeholder="Parolayı Onaylayın"
                 />
               </div>
-              <button onClick={changePassword} className="ui blue button">
+              <button
+                onClick={changePassword}
+                type="submit"
+                className={`ui blue button ${
+                  load ? 'loading disabled' : null
+                }`}
+              >
                 ŞİFRENİ SIFIRLA
               </button>
               <small>

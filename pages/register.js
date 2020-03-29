@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Axios from 'axios'
 import Head from 'next/head'
 
@@ -15,11 +15,12 @@ import '../assets/auth/semantic.min.css'
 import '../assets/auth/auth.css'
 
 const Register = () => {
+  const [load, setLoad] = useState(false)
+
   const username = useRef(),
     email = useRef(),
     password = useRef(),
     confirmPassword = useRef()
-
 
   if (Cookies.get('login')) {
     Router.replace(config.adminPage)
@@ -29,6 +30,7 @@ const Register = () => {
 
   const beRegister = e => {
     e.preventDefault()
+    setLoad(true)
     if (usernameValid.test(username.current.value)) {
       if (password.current.value === confirmPassword.current.value) {
         Axios.post(`${config.apiURL}${config.version}kayitOl`, {
@@ -37,6 +39,7 @@ const Register = () => {
           email: email.current.value
         }).then(response => {
           if (response.data.status == 201) {
+            setLoad(false)
             cogoToast.success(response.data.msg, {
               onClick: e => {
                 e.target.parentNode.parentNode.style.display = 'none'
@@ -45,6 +48,7 @@ const Register = () => {
             })
             Router.replace(config.loginPage)
           } else {
+            setLoad(false)
             cogoToast.error(response.data.msg, {
               onClick: e => {
                 e.target.parentNode.parentNode.style.display = 'none'
@@ -54,6 +58,7 @@ const Register = () => {
           }
         })
       } else {
+        setLoad(false)
         cogoToast.error('Parolanız birbiri ile eşleşmiyor.', {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
@@ -62,6 +67,7 @@ const Register = () => {
         })
       }
     } else {
+      setLoad(false)
       cogoToast.error('Kullanıcı adınız Türkçe karakter içermemeli.', {
         onClick: e => {
           e.target.parentNode.parentNode.style.display = 'none'
@@ -120,7 +126,9 @@ const Register = () => {
                 <button
                   type="submit"
                   onClick={beRegister}
-                  className="ui blue button"
+                  className={`ui blue button ${
+                    load ? 'loading disabled' : null
+                  }`}
                 >
                   KAYIT OL
                 </button>
