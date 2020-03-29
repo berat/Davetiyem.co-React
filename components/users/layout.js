@@ -2,23 +2,14 @@ import React, { useEffect, useState } from 'react'
 import config from '../../config'
 import Axios from 'axios'
 import Head from 'next/head'
-import GA from 'react-ga'
+import { GA_TRACKING_ID } from '../../lib/gtag'
 import Link from 'next/link'
-import { hotjar } from 'react-hotjar'
 
 import Header from './header'
 import Bio from './bio'
 import Galeri from './galeri'
 import Comments from './comments'
 import Days from './days'
-
-// const isGAEnabled = process.env.NODE_ENV === 'production'
-
-// if (isGAEnabled) {
-// GA.initialize('UA-132339332-1')
-// hotjar.initialize(1285342, 6);
-
-// }
 
 const Layout = ({ children, userid }) => {
   const [username, setUsername] = useState()
@@ -126,10 +117,7 @@ const Layout = ({ children, userid }) => {
               : 'davetiyem.co olarak online düğün davetiyesinin nasıl olduğunu gösteren örnek bir davetiye.'
           }
         />
-        <meta
-          name="image"
-          content="davetiyem.co/static/uploads/davetiye.png"
-        />
+        <meta name="image" content="davetiyem.co/static/uploads/davetiye.png" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Örnek Düğün Davetiyesi  " />
         <meta
@@ -154,6 +142,22 @@ const Layout = ({ children, userid }) => {
         <meta name="og:url" content={`davetiyem.co/${username}`} />
         <meta name="og:locale" content="tr_TR" />
         <meta name="og:type" content="website" />
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `
+          }}
+        />
       </Head>
       <Header
         kisisel={kisisel}

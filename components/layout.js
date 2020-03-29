@@ -1,13 +1,5 @@
 import Head from 'next/head'
-import GA from 'react-ga'
-import { hotjar } from 'react-hotjar'
-// const isGAEnabled = process.env.NODE_ENV === 'production'
-
-// if (isGAEnabled) {
-// GA.initialize('UA-132339332-1')
-// hotjar.initialize(1285342, 6);
-
-// }
+import { GA_TRACKING_ID } from '../lib/gtag'
 
 function Layout({ children }) {
   return (
@@ -18,6 +10,22 @@ function Layout({ children }) {
         <meta
           name="keywords"
           content="dijital davetiye, dijital düğün davetiyesi, düğün davetiye sitesi, örnek düğün davetiyesi,online davetiye, davetiye, düğün davetiyesi, davetiye örnekleri, davetiye sitesi, davetiyem, düğün, gelin, damat, nişan, evlilik, evlenmek"
+        />
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `
+          }}
         />
       </Head>
       {children}
