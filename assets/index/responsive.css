@@ -17,7 +17,7 @@
 	#index .acikla{width: 90% !important;font-size:17px !important;}
 	#index .baslik{font-size:23px;}
 	#index .hizmetler{width: 90%;margin: 0px auto}
-	#index .hizmetler li{width: 50%;margin-right: 0}
+	#index .hizmetler li{width: 50%;margin-right: 0 !important}
 	#index .sol,#index .sag{width: 90%;}
 	#index .iletisim-form input{width: 90% !important;margin: 0px auto}
 	#index .iletisim-form,#index .iletisim-form textarea{width: 90% !important;margin: 0px auto;}
@@ -43,8 +43,8 @@
 	#index .buton{max-width: 100%;line-height: 34px;padding:12px 0px;}
 	#index .buton a{padding:0; text-align: center;font-size: 17px;display: block}
 	#index .hizmetler{width: 90%;}
-	#index .hizmetler li{width: 49.5%;}
-	#index .hizmetler li p{width: 100%;}
+	#index .hizmetler li{width: 49.5% !important;}
+	#index .hizmetler li p{width: 100% !important;}
 	#index .acikla{width: 90% !important;font-size:17px !important;}
 	#index .baslik{font-size:23px;}
 	#index .iletisim-form,#index .iletisim-form textarea{width: 90% !important;margin: 0px auto}
