@@ -95,7 +95,7 @@ const Layout = ({ children, userid }) => {
         </title>
         <link
           rel="stylesheet"
-          href="use.fontawesome.com/releases/v5.7.2/css/all.css"
+          href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
           crossorigin="anonymous"
         />
