@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import Axios from 'axios'
-import { GA_TRACKING_ID } from '../../lib/gtag'
+import { GA_TRACKING_ID } from '../lib/gtag'
 import Head from 'next/head'
 
 import Link from 'next/link'

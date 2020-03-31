@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import Axios from 'axios'
 import Head from 'next/head'
-import { GA_TRACKING_ID } from '../../lib/gtag'
+import { GA_TRACKING_ID } from '../lib/gtag'
 import Cookies from 'js-cookie'
 import cogoToast from 'cogo-toast'
 
