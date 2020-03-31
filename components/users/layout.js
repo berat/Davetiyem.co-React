@@ -128,7 +128,7 @@ const Layout = ({ children, userid }) => {
         <meta name="twitter:url" content={`davetiyem.co/${username}`} />
         <meta
           name="twitter:image:src"
-          content="davetiyem.co/static/uploads/davetiye.png"
+          content="davetiyem.co/uploads/users/davetiye.png"
         />
         <meta name="og:title" content="Örnek Düğün Davetiyesi  " />
         <meta
@@ -137,7 +137,7 @@ const Layout = ({ children, userid }) => {
         />
         <meta
           name="og:image"
-          content="davetiyem.co/static/uploads/davetiye.png"
+          content="davetiyem.co/uploads/users/davetiye.png"
         />
         <meta name="og:url" content={`davetiyem.co/${username}`} />
         <meta name="og:locale" content="tr_TR" />
