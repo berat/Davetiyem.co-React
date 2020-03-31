@@ -24,8 +24,10 @@ const HomePage = () => {
         if (response.data.status == 201) {
           setCheck(true)
           setCheckUserID(response.data.userid)
+          setLoad(true)
+        } else {
+          setLoad(true)
         }
-        setLoad(true)
       }
     )
   }, [userid, setCheck, setCheckUserID, setLoad])

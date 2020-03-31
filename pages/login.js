@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import Axios from 'axios'
 import Head from 'next/head'
+import { GA_TRACKING_ID } from '../../lib/gtag'
 import Cookies from 'js-cookie'
 import cogoToast from 'cogo-toast'
 
@@ -55,6 +56,22 @@ const Login = () => {
     <>
       <Head>
         <title>Giriş Yap - Örnek Düğün Davetiyesi</title>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `
+          }}
+        />
       </Head>
       <div id="column" className="ui grid doubling two column row">
         <div className="six wide column forms">
