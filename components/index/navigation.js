@@ -27,7 +27,7 @@ const Navigation = () => {
         </Link>
       </li>
       <li>
-        <Link href="blog.davetiyem.co/" prefetch={false}>
+        <Link href="https://blog.davetiyem.co/" prefetch={false}>
           <a>BLOG</a>
         </Link>
       </li>
@@ -45,7 +45,7 @@ const Navigation = () => {
         <>
           <li className="yaktif">
             <Link href="/login">
-              <a>{"GİRİŞ YAP"}</a>
+              <a>{'GİRİŞ YAP'}</a>
             </Link>
           </li>
           <li className="aktif">
@@ -58,7 +58,7 @@ const Navigation = () => {
         <>
           <li className="yaktif">
             <Link href="/logout">
-              <a>{"ÇIKIŞ YAP"}</a>
+              <a>{'ÇIKIŞ YAP'}</a>
             </Link>
           </li>
           <li className="aktif">

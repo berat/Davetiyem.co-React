@@ -18,18 +18,15 @@ const Header = () => {
       : null
 
   useEffect(() => {
-    Axios.get(`${config.apiURL}${config.version}uyeCek`).then(
-      response => {
-        if (
-          response.data.uyeler.filter(item => item.userid == userid).length == 1
-        ) {
-          setUsername(
-            response.data.uyeler.filter(item => item.userid == userid)[0]
-              .username
-          )
-        }
+    Axios.get(`${config.apiURL}${config.version}uyeCek`).then(response => {
+      if (
+        response.data.uyeler.filter(item => item.userid == userid).length == 1
+      ) {
+        setUsername(
+          response.data.uyeler.filter(item => item.userid == userid)[0].username
+        )
       }
-    )
+    })
   }, [setUsername])
   return (
     <header>
