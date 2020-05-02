@@ -123,7 +123,7 @@ const Bottom = () => {
               <ul>
                 <li>
                   <Link
-                    href="www.instagram.com/davetiyemco/"
+                    href="https://www.instagram.com/davetiyemco/"
                     prefetch={false}
                   >
                     <a>
@@ -132,7 +132,7 @@ const Bottom = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="twitter.com/davetiyemco" prefetch={false}>
+                  <Link href="https://twitter.com/davetiyemco" prefetch={false}>
                     <a>
                       <i className="fa fa-twitter" />
                     </a>
@@ -140,7 +140,7 @@ const Bottom = () => {
                 </li>
                 <li>
                   <Link
-                    href="www.facebook.com/onlinedugundavetiyesi/"
+                    href="https://www.facebook.com/onlinedugundavetiyesi/"
                     prefetch={false}
                   >
                     <a>
