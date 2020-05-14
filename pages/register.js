@@ -33,7 +33,6 @@ const Register = () => {
   const beRegister = e => {
     e.preventDefault()
     setLoad(true)
-    console.log(Boolean(password.current.value))
     if (usernameValid.test(username.current.value)) {
       if (emailValid.test(email.current.value)) {
         if (
