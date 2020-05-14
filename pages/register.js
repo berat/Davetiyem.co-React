@@ -28,39 +28,54 @@ const Register = () => {
   }
 
   const usernameValid = RegExp(/^[a-zA-Z0-9]+$/i)
+  const emailValid = RegExp(/.+@.+\.[A-Za-z]+$/)
 
   const beRegister = e => {
     e.preventDefault()
     setLoad(true)
+    console.log(Boolean(password.current.value))
     if (usernameValid.test(username.current.value)) {
-      if (password.current.value === confirmPassword.current.value) {
-        Axios.post(`${config.apiURL}${config.version}kayitOl`, {
-          username: username.current.value,
-          password: password.current.value,
-          email: email.current.value
-        }).then(response => {
-          if (response.data.status == 201) {
-            setLoad(false)
-            cogoToast.success(response.data.msg, {
-              onClick: e => {
-                e.target.parentNode.parentNode.style.display = 'none'
-              },
-              position: 'top-left'
-            })
-            Router.replace(config.loginPage)
-          } else {
-            setLoad(false)
-            cogoToast.error(response.data.msg, {
-              onClick: e => {
-                e.target.parentNode.parentNode.style.display = 'none'
-              },
-              position: 'top-left'
-            })
-          }
-        })
+      if (emailValid.test(email.current.value)) {
+        if (
+          password.current.value &&
+          password.current.value === confirmPassword.current.value
+        ) {
+          Axios.post(`${config.apiURL}${config.version}kayitOl`, {
+            username: username.current.value,
+            password: password.current.value,
+            email: email.current.value
+          }).then(response => {
+            if (response.data.status == 201) {
+              setLoad(false)
+              cogoToast.success(response.data.msg, {
+                onClick: e => {
+                  e.target.parentNode.parentNode.style.display = 'none'
+                },
+                position: 'top-left'
+              })
+              Router.replace(config.loginPage)
+            } else {
+              setLoad(false)
+              cogoToast.error(response.data.msg, {
+                onClick: e => {
+                  e.target.parentNode.parentNode.style.display = 'none'
+                },
+                position: 'top-left'
+              })
+            }
+          })
+        } else {
+          setLoad(false)
+          cogoToast.error('Parolanız birbiri ile eşleşmiyor.', {
+            onClick: e => {
+              e.target.parentNode.parentNode.style.display = 'none'
+            },
+            position: 'top-left'
+          })
+        }
       } else {
         setLoad(false)
-        cogoToast.error('Parolanız birbiri ile eşleşmiyor.', {
+        cogoToast.error('Doğru mail adresi girin.', {
           onClick: e => {
             e.target.parentNode.parentNode.style.display = 'none'
           },
