@@ -45,7 +45,6 @@ const Register = () => {
             email: email.current.value
           }).then(response => {
             if (response.data.status == 201) {
-              setLoad(false)
               cogoToast.success(response.data.msg, {
                 onClick: e => {
                   e.target.parentNode.parentNode.style.display = 'none'
@@ -63,6 +62,7 @@ const Register = () => {
               })
             }
           })
+          setLoad(false)
         } else {
           setLoad(false)
           cogoToast.error('Parolanız birbiri ile eşleşmiyor.', {
