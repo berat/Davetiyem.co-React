@@ -43,25 +43,36 @@ const Register = () => {
             username: username.current.value,
             password: password.current.value,
             email: email.current.value
-          }).then(response => {
-            if (response.data.status == 201) {
-              cogoToast.success(response.data.msg, {
+          })
+            .then(response => {
+              console.log(response.data)
+              if (response.data.status == 404) {
+                setLoad(false)
+                cogoToast.error(response.data.msg, {
+                  onClick: e => {
+                    e.target.parentNode.parentNode.style.display = 'none'
+                  },
+                  position: 'top-left'
+                })
+              } else {
+                cogoToast.success(response.data.msg, {
+                  onClick: e => {
+                    e.target.parentNode.parentNode.style.display = 'none'
+                  },
+                  position: 'top-left'
+                })
+                Router.replace(config.loginPage)
+              }
+            })
+            .catch(e => {
+              cogoToast.success('Lütfen giriş yapın.', {
                 onClick: e => {
                   e.target.parentNode.parentNode.style.display = 'none'
                 },
                 position: 'top-left'
               })
               Router.replace(config.loginPage)
-            } else {
-              setLoad(false)
-              cogoToast.error(response.data.msg, {
-                onClick: e => {
-                  e.target.parentNode.parentNode.style.display = 'none'
-                },
-                position: 'top-left'
-              })
-            }
-          })
+            })
           setLoad(false)
         } else {
           setLoad(false)
