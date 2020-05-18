@@ -65,13 +65,7 @@ const Register = () => {
               }
             })
             .catch(e => {
-              cogoToast.success('Lütfen giriş yapın.', {
-                onClick: e => {
-                  e.target.parentNode.parentNode.style.display = 'none'
-                },
-                position: 'top-left'
-              })
-              Router.replace(config.loginPage)
+              console.log(e)
             })
           setLoad(false)
         } else {
