@@ -22,9 +22,9 @@ const HomePage = () => {
     Axios.get(`${config.apiURL}${config.version}uyeCek/${userid}`).then(
       response => {
         if (response.data.status == 201) {
+          setLoad(true)
           setCheck(true)
           setCheckUserID(response.data.userid)
-          setLoad(true)
         } else {
           setLoad(true)
         }

@@ -1,10 +1,13 @@
 import React from 'react'
 import Swiper from 'react-id-swiper'
+import useWindowSize from '../../lib/hooks'
 import 'swiper/css/swiper.css'
 
 const Galeri = ({ galeri, username }) => {
+  const size = useWindowSize()
+
   const params = {
-    slidesPerView: 3.9,
+    slidesPerView: size.width > 768 ? 3.9 : 2,
     lazy: true,
     mousewheel: false,
     scrollbar: {
@@ -19,8 +22,8 @@ const Galeri = ({ galeri, username }) => {
           <img
             key={item.fotoid}
             src={`/uploads/users/${username}/${item.foto}`}
-            width={350}
-            height={325}
+            width={(size.width / 3.9) + 50}
+            height={size.width / 3.9}
             alt=""
           />
         ))}
