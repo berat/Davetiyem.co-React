@@ -31,7 +31,7 @@
     "react-hook-form": "^4.10.1",
     "react-hotjar": "^2.2.0",
     "react-id-swiper": "^3.0.0",
-    "react-preloader-icon": "^1.0.0",
+    "react-images": "^1.1.7",
     "swiper": "^5.3.6"
   },
   "devDependencies": {
