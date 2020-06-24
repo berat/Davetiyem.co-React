@@ -18,8 +18,6 @@ const Galeri = ({ galeri, username }) => {
     }
   }
 
-  console.log(galeri)
-
   return galeri.length != 0 ? (
     <div id="galeriSlider">
        <ModalGateway>
