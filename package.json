@@ -32,6 +32,9 @@
     "react-hotjar": "^2.2.0",
     "react-id-swiper": "^3.0.0",
     "react-images": "^1.1.7",
+    "react-map-gl": "^5.2.7",
+    "react-map-gl-geocoder": "^2.0.11",
+    "react-mapbox-gl-geocoder": "^1.1.0",
     "react-preloader-icon": "^1.0.0",
     "swiper": "^5.3.6"
   },

@@ -8,7 +8,8 @@ const images = {
     damatFoto: '/images/user/b2.png'
   },
   adminLogo: '/images/admin/logo.png',
-  upload: '/images/admin/upload.png'
+  upload: '/images/admin/upload.png',
+  marker: '/images/admin/marker.png'
 }
 
 export default images

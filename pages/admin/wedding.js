@@ -10,6 +10,7 @@ import Router from 'next/router'
 
 import config from '../../config'
 import '../../assets/admin/dark.css'
+import MainMap from '../../components/admin/maps'
 
 const Wedding = () => {
   const [bilgi, setBilgi] = useState()
@@ -17,11 +18,11 @@ const Wedding = () => {
   const [tarihBir, setTarihBir] = useState()
   const [tarihIki, setTarihIki] = useState()
   const [load, setLoad] = useState(false)
+  const [getLocation, setLocation] = useState({})
+  const [getLocationIki, setLocationIki] = useState({})
 
   const baslikBir = useRef(),
     baslikIki = useRef(),
-    iframeBir = useRef(),
-    iframeIki = useRef(),
     adresBir = useRef(),
     adresIki = useRef()
 
@@ -36,6 +37,22 @@ const Wedding = () => {
       response => {
         if (response.data.status == 201) {
           setBilgi(response.data.data)
+          setLocation(
+            response.data.data[0].diframe !== null
+              ? {
+                lat: parseFloat(response.data.data[0].diframe.split(',')[0]),
+                long: parseFloat(response.data.data[0].diframe.split(',')[1])
+              } 
+              : {}
+          )
+          setLocationIki(
+            response.data.data[1].diframe !== null
+              ? {
+                lat: parseFloat(response.data.data[1].diframe.split(',')[0]),
+                long: parseFloat(response.data.data[1].diframe.split(',')[1])
+              }
+              : {}
+          )
           setTarihBir(response.data.data[0].dtarih)
           setTarihIki(response.data.data[1].dtarih)
         }
@@ -52,14 +69,20 @@ const Wedding = () => {
         baslik: baslikBir.current.value,
         adres: adresBir.current.value,
         tarih: tarihBir,
-        iframe: iframeBir.current.value
+        iframe:
+          Object.keys(getLocation).length !== 0
+            ? `${getLocation.lat},${getLocation.long}`
+            : null
       },
       {
         userid: userid,
         baslik: baslikIki.current.value,
         adres: adresIki.current.value,
         tarih: tarihIki,
-        iframe: iframeIki.current.value
+        iframe:
+          Object.keys(getLocationIki).length !== 0
+            ? `${getLocationIki.lat},${getLocationIki.long}`
+            : null
       }
     ]
     Axios.post(`${config.apiURL}${config.version}dugun`, sendData).then(
@@ -108,6 +131,15 @@ const Wedding = () => {
       })
     }
   }
+
+  const onSelected = item => {
+    setLocation({ lat: item.center[1], long: item.center[0] })
+  }
+
+  const onSelectedIki = item => {
+    setLocationIki({ lat: item.center[1], long: item.center[0] })
+  }
+
   return (
     <Layout>
       <div className="content row">
@@ -179,20 +211,13 @@ const Wedding = () => {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">
-                      Google Maps İframe Kodu
-                    </label>
-                    <textarea
-                      name="iframeBir"
-                      className="form-control"
-                      id="iframeBir"
-                      rows={3}
-                      placeholder="Google'dan aldığınız iframe kodunu girin."
-                      defaultValue={bilgi[0].diframe}
-                      ref={iframeBir}
+                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu</label>
+                    <MainMap
+                      onResult={e => onSelected(e.result)}
+                      degerler={getLocation}
                     />
                     <small id="emailHelp" className="form-text text-muted">
-                      Google Maps'den aldığınız kod
+                      Haritadan konumunuzu belirleyin
                     </small>
                   </div>
                 </li>
@@ -256,20 +281,13 @@ const Wedding = () => {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">
-                      Google Maps İframe Kodu
-                    </label>
-                    <textarea
-                      name="iframeIki"
-                      className="form-control"
-                      id="iframeIki"
-                      rows={3}
-                      placeholder="Google'dan aldığınız iframe kodunu girin."
-                      defaultValue={bilgi[1].diframe}
-                      ref={iframeIki}
+                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu</label>
+                    <MainMap
+                      onResult={e => onSelectedIki(e.result)}
+                      degerler={getLocationIki}
                     />
                     <small id="emailHelp" className="form-text text-muted">
-                      Google Maps'den aldığınız kod
+                      Haritadan konumunuzu belirleyin
                     </small>
                   </div>
                 </li>
@@ -335,19 +353,13 @@ const Wedding = () => {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">
-                      Google Maps İframe Kodu
-                    </label>
-                    <textarea
-                      name="iframeBir"
-                      className="form-control"
-                      id="iframeBir"
-                      rows={3}
-                      placeholder="Google'dan aldığınız iframe kodunu girin."
-                      ref={iframeBir}
+                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu</label>
+                    <MainMap
+                      onResult={e => onSelected(e.result)}
+                      degerler={getLocation}
                     />
                     <small id="emailHelp" className="form-text text-muted">
-                      Google Maps'den aldığınız kod
+                      Haritadan konumunuzu belirleyin
                     </small>
                   </div>
                 </li>
@@ -409,19 +421,13 @@ const Wedding = () => {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">
-                      Google Maps İframe Kodu
-                    </label>
-                    <textarea
-                      name="iframeIki"
-                      className="form-control"
-                      id="iframeIki"
-                      rows={3}
-                      placeholder="Google'dan aldığınız iframe kodunu girin."
-                      ref={iframeIki}
+                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu</label>
+                    <MainMap
+                      onResult={e => onSelectedIki(e.result)}
+                      degerler={getLocationIki}
                     />
                     <small id="emailHelp" className="form-text text-muted">
-                      Google Maps'den aldığınız kod
+                      Haritadan konumunuzu belirleyin
                     </small>
                   </div>
                 </li>
