@@ -211,7 +211,25 @@ const Wedding = () => {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu</label>
+                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu
+                      {Object.keys(getLocation).length !== 0 && (
+                        <button
+                          style={{
+                            padding: '8px 6px',
+                            background: 'white',
+                            border: '1px solid #ddd',
+                            fontSize: '13px',
+                            borderRadius: 5,
+                            position: 'absolute',
+                            zIndex: 6,
+                            marginTop: '-10px',
+                            marginLeft: 5
+                          }}
+                          onClick={() => setLocation({})}
+                        >
+                          Temizle
+                        </button>
+                      )}</label>
                     <MainMap
                       onResult={e => onSelected(e.result)}
                       degerler={getLocation}
@@ -281,7 +299,26 @@ const Wedding = () => {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu</label>
+                    <label htmlFor="exampleInputEmail1">
+                      Maps İframe Kodu{' '}
+                      {Object.keys(getLocationIki).length !== 0 && (
+                        <button
+                          style={{
+                            padding: '8px 6px',
+                            background: 'white',
+                            border: '1px solid #ddd',
+                            fontSize: '13px',
+                            borderRadius: 5,
+                            position: 'absolute',
+                            zIndex: 6,
+                            marginTop: '-10px',
+                            marginLeft: 5
+                          }}
+                          onClick={() => setLocationIki({})}
+                        >
+                          Temizle
+                        </button>
+                      )}</label>
                     <MainMap
                       onResult={e => onSelectedIki(e.result)}
                       degerler={getLocationIki}
@@ -353,7 +390,25 @@ const Wedding = () => {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu</label>
+                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu
+                      {Object.keys(getLocation).length !== 0 && (
+                        <button
+                          style={{
+                            padding: '8px 6px',
+                            background: 'white',
+                            border: '1px solid #ddd',
+                            fontSize: '13px',
+                            borderRadius: 5,
+                            position: 'absolute',
+                            zIndex: 6,
+                            marginTop: '-10px',
+                            marginLeft: 5
+                          }}
+                          onClick={() => setLocation({})}
+                        >
+                          Temizle
+                        </button>
+                      )}</label>
                     <MainMap
                       onResult={e => onSelected(e.result)}
                       degerler={getLocation}
@@ -421,7 +476,25 @@ const Wedding = () => {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu</label>
+                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu
+                      {Object.keys(getLocationIki).length !== 0 && (
+                        <button
+                          style={{
+                            padding: '8px 6px',
+                            background: 'white',
+                            border: '1px solid #ddd',
+                            fontSize: '13px',
+                            borderRadius: 5,
+                            position: 'absolute',
+                            zIndex: 6,
+                            marginTop: '-10px',
+                            marginLeft: 5
+                          }}
+                          onClick={() => setLocationIki({})}
+                        >
+                          Temizle
+                        </button>
+                      )}</label>
                     <MainMap
                       onResult={e => onSelectedIki(e.result)}
                       degerler={getLocationIki}
