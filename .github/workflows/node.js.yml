@@ -24,4 +24,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run-script build
+    - run: cp /root/actions-runner/_work/Davetiyem.co-React/Davetiyem.co-React/ /root/
     - run: pm2 restart nextv2
