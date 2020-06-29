@@ -54,8 +54,8 @@ const Bio = ({ kisisel, username }) => {
                     : 'Damat Adı'}
                 </span>
                 <p className="hakkinda">
-                  {item.gelinBio != ''
-                    ? item.gelinBio
+                  {item.damatBio != ''
+                    ? item.damatBio
                     : 'Damatı tanıtan bir kaç cümle burada yer alacak. Lütfen yönetim panelinizden gerekli düzenlemeleri yapın.'}
                 </p>
               </div>
