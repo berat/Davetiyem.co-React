@@ -22,7 +22,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
+    - run: cd ~/Davetiyem.co-React
+    - run: git pull
     - run: npm run-script build
-    - run: mv /root/actions-runner/_work/Davetiyem.co-React/Davetiyem.co-React/ /root/
     - run: pm2 restart nextv2
