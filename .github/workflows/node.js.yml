@@ -21,6 +21,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ~/Davetiyem.co-React
+            whoami
             git pull
             npm install
             pm2 restart nextv2
