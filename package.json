@@ -7,6 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "deploy": "git pull && npm run build && pm2 restart nextv2",
     "gonder": "npm run-script build || pm2 start npm --name 'nextv2' -- start --watch"
   },
   "keywords": [],

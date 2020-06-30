@@ -38,7 +38,7 @@ const Wedding = () => {
         if (response.data.status == 201) {
           setBilgi(response.data.data)
           setLocation(
-            response.data.data[0].diframe !== null
+            response.data.data[0] !== null
               ? {
                   lat: parseFloat(response.data.data[0].diframe.split(',')[0]),
                   long: parseFloat(response.data.data[0].diframe.split(',')[1])
@@ -160,7 +160,7 @@ const Wedding = () => {
                         name="baslikBir"
                         placeholder="Kına Gecesi"
                         type="text"
-                        defaultValue={bilgi[0].dbaslik}
+                        defaultValue={bilgi[0] !== undefined ? bilgi[0].dbaslik : ''}
                         ref={baslikBir}
                       />
                     </dd>
@@ -203,7 +203,7 @@ const Wedding = () => {
                       id="adresBir"
                       rows={3}
                       placeholder="Adresi yazın"
-                      defaultValue={bilgi[0].dadres}
+                      defaultValue={bilgi[0] !== undefined ? bilgi[0].dadres : ''}
                       ref={adresBir}
                     />
                     <small id="emailHelp" className="form-text text-muted">
