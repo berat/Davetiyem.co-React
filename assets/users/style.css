@@ -520,3 +520,7 @@
 #userPage .mail:hover {
     background-color: #b93b2f;
 }
+
+.swiper-slide{
+    object-fit: cover;
+}
