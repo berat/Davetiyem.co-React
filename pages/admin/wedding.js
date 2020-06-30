@@ -46,7 +46,7 @@ const Wedding = () => {
               : {}
           )
           setLocationIki(
-            response.data.data[1].diframe !== null
+            response.data.data[1] !== null
               ? {
                   lat: parseFloat(response.data.data[1].diframe.split(',')[0]),
                   long: parseFloat(response.data.data[1].diframe.split(',')[1])
@@ -211,7 +211,8 @@ const Wedding = () => {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu
+                    <label htmlFor="exampleInputEmail1">
+                      Maps İframe Kodu
                       {Object.keys(getLocation).length !== 0 && (
                         <button
                           style={{
@@ -229,7 +230,8 @@ const Wedding = () => {
                         >
                           Temizle
                         </button>
-                      )}</label>
+                      )}
+                    </label>
                     <MainMap
                       onResult={e => onSelected(e.result)}
                       degerler={getLocation}
@@ -249,7 +251,9 @@ const Wedding = () => {
                         name="baslikIki"
                         placeholder="Düğün Gecesi"
                         type="text"
-                        defaultValue={bilgi[1].dbaslik}
+                        defaultValue={
+                          bilgi[1] !== undefined ? bilgi[1].dbaslik : ''
+                        }
                         ref={baslikIki}
                       />
                     </dd>
@@ -291,7 +295,9 @@ const Wedding = () => {
                       id="adresIki"
                       rows={3}
                       placeholder="Adresi yazın"
-                      defaultValue={bilgi[1].dadres}
+                      defaultValue={
+                        bilgi[1] !== undefined ? bilgi[1].dadres : ''
+                      }
                       ref={adresIki}
                     />
                     <small id="emailHelp" className="form-text text-muted">
@@ -318,7 +324,8 @@ const Wedding = () => {
                         >
                           Temizle
                         </button>
-                      )}</label>
+                      )}
+                    </label>
                     <MainMap
                       onResult={e => onSelectedIki(e.result)}
                       degerler={getLocationIki}
@@ -390,7 +397,8 @@ const Wedding = () => {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu
+                    <label htmlFor="exampleInputEmail1">
+                      Maps İframe Kodu
                       {Object.keys(getLocation).length !== 0 && (
                         <button
                           style={{
@@ -408,7 +416,8 @@ const Wedding = () => {
                         >
                           Temizle
                         </button>
-                      )}</label>
+                      )}
+                    </label>
                     <MainMap
                       onResult={e => onSelected(e.result)}
                       degerler={getLocation}
@@ -476,7 +485,8 @@ const Wedding = () => {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Maps İframe Kodu
+                    <label htmlFor="exampleInputEmail1">
+                      Maps İframe Kodu
                       {Object.keys(getLocationIki).length !== 0 && (
                         <button
                           style={{
@@ -494,7 +504,8 @@ const Wedding = () => {
                         >
                           Temizle
                         </button>
-                      )}</label>
+                      )}
+                    </label>
                     <MainMap
                       onResult={e => onSelectedIki(e.result)}
                       degerler={getLocationIki}
