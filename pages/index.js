@@ -11,7 +11,6 @@ import '../assets/index/responsive.css'
 import '../assets/index/style.css'
 
 function HomePage() {
-  console.log("hello world")
   return (
     <Layout>
       <Head>
