@@ -42,10 +42,9 @@ const Bottom = () => {
       <div className="bolum bacikla animated fadeIn">
         <div className="acikla">
           <p>
-            Online davetiye sitesi ile sünnet veya düğün yapacaksanız
-            davetiyenizi biz karşılıyoruz. Bizden satın alacağınız davetiye ile
-            hem daha az bir süre de hem de daha az bir ücret ile davetiye
-            sorununu ortadan kaldırmış oluyorsunuz.
+            Dijital davetiyenizi online bir şekilde oluşturabilirsinz.
+            Oluşturacağınız dijital davetiye ile hem nakitten hem de zamandan
+            tasarruf edip sevdiklerinizle kolay bir şekilde paylaşabilirsiniz.
           </p>
         </div>
         <div className="sbuton">

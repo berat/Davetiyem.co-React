@@ -6,10 +6,9 @@ function Body() {
           <div className="baslik">Dijital Davetiye Hakkında</div>
           <div className="acikla">
             <p>
-              Oluşturacağınız Dijital davetiye sayesinde kapı kapı dolaşmak
-              zorunda kalmadan hızlı bir şekilde oluşturup sevdiklerinize
-              ulaştırabilir ve kağıt tüketimini sınırlandırarak doğaya bir
-              iyilik yapabilirsiniz.
+              Oluşturacağınız Dijital davetiye sayesinde zaman kaybı olmadan
+              hızlı bir şekilde oluşturup sevdiklerinize ulaştırabilir ve kağıt
+              tüketimini sınırlandırarak doğaya katkıda bulunabilirsiniz.
             </p>
           </div>
         </div>
@@ -20,14 +19,20 @@ function Body() {
                 <i className="fa fa-map" />
               </div>
               <span>KONUM</span>
-              <p>Düğünün gerçekleşeceği konumu gösterip kolay ulaşım imkanı</p>
+              <p>
+                Organizasyonun gerçekleşeceği konumu gösterip kolay ulaşım
+                imkanı
+              </p>
             </li>
             <li>
               <div className="hizmet-icon">
                 <i className="fa fa-camera" />
               </div>
               <span>GALERİ</span>
-              <p>İstediğiniz fotoğraflarınızı davetiyenizde yayınlama imkanı</p>
+              <p>
+                Paylaşmak istediğiniz fotoğraflarınızı davetiyenizde kolayca yer
+                verebilirsiniz.
+              </p>
             </li>
             <li>
               <div className="hizmet-icon">
@@ -35,8 +40,8 @@ function Body() {
               </div>
               <span>YORUMLAR</span>
               <p>
-                Arkadaşlarınızın yorumlarının olduğu, davetlilerin yorum
-                yapabilme imkanı
+                Sevdiklerinizin yorumlarını davetiyenizde kolaylıkla
+                gösterebilirsiniz.
               </p>
             </li>
             <li>
