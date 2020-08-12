@@ -17,6 +17,9 @@ const Account = () => {
     password = useRef(),
     cPassword = useRef()
 
+  const userHash =
+    Cookies.get('login') != undefined ? Cookies.get('login') : null
+
   const userid =
     Cookies.get('login') != undefined
       ? jwtDecode(Cookies.get('login')).userid
@@ -24,7 +27,7 @@ const Account = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`${config.apiURL}${config.version}hesap/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}hesap/${userHash}`).then(
       response => {
         if (response.data.status == 201) {
           setUsername(response.data.username)
@@ -32,36 +35,39 @@ const Account = () => {
         }
       }
     )
-  }, [userid, setUsername, setEmail])
+  }, [userid, userHash, setUsername, setEmail])
+
 
   const usernameValid = RegExp(/^[a-zA-Z0-9]+$/i)
 
   const onSubmit = e => {
     setLoad(true)
     e.preventDefault()
-    if (usernameValid.test(kullaniciAdi.current.value)) {
+    if (
+      usernameValid.test(kullaniciAdi.current.value) ||
+      kullaniciAdi.current.value.length === 0 ||
+      username === kullaniciAdi.current.value
+    ) {
       if (password.current.value === cPassword.current.value) {
         Axios.get(`${config.apiURL}${config.version}uyeCek`).then(response => {
-          if (
-            response.data.uyeler.filter(
-              item => item.username == kullaniciAdi.current.value
-            ).length == 0 ||
-            response.data.uyeler.filter(
-              item => item.username == kullaniciAdi.current.value
-            )[0].userid == userid
-          ) {
-            if (
-              response.data.uyeler.filter(
-                item => item.email == mail.current.value
-              ).length == 0 ||
-              response.data.uyeler.filter(
-                item => item.email == mail.current.value
-              )[0].userid == userid
-            ) {
+          var usernameCheck = response.data.uyeler.filter(
+            item => item.username == kullaniciAdi.current.value
+          )
+          var mailCheck = response.data.uyeler.filter(
+            item => item.email == mail.current.value
+          )
+          var usernameKendisiMi = usernameCheck[0].username === username
+          var mailKendisiMi = mailCheck[0].email === email
+          if (usernameCheck.length === 0 || usernameKendisiMi) {
+            if (mailCheck.length == 0 || mailKendisiMi) {
               Axios.put(`${config.apiURL}${config.version}hesapGuncelle`, {
-                userid: userid,
-                kullaniciAdi: kullaniciAdi.current.value,
-                mail: mail.current.value,
+                userid: userHash,
+                kullaniciAdi:
+                  kullaniciAdi.current.value.length !== 0
+                    ? kullaniciAdi.current.value
+                    : username,
+                mail:
+                  mail.current.value.length !== 0 ? mail.current.value : email,
                 sifre: password.current.value
               }).then(response => {
                 if (response.data.status == 201) {

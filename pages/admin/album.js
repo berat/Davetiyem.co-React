@@ -22,10 +22,13 @@ const Album = () => {
       ? jwtDecode(Cookies.get('login')).userid
       : null
 
+  const userHash =
+    Cookies.get('login') != undefined ? Cookies.get('login') : null
+
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
 
-    Axios.get(`${config.apiURL}${config.version}galeri/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}galeri/${userHash}`).then(
       response => {
         if (response.data.status == 201) {
           setPreview(response.data.photos)
@@ -36,7 +39,7 @@ const Album = () => {
         }
       }
     )
-  }, [ userid, setDizi])
+  }, [userid, setDizi])
 
   const uploadAlbum = e => {
     if (preview.length + e.target.files.length + say <= 8) {
@@ -45,7 +48,7 @@ const Album = () => {
         formData.append('album', e.target.files[i])
       }
       Axios.post(
-        `${config.apiURL}${config.version}galeriYukle/${userid}`,
+        `${config.apiURL}${config.version}galeriYukle/${userHash}`,
         formData,
         {
           headers: {
@@ -83,7 +86,7 @@ const Album = () => {
   const deleteImg = e => {
     Axios.post(`${config.apiURL}${config.version}tekResimSil`, {
       fotoid: e,
-      userid: userid
+      hash: userHash
     }).then(response => {
       if (response.data.status == 201) {
         setSay(say - 1)
@@ -113,7 +116,7 @@ const Album = () => {
     e.preventDefault()
     if (preview != null ? preview.length : null + uploaded.length != 0) {
       Axios.post(`${config.apiURL}${config.version}topluSil`, {
-        userid: userid
+        hash: userHash
       }).then(response => {
         if (response.data.status == 201) {
           setPreview([])
@@ -165,8 +168,8 @@ const Album = () => {
                 onChange={uploadAlbum}
               />
               {uploaded != null
-                ? uploaded.map(item => (
-                    <div className="preview">
+                ? uploaded.map((item, index) => (
+                    <div className="preview" key={index}>
                       <img className="uploadImg" src={item.filename} />
                       <div
                         className="kaldir"
@@ -187,8 +190,8 @@ const Album = () => {
                     </div>
                   ))
                 : preview != null
-                ? preview.map(item => (
-                    <div className="preview">
+                ? preview.map((item, index) => (
+                    <div key={index} className="preview">
                       <img
                         className="uploadImg"
                         src={`/uploads/users/${username}/${item.foto}`}

@@ -11,7 +11,7 @@ const Social = () => {
 
   const userid =
     Cookies.get('login') != undefined
-      ? jwtDecode(Cookies.get('login')).userid
+      ? Cookies.get('login')
       : null
 
   useEffect(() => {

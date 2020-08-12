@@ -27,9 +27,14 @@ const Comments = () => {
       ? jwtDecode(Cookies.get('login')).userid
       : null
 
+      const userHash =
+        Cookies.get('login') != undefined
+          ? Cookies.get('login')
+          : null
+
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`${config.apiURL}${config.version}yorum/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}yorum/${userHash}`).then(
       response => {
         if (response.data.status == 201) {
           setListele(response.data.data)
@@ -44,22 +49,22 @@ const Comments = () => {
     liste = []
     if (liste.length < 5) {
       liste.push({
-        userid: userid,
+        hash: userHash,
         yorumSahibi: yorumSahibiBir.current.value,
         yorumu: yorumuBir.current.value
       })
       liste.push({
-        userid: userid,
+        hash: userHash,
         yorumSahibi: yorumSahibiIki.current.value,
         yorumu: yorumuIki.current.value
       })
       liste.push({
-        userid: userid,
+        hash: userHash,
         yorumSahibi: yorumSahibiUc.current.value,
         yorumu: yorumuUc.current.value
       })
       liste.push({
-        userid: userid,
+        hash: userHash,
         yorumSahibi: yorumSahibiDort.current.value,
         yorumu: yorumuDort.current.value
       })
@@ -87,7 +92,7 @@ const Comments = () => {
         )
       }
       if (liste.length == 0) {
-        Axios.post(`${config.apiURL}${config.version}yorum/${userid}`).then(
+        Axios.post(`${config.apiURL}${config.version}yorum/${userHash}`).then(
           response => {
             if (response.data.status == 201) {
               setLoad(false)

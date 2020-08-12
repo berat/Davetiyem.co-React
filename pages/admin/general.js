@@ -25,12 +25,16 @@ const General = () => {
       ? jwtDecode(Cookies.get('login')).userid
       : null
 
+  const userHash =
+  Cookies.get('login') != undefined
+    ? Cookies.get('login')
+    : null
+
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`${config.apiURL}${config.version}genel/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}genel/${userHash}`).then(
       response => {
         if (response.data.status == 201 && response.data.data.length != 0) {
-          console.log(response.data.data)
           setListe(response.data.data)
           setTarih(response.data.data[0].tarih)
           setSaat(response.data.data[0].saat)
@@ -43,7 +47,7 @@ const General = () => {
     setLoad(true)
     e.preventDefault()
     Axios.post(`${config.apiURL}${config.version}genel`, {
-      userid: userid,
+      hash: userHash,
       tarih: tarih,
       saat: saat,
       dugunSozu: soz.current.value,

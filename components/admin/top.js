@@ -10,21 +10,13 @@ import images from '../../public/images/image'
 const Top = () => {
   const [username, setUsername] = useState()
 
-  const userid =
-    Cookies.get('login') != undefined
-      ? jwtDecode(Cookies.get('login')).userid
-      : null
+  const userid = Cookies.get('login') != undefined ? Cookies.get('login') : null
 
   useEffect(() => {
-    Axios.get(`${config.apiURL}${config.version}uyeCek`).then(
+    Axios.get(`${config.apiURL}${config.version}aktifHesap/${userid}`).then(
       response => {
-        if (
-          response.data.uyeler.filter(item => item.userid == userid).length == 1
-        ) {
-          setUsername(
-            response.data.uyeler.filter(item => item.userid == userid)[0]
-              .username
-          )
+        if (response.data.status == 201) {
+          setUsername(response.data.username)
         }
       }
     )

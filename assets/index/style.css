@@ -640,3 +640,94 @@
         font-size: 141px;
     }
 }
+
+#price {
+    width: 65%;
+    margin: 20px auto 40px auto;
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    justify-content: center;
+    border: 2px solid #d6d6d6;
+}
+
+#price .maddeler {
+    font-size: 16px;
+    margin-right: 60px;
+}
+
+#price .maddeler ul {
+    border-right: 1px solid #d6d6d6;
+}
+
+#price .maddeler li {
+    line-height: 32px;
+}
+
+#price .maddeler li::before {
+    content: url(/images/check.svg);
+    width: 10px;
+    height: 10px;
+    position: relative;
+    top: 4px;
+    margin-right: 8px;
+}
+
+.maddeler h4 {
+    padding-bottom: 20px;
+    font-size: 29px;
+    color: #212224;
+}
+
+.maddeler h4 span {
+    font-size: 14px;
+    color: #656565;
+}
+
+.maddeler h4 i{
+    font-weight: 200;
+    color: #c1c1c1;
+    padding: 0 6px 0 3px;
+}
+
+.maddeler h4 span b {
+    font-weight: bold;
+}
+
+.fiyat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fiyat span.ucret {
+    background: #f5f5f5;
+    border: 2px solid #f3f3f3;
+    padding: 30px 25px;
+    font-size: 29px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.fiyat span i {
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.fiyat small {
+    color: #6d6d6d;
+    padding-top: 5px;
+}
+
+.sistemLogo {
+    display: flex;
+    padding-top: 20px;
+}
+
+.sistemLogo img {
+    padding-right: 5px;
+}
+
+.sistemLogo span {
+    margin-top: -2px;
+}

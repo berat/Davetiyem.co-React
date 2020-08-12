@@ -5,7 +5,6 @@ import Head from 'next/head'
 import { GA_TRACKING_ID } from '../../lib/gtag'
 import Link from 'next/link'
 import Cookies from 'js-cookie'
-import jwtDecode from 'jwt-decode'
 
 import Header from './header'
 import Bio from './bio'
@@ -40,7 +39,7 @@ const Layout = ({ children, userid }) => {
 
   const useridList =
     Cookies.get('login') != undefined
-      ? jwtDecode(Cookies.get('login')).userid
+      ? Cookies.get('login')
       : null
 
   useEffect(() => {

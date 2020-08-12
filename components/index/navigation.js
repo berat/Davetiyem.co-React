@@ -1,12 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import Cookies from 'js-cookie'
-import jwtDecode from 'jwt-decode'
 
 const Navigation = () => {
   const userid =
     Cookies.get('login') != undefined
-      ? jwtDecode(Cookies.get('login')).userid
+      ? Cookies.get('login').userid
       : null
 
   return (

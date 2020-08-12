@@ -31,14 +31,17 @@ const Wedding = () => {
       ? jwtDecode(Cookies.get('login')).userid
       : null
 
+  const userHash =
+    Cookies.get('login') != undefined ? Cookies.get('login') : null
+
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`${config.apiURL}${config.version}dugun/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}dugun/${userHash}`).then(
       response => {
         if (response.data.status == 201) {
           setBilgi(response.data.data)
           setLocation(
-            response.data.data[0] !== null
+            response.data.data[0] !== null && response.data.data[0].diframe !== null
               ? {
                   lat: parseFloat(response.data.data[0].diframe.split(',')[0]),
                   long: parseFloat(response.data.data[0].diframe.split(',')[1])
@@ -46,7 +49,7 @@ const Wedding = () => {
               : {}
           )
           setLocationIki(
-            response.data.data[1] !== null
+            response.data.data[1] !== null && response.data.data[1].diframe !== null
               ? {
                   lat: parseFloat(response.data.data[1].diframe.split(',')[0]),
                   long: parseFloat(response.data.data[1].diframe.split(',')[1])
@@ -65,7 +68,7 @@ const Wedding = () => {
     setLoad(true)
     const sendData = [
       {
-        userid: userid,
+        hash: userHash,
         baslik: baslikBir.current.value,
         adres: adresBir.current.value,
         tarih: tarihBir,
@@ -75,7 +78,7 @@ const Wedding = () => {
             : null
       },
       {
-        userid: userid,
+        hash: userHash,
         baslik: baslikIki.current.value,
         adres: adresIki.current.value,
         tarih: tarihIki,
@@ -108,7 +111,7 @@ const Wedding = () => {
     )
     if (dipNot != undefined) {
       Axios.post(`${config.apiURL}${config.version}genel`, {
-        userid: userid,
+        hash: userHash,
         dipNot: dipNot
       }).then(response => {
         if (response.data.status == 201) {
@@ -160,7 +163,9 @@ const Wedding = () => {
                         name="baslikBir"
                         placeholder="Kına Gecesi"
                         type="text"
-                        defaultValue={bilgi[0] !== undefined ? bilgi[0].dbaslik : ''}
+                        defaultValue={
+                          bilgi[0] !== undefined ? bilgi[0].dbaslik : ''
+                        }
                         ref={baslikBir}
                       />
                     </dd>
@@ -203,7 +208,9 @@ const Wedding = () => {
                       id="adresBir"
                       rows={3}
                       placeholder="Adresi yazın"
-                      defaultValue={bilgi[0] !== undefined ? bilgi[0].dadres : ''}
+                      defaultValue={
+                        bilgi[0] !== undefined ? bilgi[0].dadres : ''
+                      }
                       ref={adresBir}
                     />
                     <small id="emailHelp" className="form-text text-muted">

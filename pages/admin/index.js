@@ -19,10 +19,13 @@ function HomePage() {
       ? jwtDecode(Cookies.get('login')).userid
       : null
 
+  const userHash =
+    Cookies.get('login') != undefined ? Cookies.get('login') : null
+
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
 
-    Axios.get(`${config.apiURL}${config.version}kisisel/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}kisisel/${userHash}`).then(
       response => {
         if (response.data.status == 201) {
           setBilgi(response.data.data)
@@ -57,7 +60,7 @@ function HomePage() {
     const formData = new FormData()
     formData.append('gelinFoto', e.target.files[0])
     console.log(formData)
-    Axios.post(`${config.apiURL}${config.version}gelin/${userid}`, formData, {
+    Axios.post(`${config.apiURL}${config.version}gelin/${userHash}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -84,7 +87,7 @@ function HomePage() {
   const uploadImageGroom = e => {
     const formData = new FormData()
     formData.append('damatFoto', e.target.files[0])
-    Axios.post(`${config.apiURL}${config.version}damat/${userid}`, formData, {
+    Axios.post(`${config.apiURL}${config.version}damat/${userHash}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -116,7 +119,7 @@ function HomePage() {
       damatAdi: damatAdi.current.value,
       gelinBio: gelinBio.current.value,
       damatBio: damatBio.current.value,
-      userid: userid
+      hash: userHash
     }).then(response => {
       if (response.data.status == 201) {
         setLoad(false)
@@ -142,7 +145,7 @@ function HomePage() {
     Axios.post(`${config.apiURL}${config.version}fotoSil`, {
       who: e == 'damat' ? 'damatFoto' : 'gelinFoto',
       fileName: e == 'damat' ? damatPreview : gelinPreview,
-      userid: userid
+      hash: userHash
     }).then(response => {
       if (response.data.status == 201) {
         e == 'damat' ? setDamatPreview(false) : setGelinPreview(false)
