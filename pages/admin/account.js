@@ -27,7 +27,7 @@ const Account = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`${config.apiURL}${config.version}hesap/${userHash}`).then(
+    Axios.get(`${config.apiURL}${config.version}hesap/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setUsername(response.data.username)

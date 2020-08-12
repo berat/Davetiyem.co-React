@@ -1,8 +1,7 @@
-import react, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Error from '../_error.js'
 import jwtDecode from 'jwt-decode'
-import Cookies from 'js-cookie'
 import { Preloader, Puff } from 'react-preloader-icon'
 
 import config from '../../config'
@@ -21,18 +20,20 @@ const HomePage = () => {
   const { userid } = router.query
 
   useEffect(() => {
-    Axios.get(`${config.apiURL}${config.version}uyeCek/${userid}`).then(
-      response => {
-        if (response.data.status == 201) {
-          setLoad(true)
-          setCheck(true)
-          setCheckUserID(response.data.userid)
-        } else {
-          setLoad(true)
+    userid &&
+      Axios.get(`${config.apiURL}${config.version}uyeCek/${userid}`).then(
+        response => {
+          console.log(response)
+          if (response.data.status == 201) {
+            setLoad(true)
+            setCheck(true)
+            setCheckUserID(response.data.userid)
+          } else {
+            setLoad(true)
+          }
         }
-      }
-    )
-  }, [userid, setCheck, setCheckUserID, setLoad])
+      )
+  }, [userid])
   return load == true ? (
     check != false ? (
       <Layout userid={checkUserID}></Layout>

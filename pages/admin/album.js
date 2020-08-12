@@ -28,7 +28,7 @@ const Album = () => {
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
 
-    Axios.get(`${config.apiURL}${config.version}galeri/${userHash}`).then(
+    Axios.get(`${config.apiURL}${config.version}galeri/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setPreview(response.data.photos)

@@ -36,7 +36,7 @@ const Wedding = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`${config.apiURL}${config.version}dugun/${userHash}`).then(
+    Axios.get(`${config.apiURL}${config.version}dugun/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setBilgi(response.data.data)

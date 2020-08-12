@@ -25,7 +25,7 @@ function HomePage() {
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
 
-    Axios.get(`${config.apiURL}${config.version}kisisel/${userHash}`).then(
+    Axios.get(`${config.apiURL}${config.version}kisisel/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setBilgi(response.data.data)

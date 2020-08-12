@@ -32,7 +32,7 @@ const General = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`${config.apiURL}${config.version}genel/${userHash}`).then(
+    Axios.get(`${config.apiURL}${config.version}genel/${userid}`).then(
       response => {
         if (response.data.status == 201 && response.data.data.length != 0) {
           setListe(response.data.data)

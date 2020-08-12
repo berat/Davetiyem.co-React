@@ -34,7 +34,7 @@ const Comments = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
-    Axios.get(`${config.apiURL}${config.version}yorum/${userHash}`).then(
+    Axios.get(`${config.apiURL}${config.version}yorum/${userid}`).then(
       response => {
         if (response.data.status == 201) {
           setListele(response.data.data)
