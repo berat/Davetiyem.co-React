@@ -22,6 +22,13 @@ function HomePage() {
   const userHash =
     Cookies.get('login') != undefined ? Cookies.get('login') : null
 
+  const getValue = () =>
+    Axios.get(`${config.apiURL}${config.version}kisisel/${userid}`).then(
+      response => {
+        console.log(response)
+      }
+    )
+
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
 

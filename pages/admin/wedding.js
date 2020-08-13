@@ -41,7 +41,8 @@ const Wedding = () => {
         if (response.data.status == 201) {
           setBilgi(response.data.data)
           setLocation(
-            response.data.data[0] !== null && response.data.data[0].diframe !== null
+            response.data.data[0] !== null &&
+              response.data.data[0].diframe !== null
               ? {
                   lat: parseFloat(response.data.data[0].diframe.split(',')[0]),
                   long: parseFloat(response.data.data[0].diframe.split(',')[1])
@@ -49,7 +50,8 @@ const Wedding = () => {
               : {}
           )
           setLocationIki(
-            response.data.data[1] !== null && response.data.data[1].diframe !== null
+            response.data.data[1] !== null &&
+              response.data.data[1].diframe !== null
               ? {
                   lat: parseFloat(response.data.data[1].diframe.split(',')[0]),
                   long: parseFloat(response.data.data[1].diframe.split(',')[1])

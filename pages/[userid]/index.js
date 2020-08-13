@@ -23,7 +23,6 @@ const HomePage = () => {
     userid &&
       Axios.get(`${config.apiURL}${config.version}uyeCek/${userid}`).then(
         response => {
-          console.log(response)
           if (response.data.status == 201) {
             setLoad(true)
             setCheck(true)

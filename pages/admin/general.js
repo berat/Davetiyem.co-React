@@ -26,9 +26,7 @@ const General = () => {
       : null
 
   const userHash =
-  Cookies.get('login') != undefined
-    ? Cookies.get('login')
-    : null
+    Cookies.get('login') != undefined ? Cookies.get('login') : null
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
@@ -41,7 +39,7 @@ const General = () => {
         }
       }
     )
-  }, [setListe])
+  }, [userid,setListe])
 
   const onSubmit = e => {
     setLoad(true)

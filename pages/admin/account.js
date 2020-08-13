@@ -37,7 +37,6 @@ const Account = () => {
     )
   }, [userid, userHash, setUsername, setEmail])
 
-
   const usernameValid = RegExp(/^[a-zA-Z0-9]+$/i)
 
   const onSubmit = e => {
@@ -61,7 +60,7 @@ const Account = () => {
           if (usernameCheck.length === 0 || usernameKendisiMi) {
             if (mailCheck.length == 0 || mailKendisiMi) {
               Axios.put(`${config.apiURL}${config.version}hesapGuncelle`, {
-                userid: userHash,
+                hash: userHash,
                 kullaniciAdi:
                   kullaniciAdi.current.value.length !== 0
                     ? kullaniciAdi.current.value

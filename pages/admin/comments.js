@@ -27,10 +27,8 @@ const Comments = () => {
       ? jwtDecode(Cookies.get('login')).userid
       : null
 
-      const userHash =
-        Cookies.get('login') != undefined
-          ? Cookies.get('login')
-          : null
+  const userHash =
+    Cookies.get('login') != undefined ? Cookies.get('login') : null
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
