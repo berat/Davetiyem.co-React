@@ -649,6 +649,7 @@
     padding: 30px 0;
     justify-content: center;
     border: 2px solid #d6d6d6;
+    color: #46494c;
 }
 
 #price .maddeler {
@@ -701,8 +702,8 @@
 }
 
 .fiyat span.ucret {
-    background: #f5f5f5;
-    border: 2px solid #f3f3f3;
+    background: #fbfbfb;
+    border: 1px solid #d8d8d8;
     padding: 30px 25px;
     font-size: 29px;
     font-weight: bold;

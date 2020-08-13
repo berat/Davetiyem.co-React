@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 import Header from '../components/index/header'
 import Body from '../components/index/body'
+import Price from '../components/index/price'
 import Bottom from '../components/index/bottom'
 
 import '../assets/reset.css'
@@ -26,6 +27,7 @@ function HomePage() {
       </Head>
       <Header />
       <Body />
+      <Price />
       <Bottom />
     </Layout>
   )
