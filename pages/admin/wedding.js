@@ -20,6 +20,7 @@ const Wedding = () => {
   const [load, setLoad] = useState(false)
   const [getLocation, setLocation] = useState({})
   const [getLocationIki, setLocationIki] = useState({})
+  const [pro, setPro] = useState(true)
 
   const baslikBir = useRef(),
     baslikIki = useRef(),
@@ -36,6 +37,15 @@ const Wedding = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
+
+    Axios.get(`${config.apiURL}${config.version}confirm/${userHash}`).then(
+      response => {
+        if (response.data.status == 202) {
+          setPro(false)
+        }
+      }
+    )
+
     Axios.get(`${config.apiURL}${config.version}dugun/${userid}`).then(
       response => {
         if (response.data.status == 201) {
@@ -152,404 +162,418 @@ const Wedding = () => {
           <span>Düğün bilgilerinizi buradan düzenleyebilirsiniz.</span>
         </div>
         <div className="icerik col-12">
-          <form method="post" onSubmit={onSubmit} className="col-12">
-            {bilgi != undefined ? (
-              <ul className="row">
-                <li className="col-xs-6 col-lg-6">
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Başlık</label>
-                    <dd>
-                      <input
-                        className="form-control"
-                        id="baslikBir"
-                        name="baslikBir"
-                        placeholder="Kına Gecesi"
-                        type="text"
-                        defaultValue={
-                          bilgi[0] !== undefined ? bilgi[0].dbaslik : ''
-                        }
-                        ref={baslikBir}
-                      />
-                    </dd>
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
-                      Kına Gecesi
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label className="control-label" htmlFor="date">
-                      Tarih
-                    </label>
-                    <Flatpickr
-                      className="form-text"
-                      value={tarihBir == undefined ? new Date() : tarihBir}
-                      options={{
-                        minDate: new Date(),
-                        dateFormat: 'd F Y',
-                        locale: config.date,
-                        altFormat: 'd F Y',
-                        altInput: true
-                      }}
-                      onChange={(selectedDates, dateStr, instance) => {
-                        selectedDates.forEach(function(date) {
-                          setTarihBir(instance.formatDate(date, 'd F Y'))
-                        })
-                      }}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğün tarihini giriniz.
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1">
-                      Adresi Girin
-                    </label>
-                    <textarea
-                      name="adresBir"
-                      className="form-control"
-                      id="adresBir"
-                      rows={3}
-                      placeholder="Adresi yazın"
-                      defaultValue={
-                        bilgi[0] !== undefined ? bilgi[0].dadres : ''
-                      }
-                      ref={adresBir}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğünün yapılacağı adresi girin
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">
-                      Maps İframe Kodu
-                      {Object.keys(getLocation).length !== 0 && (
-                        <button
-                          style={{
-                            padding: '8px 6px',
-                            background: 'white',
-                            border: '1px solid #ddd',
-                            fontSize: '13px',
-                            borderRadius: 5,
-                            position: 'absolute',
-                            zIndex: 6,
-                            marginTop: '-10px',
-                            marginLeft: 5
-                          }}
-                          onClick={() => setLocation({})}
-                        >
-                          Temizle
-                        </button>
-                      )}
-                    </label>
-                    <MainMap
-                      onResult={e => onSelected(e.result)}
-                      degerler={getLocation}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Haritadan konumunuzu belirleyin
-                    </small>
-                  </div>
-                </li>
-                <li className="col-xs-6 col-lg-6">
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Başlık</label>
-                    <dd>
-                      <input
-                        className="form-control"
-                        id="baslikIki"
-                        name="baslikIki"
-                        placeholder="Düğün Gecesi"
-                        type="text"
-                        defaultValue={
-                          bilgi[1] !== undefined ? bilgi[1].dbaslik : ''
-                        }
-                        ref={baslikIki}
-                      />
-                    </dd>
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
-                      Kına Gecesi
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label className="control-label" htmlFor="date">
-                      Tarih
-                    </label>
-                    <Flatpickr
-                      className="form-text"
-                      value={tarihIki == undefined ? new Date() : tarihIki}
-                      options={{
-                        minDate: new Date(),
-                        dateFormat: 'd F Y',
-                        locale: config.date,
-                        altFormat: 'd F Y'
-                      }}
-                      onChange={(selectedDates, dateStr, instance) => {
-                        selectedDates.forEach(function(date) {
-                          setTarihIki(instance.formatDate(date, 'd F Y'))
-                        })
-                      }}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğün tarihini giriniz.
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1">
-                      Adresi Girin
-                    </label>
-                    <textarea
-                      name="adresIki"
-                      className="form-control"
-                      id="adresIki"
-                      rows={3}
-                      placeholder="Adresi yazın"
-                      defaultValue={
-                        bilgi[1] !== undefined ? bilgi[1].dadres : ''
-                      }
-                      ref={adresIki}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğünün yapılacağı adresi girin
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">
-                      Maps İframe Kodu{' '}
-                      {Object.keys(getLocationIki).length !== 0 && (
-                        <button
-                          style={{
-                            padding: '8px 6px',
-                            background: 'white',
-                            border: '1px solid #ddd',
-                            fontSize: '13px',
-                            borderRadius: 5,
-                            position: 'absolute',
-                            zIndex: 6,
-                            marginTop: '-10px',
-                            marginLeft: 5
-                          }}
-                          onClick={() => setLocationIki({})}
-                        >
-                          Temizle
-                        </button>
-                      )}
-                    </label>
-                    <MainMap
-                      onResult={e => onSelectedIki(e.result)}
-                      degerler={getLocationIki}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Haritadan konumunuzu belirleyin
-                    </small>
-                  </div>
-                </li>
-              </ul>
-            ) : (
-              <ul className="row">
-                <li className="col-xs-6 col-lg-6">
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Başlık</label>
-                    <dd>
-                      <input
-                        className="form-control"
-                        id="baslikBir"
-                        name="baslikBir"
-                        placeholder="Kına Gecesi"
-                        type="text"
-                        ref={baslikBir}
-                      />
-                    </dd>
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
-                      Kına Gecesi
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label className="control-label" htmlFor="date">
-                      Tarih
-                    </label>
-                    <Flatpickr
-                      className="form-text"
-                      value={tarihBir == undefined ? new Date() : tarihBir}
-                      options={{
-                        minDate: new Date(),
-                        dateFormat: 'j F Y',
-                        locale: config.date,
-                        altFormat: 'j F Y',
-                        altInput: true
-                      }}
-                      onChange={(selectedDates, dateStr, instance) => {
-                        selectedDates.forEach(function(date) {
-                          setTarihBir(instance.formatDate(date, 'j F Y'))
-                        })
-                      }}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğün tarihini giriniz.
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1">
-                      Adresi Girin
-                    </label>
-                    <textarea
-                      name="adresBir"
-                      className="form-control"
-                      id="adresBir"
-                      rows={3}
-                      placeholder="Adresi yazın"
-                      ref={adresBir}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğünün yapılacağı adresi girin
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">
-                      Maps İframe Kodu
-                      {Object.keys(getLocation).length !== 0 && (
-                        <button
-                          style={{
-                            padding: '8px 6px',
-                            background: 'white',
-                            border: '1px solid #ddd',
-                            fontSize: '13px',
-                            borderRadius: 5,
-                            position: 'absolute',
-                            zIndex: 6,
-                            marginTop: '-10px',
-                            marginLeft: 5
-                          }}
-                          onClick={() => setLocation({})}
-                        >
-                          Temizle
-                        </button>
-                      )}
-                    </label>
-                    <MainMap
-                      onResult={e => onSelected(e.result)}
-                      degerler={getLocation}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Haritadan konumunuzu belirleyin
-                    </small>
-                  </div>
-                </li>
-                <li className="col-xs-6 col-lg-6">
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Başlık</label>
-                    <dd>
-                      <input
-                        className="form-control"
-                        id="baslikIki"
-                        name="baslikIki"
-                        placeholder="Düğün Gecesi"
-                        type="text"
-                        ref={baslikIki}
-                      />
-                    </dd>
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
-                      Kına Gecesi
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label className="control-label" htmlFor="date">
-                      Tarih
-                    </label>
-                    <Flatpickr
-                      className="form-text"
-                      value={tarihIki == undefined ? new Date() : tarihIki}
-                      options={{
-                        minDate: new Date(),
-                        dateFormat: 'j F Y',
-                        locale: config.date,
-                        altFormat: 'j F Y'
-                      }}
-                      onChange={(selectedDates, dateStr, instance) => {
-                        selectedDates.forEach(function(date) {
-                          setTarihIki(instance.formatDate(date, 'j F Y'))
-                        })
-                      }}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğün tarihini giriniz.
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1">
-                      Adresi Girin
-                    </label>
-                    <textarea
-                      name="adresIki"
-                      className="form-control"
-                      id="adresIki"
-                      rows={3}
-                      placeholder="Adresi yazın"
-                      ref={adresIki}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Düğünün yapılacağı adresi girin
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">
-                      Maps İframe Kodu
-                      {Object.keys(getLocationIki).length !== 0 && (
-                        <button
-                          style={{
-                            padding: '8px 6px',
-                            background: 'white',
-                            border: '1px solid #ddd',
-                            fontSize: '13px',
-                            borderRadius: 5,
-                            position: 'absolute',
-                            zIndex: 6,
-                            marginTop: '-10px',
-                            marginLeft: 5
-                          }}
-                          onClick={() => setLocationIki({})}
-                        >
-                          Temizle
-                        </button>
-                      )}
-                    </label>
-                    <MainMap
-                      onResult={e => onSelectedIki(e.result)}
-                      degerler={getLocationIki}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Haritadan konumunuzu belirleyin
-                    </small>
-                  </div>
-                </li>
-              </ul>
-            )}
-            <div className="form-group">
-              <label htmlFor="exampleFormControlTextarea1">Dip Not</label>
-              <CKEditor
-                data="Gelin/Damat evi gibi bilgileri belirtebilirsiniz. Eğer boş kalmasını istiyorsanız lütfen burayı silin."
-                onChange={evt => {
-                  setDipNot(evt.editor.getData())
-                }}
-                config={{
-                  toolbar: [['Bold', 'Italic', 'Underline']]
-                }}
-              />
-              <small id="emailHelp" className="form-text text-muted">
-                Damat/gelin evini ve saati belirtebilirisiniz..
-              </small>
-            </div>
-            <button
-              type="submit"
-              className={`btn form-control btn-default ${
-                load ? 'loading disabled' : null
-              }`}
+          {!pro ? (
+            <h2
+              style={{
+                textAlign: 'center',
+                fontWeight: 'bold',
+                fontSize: 23,
+                paddingTop: 20
+              }}
             >
-              Kaydet
-            </button>
-          </form>
+              Yönetim paneline gidin ve ödemenizi yapıp kullanmaya kaldığınız
+              yerden devam edin.
+            </h2>
+          ) : (
+            <form method="post" onSubmit={onSubmit} className="col-12">
+              {bilgi != undefined ? (
+                <ul className="row">
+                  <li className="col-xs-6 col-lg-6">
+                    <div className="form-group">
+                      <label htmlFor="exampleInputEmail1">Başlık</label>
+                      <dd>
+                        <input
+                          className="form-control"
+                          id="baslikBir"
+                          name="baslikBir"
+                          placeholder="Kına Gecesi"
+                          type="text"
+                          defaultValue={
+                            bilgi[0] !== undefined ? bilgi[0].dbaslik : ''
+                          }
+                          ref={baslikBir}
+                        />
+                      </dd>
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
+                        Kına Gecesi
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label className="control-label" htmlFor="date">
+                        Tarih
+                      </label>
+                      <Flatpickr
+                        className="form-text"
+                        value={tarihBir == undefined ? new Date() : tarihBir}
+                        options={{
+                          minDate: new Date(),
+                          dateFormat: 'd F Y',
+                          locale: config.date,
+                          altFormat: 'd F Y',
+                          altInput: true
+                        }}
+                        onChange={(selectedDates, dateStr, instance) => {
+                          selectedDates.forEach(function(date) {
+                            setTarihBir(instance.formatDate(date, 'd F Y'))
+                          })
+                        }}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğün tarihini giriniz.
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlTextarea1">
+                        Adresi Girin
+                      </label>
+                      <textarea
+                        name="adresBir"
+                        className="form-control"
+                        id="adresBir"
+                        rows={3}
+                        placeholder="Adresi yazın"
+                        defaultValue={
+                          bilgi[0] !== undefined ? bilgi[0].dadres : ''
+                        }
+                        ref={adresBir}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğünün yapılacağı adresi girin
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleInputEmail1">
+                        Maps İframe Kodu
+                        {Object.keys(getLocation).length !== 0 && (
+                          <button
+                            style={{
+                              padding: '8px 6px',
+                              background: 'white',
+                              border: '1px solid #ddd',
+                              fontSize: '13px',
+                              borderRadius: 5,
+                              position: 'absolute',
+                              zIndex: 6,
+                              marginTop: '-10px',
+                              marginLeft: 5
+                            }}
+                            onClick={() => setLocation({})}
+                          >
+                            Temizle
+                          </button>
+                        )}
+                      </label>
+                      <MainMap
+                        onResult={e => onSelected(e.result)}
+                        degerler={getLocation}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Haritadan konumunuzu belirleyin
+                      </small>
+                    </div>
+                  </li>
+                  <li className="col-xs-6 col-lg-6">
+                    <div className="form-group">
+                      <label htmlFor="exampleInputEmail1">Başlık</label>
+                      <dd>
+                        <input
+                          className="form-control"
+                          id="baslikIki"
+                          name="baslikIki"
+                          placeholder="Düğün Gecesi"
+                          type="text"
+                          defaultValue={
+                            bilgi[1] !== undefined ? bilgi[1].dbaslik : ''
+                          }
+                          ref={baslikIki}
+                        />
+                      </dd>
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
+                        Kına Gecesi
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label className="control-label" htmlFor="date">
+                        Tarih
+                      </label>
+                      <Flatpickr
+                        className="form-text"
+                        value={tarihIki == undefined ? new Date() : tarihIki}
+                        options={{
+                          minDate: new Date(),
+                          dateFormat: 'd F Y',
+                          locale: config.date,
+                          altFormat: 'd F Y'
+                        }}
+                        onChange={(selectedDates, dateStr, instance) => {
+                          selectedDates.forEach(function(date) {
+                            setTarihIki(instance.formatDate(date, 'd F Y'))
+                          })
+                        }}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğün tarihini giriniz.
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlTextarea1">
+                        Adresi Girin
+                      </label>
+                      <textarea
+                        name="adresIki"
+                        className="form-control"
+                        id="adresIki"
+                        rows={3}
+                        placeholder="Adresi yazın"
+                        defaultValue={
+                          bilgi[1] !== undefined ? bilgi[1].dadres : ''
+                        }
+                        ref={adresIki}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğünün yapılacağı adresi girin
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleInputEmail1">
+                        Maps İframe Kodu{' '}
+                        {Object.keys(getLocationIki).length !== 0 && (
+                          <button
+                            style={{
+                              padding: '8px 6px',
+                              background: 'white',
+                              border: '1px solid #ddd',
+                              fontSize: '13px',
+                              borderRadius: 5,
+                              position: 'absolute',
+                              zIndex: 6,
+                              marginTop: '-10px',
+                              marginLeft: 5
+                            }}
+                            onClick={() => setLocationIki({})}
+                          >
+                            Temizle
+                          </button>
+                        )}
+                      </label>
+                      <MainMap
+                        onResult={e => onSelectedIki(e.result)}
+                        degerler={getLocationIki}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Haritadan konumunuzu belirleyin
+                      </small>
+                    </div>
+                  </li>
+                </ul>
+              ) : (
+                <ul className="row">
+                  <li className="col-xs-6 col-lg-6">
+                    <div className="form-group">
+                      <label htmlFor="exampleInputEmail1">Başlık</label>
+                      <dd>
+                        <input
+                          className="form-control"
+                          id="baslikBir"
+                          name="baslikBir"
+                          placeholder="Kına Gecesi"
+                          type="text"
+                          ref={baslikBir}
+                        />
+                      </dd>
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
+                        Kına Gecesi
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label className="control-label" htmlFor="date">
+                        Tarih
+                      </label>
+                      <Flatpickr
+                        className="form-text"
+                        value={tarihBir == undefined ? new Date() : tarihBir}
+                        options={{
+                          minDate: new Date(),
+                          dateFormat: 'j F Y',
+                          locale: config.date,
+                          altFormat: 'j F Y',
+                          altInput: true
+                        }}
+                        onChange={(selectedDates, dateStr, instance) => {
+                          selectedDates.forEach(function(date) {
+                            setTarihBir(instance.formatDate(date, 'j F Y'))
+                          })
+                        }}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğün tarihini giriniz.
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlTextarea1">
+                        Adresi Girin
+                      </label>
+                      <textarea
+                        name="adresBir"
+                        className="form-control"
+                        id="adresBir"
+                        rows={3}
+                        placeholder="Adresi yazın"
+                        ref={adresBir}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğünün yapılacağı adresi girin
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleInputEmail1">
+                        Maps İframe Kodu
+                        {Object.keys(getLocation).length !== 0 && (
+                          <button
+                            style={{
+                              padding: '8px 6px',
+                              background: 'white',
+                              border: '1px solid #ddd',
+                              fontSize: '13px',
+                              borderRadius: 5,
+                              position: 'absolute',
+                              zIndex: 6,
+                              marginTop: '-10px',
+                              marginLeft: 5
+                            }}
+                            onClick={() => setLocation({})}
+                          >
+                            Temizle
+                          </button>
+                        )}
+                      </label>
+                      <MainMap
+                        onResult={e => onSelected(e.result)}
+                        degerler={getLocation}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Haritadan konumunuzu belirleyin
+                      </small>
+                    </div>
+                  </li>
+                  <li className="col-xs-6 col-lg-6">
+                    <div className="form-group">
+                      <label htmlFor="exampleInputEmail1">Başlık</label>
+                      <dd>
+                        <input
+                          className="form-control"
+                          id="baslikIki"
+                          name="baslikIki"
+                          placeholder="Düğün Gecesi"
+                          type="text"
+                          ref={baslikIki}
+                        />
+                      </dd>
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğün Bilgileri kısmında gözükecek olacak başlık. Örn:
+                        Kına Gecesi
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label className="control-label" htmlFor="date">
+                        Tarih
+                      </label>
+                      <Flatpickr
+                        className="form-text"
+                        value={tarihIki == undefined ? new Date() : tarihIki}
+                        options={{
+                          minDate: new Date(),
+                          dateFormat: 'j F Y',
+                          locale: config.date,
+                          altFormat: 'j F Y'
+                        }}
+                        onChange={(selectedDates, dateStr, instance) => {
+                          selectedDates.forEach(function(date) {
+                            setTarihIki(instance.formatDate(date, 'j F Y'))
+                          })
+                        }}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğün tarihini giriniz.
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlTextarea1">
+                        Adresi Girin
+                      </label>
+                      <textarea
+                        name="adresIki"
+                        className="form-control"
+                        id="adresIki"
+                        rows={3}
+                        placeholder="Adresi yazın"
+                        ref={adresIki}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Düğünün yapılacağı adresi girin
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleInputEmail1">
+                        Maps İframe Kodu
+                        {Object.keys(getLocationIki).length !== 0 && (
+                          <button
+                            style={{
+                              padding: '8px 6px',
+                              background: 'white',
+                              border: '1px solid #ddd',
+                              fontSize: '13px',
+                              borderRadius: 5,
+                              position: 'absolute',
+                              zIndex: 6,
+                              marginTop: '-10px',
+                              marginLeft: 5
+                            }}
+                            onClick={() => setLocationIki({})}
+                          >
+                            Temizle
+                          </button>
+                        )}
+                      </label>
+                      <MainMap
+                        onResult={e => onSelectedIki(e.result)}
+                        degerler={getLocationIki}
+                      />
+                      <small id="emailHelp" className="form-text text-muted">
+                        Haritadan konumunuzu belirleyin
+                      </small>
+                    </div>
+                  </li>
+                </ul>
+              )}
+              <div className="form-group">
+                <label htmlFor="exampleFormControlTextarea1">Dip Not</label>
+                <CKEditor
+                  data="Gelin/Damat evi gibi bilgileri belirtebilirsiniz. Eğer boş kalmasını istiyorsanız lütfen burayı silin."
+                  onChange={evt => {
+                    setDipNot(evt.editor.getData())
+                  }}
+                  config={{
+                    toolbar: [['Bold', 'Italic', 'Underline']]
+                  }}
+                />
+                <small id="emailHelp" className="form-text text-muted">
+                  Damat/gelin evini ve saati belirtebilirisiniz..
+                </small>
+              </div>
+              <button
+                type="submit"
+                className={`btn form-control btn-default ${
+                  load ? 'loading disabled' : null
+                }`}
+              >
+                Kaydet
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </Layout>

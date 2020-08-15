@@ -5,7 +5,7 @@ import Cookies from 'js-cookie'
 const Navigation = () => {
   const userid =
     Cookies.get('login') != undefined
-      ? Cookies.get('login').userid
+      ? Cookies.get('login')
       : null
 
   return (

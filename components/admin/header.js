@@ -99,6 +99,19 @@ const Header = () => {
               </a>
             </Link>
           </li>
+          {mobilMenu && (
+            <li
+              className="nav-item"
+              className={router.pathname == '/admin/buy' ? 'active' : ''}
+            >
+              <Link href="/admin/buy">
+                <a className="nav-link">
+                  <i className="fa fa-lira-sign" />
+                  Ödeme Yap
+                </a>
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

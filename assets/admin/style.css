@@ -138,7 +138,7 @@ body {
     display: flex
 }
 
-#AdminPanel .form-control{
+#AdminPanel .form-control {
     height: auto;
 }
 
@@ -465,6 +465,162 @@ body {
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-#AdminPanel small#emailHelp{
+#AdminPanel small#emailHelp {
     margin-top: 10px !important;
+}
+
+.odemeButton {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
+
+.odemeButton button {
+    background: #35bb77;
+    padding: 15px 24px;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.odemeButtonActive button {
+    background: #228251;
+}
+
+.odemeButton button i {
+    font-weight: normal;
+    font-size: 20px;
+}
+
+#price .maddeler {
+    font-size: 16px;
+    margin-right: 60px;
+}
+
+#price .maddeler ul {
+    border-right: 1px solid #d6d6d6;
+}
+
+#price .maddeler li {
+    line-height: 32px;
+}
+
+#price .maddeler li::before {
+    content: url(/images/check.svg);
+    width: 10px;
+    height: 10px;
+    position: relative;
+    top: 4px;
+    margin-right: 8px;
+}
+
+.maddeler h4 {
+    padding-bottom: 20px;
+    font-size: 29px;
+    color: #212224;
+}
+
+.maddeler h4 span {
+    font-size: 14px;
+    color: #656565;
+}
+
+.maddeler h4 i {
+    font-weight: 200;
+    color: #c1c1c1;
+    padding: 0 6px 0 3px;
+}
+
+.maddeler h4 span b {
+    font-weight: bold;
+}
+
+.fiyat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fiyat span.ucret {
+    background: #fbfbfb;
+    border: 1px solid #d8d8d8;
+    padding: 30px 25px;
+    font-size: 29px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.fiyat span i {
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.fiyat small {
+    color: #6d6d6d;
+    padding-top: 5px;
+}
+
+.sistemLogo {
+    display: flex;
+    padding-top: 20px;
+}
+
+.sistemLogo img {
+    padding-right: 5px;
+}
+
+.sistemLogo span {
+    margin-top: -2px;
+}
+
+#AdminPanel #price {
+    width: 100%;
+    margin: 0px auto 40px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: none;
+    color: #46494c;
+}
+
+.odemeSistemi {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+}
+
+.odemeSistemi li {
+    padding: 10px 2px !important;
+    border-right: none !important;
+    color: #46494c !important;
+    list-style-type: disc;
+}
+
+.odemeYonlendir {
+    margin: 0px auto;
+    max-width: fit-content;
+    background: #4c84ff;
+    border: 1px solid #ddd;
+    padding: 25px 50px 15px 50px;
+    border-radius: 9px;
+    margin-bottom: 40px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    font-size: 19px;
+    font-weight: bold;
+    justify-content: right;
+}
+.odemeYonlendir:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.odemeYonlendir img {
+    padding-right: 10px;
 }

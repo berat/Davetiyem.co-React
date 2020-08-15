@@ -45,7 +45,6 @@ const Register = () => {
             email: email.current.value
           })
             .then(response => {
-              console.log(response.data)
               if (response.data.status == 404) {
                 setLoad(false)
                 cogoToast.error(response.data.msg, {

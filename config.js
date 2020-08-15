@@ -1,5 +1,6 @@
 module.exports = {
-  apiURL: 'https://api.davetiyem.co',
+  apiURL: 'http://localhost:3100',
+  // apiURL: 'https://api.davetiyem.co',
   version: '/v1/auth/',
   home: '/',
   loginPage: '/login',

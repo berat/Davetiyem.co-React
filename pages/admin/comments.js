@@ -11,6 +11,7 @@ import config from '../../config'
 const Comments = () => {
   const [listele, setListele] = useState([])
   const [load, setLoad] = useState(false)
+  const [pro, setPro] = useState(true)
 
   const yorumSahibiBir = useRef(),
     yorumuBir = useRef(),
@@ -32,6 +33,15 @@ const Comments = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
+
+    Axios.get(`${config.apiURL}${config.version}confirm/${userHash}`).then(
+      response => {
+        if (response.data.status == 202) {
+          setPro(false)
+        }
+      }
+    )
+
     Axios.get(`${config.apiURL}${config.version}yorum/${userid}`).then(
       response => {
         if (response.data.status == 201) {
@@ -121,10 +131,82 @@ const Comments = () => {
           <span>Arkadaş yorumlarını buradan düzenleyebilirsiniz.</span>
         </div>
         <div className="icerik col-12">
-          <form method="post" onSubmit={onSubmit} className="col-12">
-            {listele.length != 0 ? (
-              <ul className="row">
-                {listele.map((item, index) => (
+          {!pro ? (
+            <h2
+              style={{
+                textAlign: 'center',
+                fontWeight: 'bold',
+                fontSize: 23,
+                paddingTop: 20
+              }}
+            >
+              Yönetim paneline gidin ve ödemenizi yapıp kullanmaya kaldığınız
+              yerden devam edin.
+            </h2>
+          ) : (
+            <form method="post" onSubmit={onSubmit} className="col-12">
+              {listele.length != 0 ? (
+                <ul className="row">
+                  {listele.map((item, index) => (
+                    <li className="col-xs-6 col-lg-6">
+                      <div className="form-group">
+                        <label htmlFor="exampleFormControlText">
+                          Yorum Sahibi
+                        </label>
+                        <dd>
+                          <input
+                            className="form-control"
+                            id="yorumSahibi1"
+                            name="yorumSahibi1"
+                            placeholder="Yorum kime ait?"
+                            type="text"
+                            ref={() =>
+                              index == 0
+                                ? yorumSahibiBir
+                                : index == 1
+                                ? yorumSahibiIki
+                                : index == 2
+                                ? yorumSahibiUc
+                                : yorumSahibiDort
+                            }
+                            defaultValue={item.yorumSahibi}
+                          />
+                        </dd>
+                        <small id="emailHelp" className="form-text text-muted">
+                          Yorum yapan kişinin ismi
+                        </small>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="exampleFormControlTextarea1">
+                          Mesajı Girin
+                        </label>
+                        <textarea
+                          name="yorumu1"
+                          id="yorumu1"
+                          className="form-control"
+                          placeholder="Yorumu girin"
+                          rows={3}
+                          ref={() =>
+                            index == 0
+                              ? yorumuBir
+                              : index == 1
+                              ? yorumuIki
+                              : index == 2
+                              ? yorumuUc
+                              : yorumuDort
+                          }
+                          defaultValue={item.yorumu}
+                        />
+                        <small id="emailHelp" className="form-text text-muted">
+                          Yorum yapan kişinin mesajı
+                        </small>
+                      </div>
+                      <hr />
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <ul className="row">
                   <li className="col-xs-6 col-lg-6">
                     <div className="form-group">
                       <label htmlFor="exampleFormControlText">
@@ -137,16 +219,7 @@ const Comments = () => {
                           name="yorumSahibi1"
                           placeholder="Yorum kime ait?"
                           type="text"
-                          ref={() =>
-                            index == 0
-                              ? yorumSahibiBir
-                              : index == 1
-                              ? yorumSahibiIki
-                              : index == 2
-                              ? yorumSahibiUc
-                              : yorumSahibiDort
-                          }
-                          defaultValue={item.yorumSahibi}
+                          ref={yorumSahibiBir}
                         />
                       </dd>
                       <small id="emailHelp" className="form-text text-muted">
@@ -163,16 +236,7 @@ const Comments = () => {
                         className="form-control"
                         placeholder="Yorumu girin"
                         rows={3}
-                        ref={() =>
-                          index == 0
-                            ? yorumuBir
-                            : index == 1
-                            ? yorumuIki
-                            : index == 2
-                            ? yorumuUc
-                            : yorumuDort
-                        }
-                        defaultValue={item.yorumu}
+                        ref={yorumuBir}
                       />
                       <small id="emailHelp" className="form-text text-muted">
                         Yorum yapan kişinin mesajı
@@ -180,161 +244,129 @@ const Comments = () => {
                     </div>
                     <hr />
                   </li>
-                ))}
-              </ul>
-            ) : (
-              <ul className="row">
-                <li className="col-xs-6 col-lg-6">
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlText">Yorum Sahibi</label>
-                    <dd>
-                      <input
+                  <li className="col-xs-6 col-lg-6">
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlText">
+                        Yorum Sahibi
+                      </label>
+                      <dd>
+                        <input
+                          className="form-control"
+                          id="yorumSahibi1"
+                          name="yorumSahibi1"
+                          placeholder="Yorum kime ait?"
+                          type="text"
+                          ref={yorumSahibiIki}
+                        />
+                      </dd>
+                      <small id="emailHelp" className="form-text text-muted">
+                        Yorum yapan kişinin ismi
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlTextarea1">
+                        Mesajı Girin
+                      </label>
+                      <textarea
+                        name="yorumu1"
+                        id="yorumu1"
                         className="form-control"
-                        id="yorumSahibi1"
-                        name="yorumSahibi1"
-                        placeholder="Yorum kime ait?"
-                        type="text"
-                        ref={yorumSahibiBir}
+                        placeholder="Yorumu girin"
+                        rows={3}
+                        ref={yorumuIki}
                       />
-                    </dd>
-                    <small id="emailHelp" className="form-text text-muted">
-                      Yorum yapan kişinin ismi
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1">
-                      Mesajı Girin
-                    </label>
-                    <textarea
-                      name="yorumu1"
-                      id="yorumu1"
-                      className="form-control"
-                      placeholder="Yorumu girin"
-                      rows={3}
-                      ref={yorumuBir}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Yorum yapan kişinin mesajı
-                    </small>
-                  </div>
-                  <hr />
-                </li>
-                <li className="col-xs-6 col-lg-6">
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlText">Yorum Sahibi</label>
-                    <dd>
-                      <input
+                      <small id="emailHelp" className="form-text text-muted">
+                        Yorum yapan kişinin mesajı
+                      </small>
+                    </div>
+                    <hr />
+                  </li>
+                  <li className="col-xs-6 col-lg-6">
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlText">
+                        Yorum Sahibi
+                      </label>
+                      <dd>
+                        <input
+                          className="form-control"
+                          id="yorumSahibi1"
+                          name="yorumSahibi1"
+                          placeholder="Yorum kime ait?"
+                          type="text"
+                          ref={yorumSahibiUc}
+                        />
+                      </dd>
+                      <small id="emailHelp" className="form-text text-muted">
+                        Yorum yapan kişinin ismi
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlTextarea1">
+                        Mesajı Girin
+                      </label>
+                      <textarea
+                        name="yorumu1"
+                        id="yorumu1"
                         className="form-control"
-                        id="yorumSahibi1"
-                        name="yorumSahibi1"
-                        placeholder="Yorum kime ait?"
-                        type="text"
-                        ref={yorumSahibiIki}
+                        placeholder="Yorumu girin"
+                        rows={3}
+                        ref={yorumuUc}
                       />
-                    </dd>
-                    <small id="emailHelp" className="form-text text-muted">
-                      Yorum yapan kişinin ismi
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1">
-                      Mesajı Girin
-                    </label>
-                    <textarea
-                      name="yorumu1"
-                      id="yorumu1"
-                      className="form-control"
-                      placeholder="Yorumu girin"
-                      rows={3}
-                      ref={yorumuIki}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Yorum yapan kişinin mesajı
-                    </small>
-                  </div>
-                  <hr />
-                </li>
-                <li className="col-xs-6 col-lg-6">
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlText">Yorum Sahibi</label>
-                    <dd>
-                      <input
+                      <small id="emailHelp" className="form-text text-muted">
+                        Yorum yapan kişinin mesajı
+                      </small>
+                    </div>
+                    <hr />
+                  </li>
+                  <li className="col-xs-6 col-lg-6">
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlText">
+                        Yorum Sahibi
+                      </label>
+                      <dd>
+                        <input
+                          className="form-control"
+                          id="yorumSahibi1"
+                          name="yorumSahibi1"
+                          placeholder="Yorum kime ait?"
+                          type="text"
+                          ref={yorumSahibiDort}
+                        />
+                      </dd>
+                      <small id="emailHelp" className="form-text text-muted">
+                        Yorum yapan kişinin ismi
+                      </small>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlTextarea1">
+                        Mesajı Girin
+                      </label>
+                      <textarea
+                        name="yorumu1"
+                        id="yorumu1"
                         className="form-control"
-                        id="yorumSahibi1"
-                        name="yorumSahibi1"
-                        placeholder="Yorum kime ait?"
-                        type="text"
-                        ref={yorumSahibiUc}
+                        placeholder="Yorumu girin"
+                        rows={3}
+                        ref={yorumuDort}
                       />
-                    </dd>
-                    <small id="emailHelp" className="form-text text-muted">
-                      Yorum yapan kişinin ismi
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1">
-                      Mesajı Girin
-                    </label>
-                    <textarea
-                      name="yorumu1"
-                      id="yorumu1"
-                      className="form-control"
-                      placeholder="Yorumu girin"
-                      rows={3}
-                      ref={yorumuUc}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Yorum yapan kişinin mesajı
-                    </small>
-                  </div>
-                  <hr />
-                </li>
-                <li className="col-xs-6 col-lg-6">
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlText">Yorum Sahibi</label>
-                    <dd>
-                      <input
-                        className="form-control"
-                        id="yorumSahibi1"
-                        name="yorumSahibi1"
-                        placeholder="Yorum kime ait?"
-                        type="text"
-                        ref={yorumSahibiDort}
-                      />
-                    </dd>
-                    <small id="emailHelp" className="form-text text-muted">
-                      Yorum yapan kişinin ismi
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1">
-                      Mesajı Girin
-                    </label>
-                    <textarea
-                      name="yorumu1"
-                      id="yorumu1"
-                      className="form-control"
-                      placeholder="Yorumu girin"
-                      rows={3}
-                      ref={yorumuDort}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      Yorum yapan kişinin mesajı
-                    </small>
-                  </div>
-                  <hr />
-                </li>
-              </ul>
-            )}
-            <button
-              type="submit"
-              className={`btn form-control btn-default ${
-                load ? 'loading disabled' : null
-              }`}
-            >
-              Kaydet
-            </button>
-          </form>
+                      <small id="emailHelp" className="form-text text-muted">
+                        Yorum yapan kişinin mesajı
+                      </small>
+                    </div>
+                    <hr />
+                  </li>
+                </ul>
+              )}
+              <button
+                type="submit"
+                className={`btn form-control btn-default ${
+                  load ? 'loading disabled' : null
+                }`}
+              >
+                Kaydet
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </Layout>

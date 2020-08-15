@@ -14,6 +14,7 @@ import '../../assets/users/responsive.css'
 
 const HomePage = () => {
   const [check, setCheck] = useState(false)
+  const [pro, setPro] = useState(true)
   const [checkUserID, setCheckUserID] = useState([])
   const [load, setLoad] = useState(false)
   const router = useRouter()
@@ -23,6 +24,10 @@ const HomePage = () => {
     userid &&
       Axios.get(`${config.apiURL}${config.version}uyeCek/${userid}`).then(
         response => {
+          if (response.data.status == 202) {
+            setLoad(true)
+            setPro(false)
+          }
           if (response.data.status == 201) {
             setLoad(true)
             setCheck(true)
@@ -36,6 +41,17 @@ const HomePage = () => {
   return load == true ? (
     check != false ? (
       <Layout userid={checkUserID}></Layout>
+    ) : !pro ? (
+      <h2
+        style={{
+          textAlign: 'center',
+          fontWeight: 'bold',
+          fontSize: 23,
+          paddingTop: 20
+        }}
+      >
+        Yönetim paneline gidin ve ödemenizi yapıp kullanmaya kaldığınız yerden devam edin.
+      </h2>
     ) : (
       <Error />
     )

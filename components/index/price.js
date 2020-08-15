@@ -6,7 +6,7 @@ export default function Price() {
       <div className="maddeler">
         <h4>
           Kullanım Ücreti <i>|</i>
-          <span>2
+          <span>
             Keşfetmeniz için <b>1(bir) gün</b> ücretsiz
           </span>
         </h4>

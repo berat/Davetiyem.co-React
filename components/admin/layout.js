@@ -3,11 +3,16 @@ import Head from 'next/head'
 import Header from './header'
 import Social from './social'
 import Top from './top'
+import OdemeButton from './odeme'
+import useWindowSize from '../../lib/hooks'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../assets/admin/reset.css'
 import '../../assets/admin/style.css'
+
 const Layout = ({ children }) => {
+  const size = useWindowSize()
+
   return (
     <div id="AdminPanel">
       <Head>
@@ -25,6 +30,7 @@ const Layout = ({ children }) => {
         <Header />
         {children}
         <Social />
+        {size.width >= 992 && <OdemeButton />}
       </div>
     </div>
   )

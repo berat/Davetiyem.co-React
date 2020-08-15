@@ -648,6 +648,7 @@
     align-items: center;
     padding: 30px 0;
     justify-content: center;
+    background: white;
     border: 2px solid #d6d6d6;
     color: #46494c;
 }
@@ -685,7 +686,7 @@
     color: #656565;
 }
 
-.maddeler h4 i{
+.maddeler h4 i {
     font-weight: 200;
     color: #c1c1c1;
     padding: 0 6px 0 3px;

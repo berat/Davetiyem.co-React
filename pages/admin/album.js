@@ -14,6 +14,7 @@ const Album = () => {
   const [username, setUsername] = useState()
   const [uploaded, setUploaded] = useState()
   const [say, setSay] = useState(0)
+  const [pro, setPro] = useState(true)
 
   var Iuploaded = []
 
@@ -27,6 +28,15 @@ const Album = () => {
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
+
+    Axios.get(`${config.apiURL}${config.version}confirm/${userHash}`).then(
+      response => {
+        if (response.data.status == 202) {
+          setPro(false)
+        }
+      }
+    )
+
     Axios.get(`${config.apiURL}${config.version}galeri/${userid}`).then(
       response => {
         if (response.data.status == 201) {
@@ -155,71 +165,89 @@ const Album = () => {
           </span>
         </div>
         <div className="icerik col-12">
-          <form method="post" className="col-12" encType="multipart/form-data">
-            <div className="aupload">
-              <img src={images.upload} className="uploadImage" alt="" />
+          {!pro ? (
+            <h2
+              style={{
+                textAlign: 'center',
+                fontWeight: 'bold',
+                fontSize: 23,
+                paddingTop: 20
+              }}
+            >
+              Yönetim paneline gidin ve ödemenizi yapıp kullanmaya kaldığınız
+              yerden devam edin.
+            </h2>
+          ) : (
+            <form
+              method="post"
+              className="col-12"
+              encType="multipart/form-data"
+            >
+              <div className="aupload">
+                <img src={images.upload} className="uploadImage" alt="" />
+                <input
+                  accept=".png,.jpg,.jpeg"
+                  id="files"
+                  multiple
+                  name="files"
+                  type="file"
+                  onChange={uploadAlbum}
+                />
+                {uploaded != null
+                  ? uploaded.map((item, index) => (
+                      <div className="preview" key={index}>
+                        <img className="uploadImg" src={item.filename} />
+                        <div
+                          className="kaldir"
+                          onClick={() => {
+                            deleteImg(
+                              item.fotoid != undefined
+                                ? item.fotoid
+                                : item.filename
+                            )
+                          }}
+                        >
+                          <i
+                            key={item.fotoid}
+                            onClick={removePreview}
+                            className="fa fa-times"
+                          />
+                        </div>
+                      </div>
+                    ))
+                  : preview != null
+                  ? preview.map((item, index) => (
+                      <div key={index} className="preview">
+                        <img
+                          className="uploadImg"
+                          src={`/uploads/users/${username}/${item.foto}`}
+                        />
+                        <div
+                          className="kaldir"
+                          onClick={() => {
+                            deleteImg(item.fotoid)
+                          }}
+                        >
+                          <i
+                            key={item.fotoid}
+                            onClick={removePreview}
+                            className="fa fa-times"
+                          />
+                        </div>
+                      </div>
+                    ))
+                  : null}
+              </div>
               <input
-                accept=".png,.jpg,.jpeg"
-                id="files"
-                multiple
-                name="files"
-                type="file"
-                onChange={uploadAlbum}
+                type="reset"
+                id="remv"
+                className="form-control btn btn-danger remove"
+                style={{ marginBottom: '20px' }}
+                defaultValue="Hepsini Sil"
+                onClick={reset}
               />
-              {uploaded != null
-                ? uploaded.map((item, index) => (
-                    <div className="preview" key={index}>
-                      <img className="uploadImg" src={item.filename} />
-                      <div
-                        className="kaldir"
-                        onClick={() => {
-                          deleteImg(
-                            item.fotoid != undefined
-                              ? item.fotoid
-                              : item.filename
-                          )
-                        }}
-                      >
-                        <i
-                          key={item.fotoid}
-                          onClick={removePreview}
-                          className="fa fa-times"
-                        />
-                      </div>
-                    </div>
-                  ))
-                : preview != null
-                ? preview.map((item, index) => (
-                    <div key={index} className="preview">
-                      <img
-                        className="uploadImg"
-                        src={`/uploads/users/${username}/${item.foto}`}
-                      />
-                      <div
-                        className="kaldir"
-                        onClick={() => {
-                          deleteImg(item.fotoid)
-                        }}
-                      >
-                        <i
-                          key={item.fotoid}
-                          onClick={removePreview}
-                          className="fa fa-times"
-                        />
-                      </div>
-                    </div>
-                  ))
-                : null}
-            </div>
-            <input
-              type="reset"
-              id="remv"
-              className="form-control btn btn-danger remove"
-              style={{ marginBottom: '20px' }}
-              defaultValue="Hepsini Sil"
-              onClick={reset}
-            />
-          </form>
+            </form>
+          )}
         </div>
       </div>
     </Layout>
