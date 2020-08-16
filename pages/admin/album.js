@@ -32,11 +32,11 @@ const Album = () => {
     Axios.get(`${config.apiURL}${config.version}confirm/${userHash}`).then(
       response => {
         if (response.data.status == 202) {
+          console.log(response)
           setPro(false)
         }
       }
     )
-
     Axios.get(`${config.apiURL}${config.version}galeri/${userid}`).then(
       response => {
         if (response.data.status == 201) {

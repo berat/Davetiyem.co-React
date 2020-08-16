@@ -2,11 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import Cookies from 'js-cookie'
 
-const Navigation = () => {
-  const userid =
-    Cookies.get('login') != undefined
-      ? Cookies.get('login')
-      : null
+const Navigation = React.memo(() => {
+  const userid = Cookies.get('login') != undefined ? Cookies.get('login') : null
 
   return (
     <ul>
@@ -44,7 +41,7 @@ const Navigation = () => {
         <>
           <li className="yaktif">
             <Link href="/login">
-              <a>{'GİRİŞ YAP'}</a>
+              <a>GİRİŞ YAP</a>
             </Link>
           </li>
           <li className="aktif">
@@ -57,7 +54,7 @@ const Navigation = () => {
         <>
           <li className="yaktif">
             <Link href="/logout">
-              <a>{'ÇIKIŞ YAP'}</a>
+              <a>ÇIKIŞ YAP</a>
             </Link>
           </li>
           <li className="aktif">
@@ -69,6 +66,6 @@ const Navigation = () => {
       )}
     </ul>
   )
-}
+})
 
 export default Navigation

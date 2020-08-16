@@ -99,7 +99,7 @@ const Register = () => {
   return (
     <>
       <Head>
-        <title>Kayıt Ol - Örnek Düğün Davetiyesi</title>
+        <title>Kayıt Ol - Dijital Düğün Davetiyesi</title>
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}

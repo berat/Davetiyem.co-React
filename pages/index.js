@@ -15,7 +15,7 @@ function HomePage() {
   return (
     <Layout>
       <Head>
-        <title>Davetiyem.co | Dijital Düğün Davetiyesi</title>
+        <title>Davetiyem.co | Dijital Düğün Davetiyesi Oluştur</title>
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"

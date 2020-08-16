@@ -36,7 +36,7 @@ const Header = ({ kisisel, tarih, username, genel }) => {
 
     timerComponents.push(
       <div className="month">
-        {timeLeft[interval]} <span>{interval}</span>{' '}
+        {timeLeft[interval]} <span>{interval}</span>
       </div>
     )
   })
@@ -56,7 +56,7 @@ const Header = ({ kisisel, tarih, username, genel }) => {
                             ? `/uploads/users/${username}/profil/${item.gelinFoto}`
                             : images.user.gelinFoto
                         }
-                        alt=""
+                        alt="gelin fotoğrafı"
                       />
                       <span>
                         {item.gelinAdi != ''
@@ -72,10 +72,9 @@ const Header = ({ kisisel, tarih, username, genel }) => {
                             ? `/uploads/users/${username}/profil/${item.damatFoto}`
                             : images.user.damatFoto
                         }
-                        alt=""
+                        alt="damat fotoğrafı"
                       />
                       <span>
-                        {' '}
                         {item.damatAdi != ''
                           ? item.damatAdi
                           : 'Damat Adı'}{' '}
@@ -86,12 +85,12 @@ const Header = ({ kisisel, tarih, username, genel }) => {
               ) : (
                 <div className="giris">
                   <div className="kisi">
-                    <img src={images.user.gelinFoto} alt="" />
+                    <img src={images.user.gelinFoto} alt="gelin fotoğrafı" />
                     <span> Gelin Adı </span>
                   </div>
                   <div className="orta">&amp;</div>
                   <div className="kisi">
-                    <img src={images.user.damatFoto} alt="" />
+                    <img src={images.user.damatFoto} alt="damat fotoğrafı" />
                     <span> Damat Adı </span>
                   </div>
                 </div>
@@ -107,7 +106,7 @@ const Header = ({ kisisel, tarih, username, genel }) => {
               </div>
               <div className="soz">
                 {genel != []
-                  ? genel.map(item => <p>{item.dugunSozu}</p>)
+                  ? genel.map((item, index) => <p key={index}>{item.dugunSozu}</p>)
                   : null}
               </div>
             </div>

@@ -148,7 +148,7 @@ const Comments = () => {
               {listele.length != 0 ? (
                 <ul className="row">
                   {listele.map((item, index) => (
-                    <li className="col-xs-6 col-lg-6">
+                    <li key={index} className="col-xs-6 col-lg-6">
                       <div className="form-group">
                         <label htmlFor="exampleFormControlText">
                           Yorum Sahibi

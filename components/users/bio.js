@@ -10,10 +10,7 @@ const Bio = ({ kisisel, username }) => {
             <div className="woman">
               <div className="ptext">
                 <span className="pisim">
-                  {' '}
-                  {item.gelinAdi != ''
-                    ? item.gelinAdi
-                    : 'Gelin Adı'}
+                  {item.gelinAdi != '' ? item.gelinAdi : 'Gelin Adı'}
                 </span>
                 <p className="hakkinda">
                   {item.gelinBio != ''
@@ -28,7 +25,7 @@ const Bio = ({ kisisel, username }) => {
                       ? `/uploads/users/${username}/profil/${item.gelinFoto}`
                       : images.user.gelinFoto
                   }
-                  alt=""
+                  alt="gelin fotoğrafı"
                 />
               </div>
             </div>
@@ -43,15 +40,12 @@ const Bio = ({ kisisel, username }) => {
                       ? `/uploads/users/${username}/profil/${item.damatFoto}`
                       : images.user.damatFoto
                   }
-                  alt=""
+                  alt="damat fotoğrafı"
                 />
               </div>
               <div className="ptext">
                 <span className="pisim">
-                  {' '}
-                  {item.damatAdi != ''
-                    ? item.damatAdi
-                    : 'Damat Adı'}
+                  {item.damatAdi != '' ? item.damatAdi : 'Damat Adı'}
                 </span>
                 <p className="hakkinda">
                   {item.damatBio != ''
@@ -73,7 +67,7 @@ const Bio = ({ kisisel, username }) => {
               </p>
             </div>
             <div className="pimg">
-              <img src={images.user.gelinFoto} alt="" />
+              <img src={images.user.gelinFoto} alt="gelin fotoğrafı" />
             </div>
           </div>
           <div className="porta">
@@ -81,7 +75,7 @@ const Bio = ({ kisisel, username }) => {
           </div>
           <div className="man">
             <div className="pimg">
-              <img src={images.user.damatFoto} alt="" />
+              <img src={images.user.damatFoto} alt="damat fotoğrafı" />
             </div>
             <div className="ptext">
               <span className="pisim">Damat Adı</span>

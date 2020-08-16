@@ -14,9 +14,9 @@ const Header = () => {
   const userid = Cookies.get('login') != undefined ? Cookies.get('login') : null
 
   useEffect(() => {
-    Axios.get(`${config.apiURL}${config.version}aktifHesap/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}confirm/${userid}`).then(
       response => {
-        if (response.data.status == 201) {
+        if (response.data.status == 202) {
           setUsername(response.data.username)
         }
       }

@@ -55,7 +55,7 @@ const Login = () => {
   return (
     <>
       <Head>
-        <title>Giriş Yap - Örnek Düğün Davetiyesi</title>
+        <title>Giriş Yap - Dijial Düğün Davetiyesi</title>
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}

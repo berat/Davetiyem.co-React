@@ -4,27 +4,24 @@ import config from '../../config'
 import Axios from 'axios'
 import Router from 'next/link'
 import Cookies from 'js-cookie'
-import jwtDecode from 'jwt-decode'
 
 const Social = () => {
   const [username, setUsername] = useState()
 
-  const userid =
-    Cookies.get('login') != undefined
-      ? Cookies.get('login')
-      : null
+  const userid = Cookies.get('login') != undefined ? Cookies.get('login') : null
 
   useEffect(() => {
     userid == null ? Router.replace(config.loginPage) : null
 
-    Axios.get(`${config.apiURL}${config.version}galeri/${userid}`).then(
+    Axios.get(`${config.apiURL}${config.version}confirm/${userid}`).then(
       response => {
-        if (response.data.status == 201) {
+        if (response.data.status == 202) {
           setUsername(response.data.username)
         }
       }
     )
   }, [userid, setUsername])
+  
   return (
     <div className="socialMedia">
       <ul>

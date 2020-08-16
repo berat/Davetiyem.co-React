@@ -19,10 +19,10 @@ const Comments = ({ yorum }) => {
       <div className="soz">
         <Swiper {...params}>
           {yorum.map(item => (
-          <div className="sozIcerik" key={item.yorumid}>
-            <p className="icerik">{item.yorumu}</p>
-            <span className="sahibi">{item.yorumSahibi}</span>
-          </div>
+            <div className="sozIcerik" key={item.yorumid}>
+              <p className="icerik">{item.yorumu}</p>
+              <span className="sahibi">{item.yorumSahibi}</span>
+            </div>
           ))}
         </Swiper>
       </div>
