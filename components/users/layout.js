@@ -69,7 +69,6 @@ const Layout = ({ children, userid }) => {
       response => {
         if (response.data.status == 201) {
           setGaleri(response.data.photos)
-          setUsername(response.data.username)
         }
       }
     )
@@ -83,6 +82,7 @@ const Layout = ({ children, userid }) => {
     Axios.get(`${config.apiURL}${config.version}kisisel/${userid}`).then(
       response => {
         if (response.data.status == 201) {
+          setUsername(response.data.username)
           setKisisel(response.data.data)
         }
       }
