@@ -49,11 +49,11 @@ const Wedding = () => {
     Axios.get(`${config.apiURL}${config.version}dugun/${userid}`).then(
       response => {
         if (response.data.status == 201) {
-          console.log(response.data)
           setBilgi(response.data.data)
           setLocation(
             response.data.data[0] !== null &&
-              response.data.data[0].diframe !== null && response.data.data[0].diframe == ""
+              response.data.data[0].diframe !== null &&
+              response.data.data[0].diframe !== ''
               ? {
                   lat: parseFloat(response.data.data[0].diframe.split(',')[0]),
                   long: parseFloat(response.data.data[0].diframe.split(',')[1])
@@ -62,7 +62,8 @@ const Wedding = () => {
           )
           setLocationIki(
             response.data.data[1] !== null &&
-              response.data.data[1].diframe !== null && response.data.data[1].diframe == ""
+              response.data.data[1].diframe !== null &&
+              response.data.data[1].diframe !== ''
               ? {
                   lat: parseFloat(response.data.data[1].diframe.split(',')[0]),
                   long: parseFloat(response.data.data[1].diframe.split(',')[1])
@@ -211,8 +212,7 @@ const Wedding = () => {
                           minDate: new Date(),
                           dateFormat: 'd F Y',
                           locale: config.date,
-                          altFormat: 'd F Y',
-                          altInput: true
+                          altFormat: 'd F Y'
                         }}
                         onChange={(selectedDates, dateStr, instance) => {
                           selectedDates.forEach(function(date) {

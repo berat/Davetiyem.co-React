@@ -14,12 +14,12 @@ const Top = () => {
   useEffect(() => {
     Axios.get(`${config.apiURL}${config.version}confirm/${userid}`).then(
       response => {
-        if (response.data.status == 202) {
+        if (response.data.status == 201) {
           setUsername(response.data.username)
         }
       }
     )
-  }, [setUsername])
+  }, [])
 
   return (
     <div className="row justify-content-md-center">
