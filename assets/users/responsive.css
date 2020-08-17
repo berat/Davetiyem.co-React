@@ -54,7 +54,7 @@
 	#userPage .saat {
 		height: 0;
 		padding: 28px 10px;
-		font-size: 14px;
+		font-size: 15.5px;
 		line-height: 5%
 	}
 
@@ -85,8 +85,8 @@
 
 
 	.takvimEkle span.takvimEkleText {
-		font-size: 11px;
-		top: 13px;
+		font-size: 13px;
+		top: 14px;
 		bottom: auto;
 		padding: 5px 12px
 	}
