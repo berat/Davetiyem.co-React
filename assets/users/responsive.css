@@ -9,11 +9,12 @@
 	#userPage .kisi img{width: 100px;height: 100px;}
 	#userPage .kisi span{font-size: 17px; text-align: center; margin-left: -15%;}
 	#userPage .orta{font-size: 50px;margin-left: 10px;width:5%;margin-right:15px;padding-top: 40px}
-	#userPage .saat{height: 0;padding: 28px 10px;font-size:130%;line-height: 5%}
-	#userPage .saat div span{font-size: 100%;line-height: 60%}
+	#userPage .saat{height: 0;padding: 28px 10px;font-size:14px;line-height: 5%}
+	#userPage .saat div.month span{font-size: 100%;line-height: 0%; padding-top: 0;}
 	#userPage .saat i{font-size: 100%;line-height: 5%;padding: 0;}
-	#userPage .saat span{font-size:20px;text-align: center;position: relative;top:-10px}
+	#userPage .saat span, :not(.saat span.takvimEkleText){font-size:20px;text-align: center;position: relative;top:-10px}
 	#userPage .saat span#suan{line-height: initial; font-size: 18px;}
+	#userpage .saat div.takvimEkle span.takvimEkleText a{font-size: 11px; top: 16px; bottom: auto; padding: 5px 12px}
 	#userPage .soz{padding: 0}
 	#userPage .soz p{margin-top: 20px;}
 	#userPage .hsoz{display: none}
@@ -31,7 +32,7 @@
 	#userPage .gunler{width: 99%}
 	#userPage .gunler ul{width: 99%;float: none;}
 	#userPage .gunler ul li:nth-child(odd){padding: 0;border: none;}
-	#userPage .gunler ul li{width: 94%;margin: 0px auto !important;float: none;border: none;padding: 0;margin-bottom: 60px !important}
+	#userPage .gunler ul li{width: 94%;margin: 0px auto !important;float: none;border: none;padding: 0;margin-bottom: 30px !important}
 	#userPage .gbaslik,#userPage .gust,#userPage .gmap iframe,#userPage .gmap,#userPage .gmap iframe{width: 100%;}
 	#userPage .gtarih{width: 25%}
 	#userPage .gtarih span{font-size: 100%;}
@@ -43,6 +44,7 @@
 	#userPage .socialMedia{bottom:0;right: auto;top: auto;width: 100%}
 	#userPage .socialMedia ul{display: flex}
 	#userPage .socialMedia li{width: 25%}
+	#userpage #aramizaKatil .aramizaKatil{width: 90%; padding: 10px 0px; font-size: 1.9em;}
 }
 
 @media only screen and (max-width: 768px) { 
@@ -59,7 +61,7 @@
 	#userPage .gunler{width: 99%}
 	#userPage .gunler ul{width: 99%;float: none;}
 	#userPage .gunler ul li:nth-child(odd){padding: 0;border: none;}
-	#userPage .gunler ul li{width: 94%;margin: 0px auto !important;float: none;border: none;padding: 0;margin-bottom: 60px !important}
+	#userPage .gunler ul li{width: 94%;margin: 0px auto !important;float: none;border: none;padding: 0;margin-bottom: 30px !important}
 	#userPage .gbaslik,#userPage .gust,#userPage .gmap,#userPage .gmap img,#userPage .gmap iframe{width: 100%;}
 	#userPage .gtarih{width: 25%}
 	#userPage .gtarih span{font-size:100%;}
@@ -69,6 +71,8 @@
 	#userPage .socialMedia{bottom:0;right: auto;top: auto;width: 100%}
 	#userPage .socialMedia ul{display: flex}
 	.socialMedia li{width: 25%}
+	#userpage .saat div.takvimEkle span.takvimEkleText{font-size: 11px; top: 16px; bottom: auto; padding: 5px 12px}
+	#userpage #aramizaKatil .aramizaKatil{width: 90%; padding: 10px 0px; font-size: 1.9em;}
  }
 
 @media only screen and (max-width: 992px) { 

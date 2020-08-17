@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import images from '../../public/images/image'
 
-const Header = ({ kisisel, tarih, username, genel, fullTarih }) => {
+const Header = ({ kisisel, tarih, username, genel, gunler }) => {
+  const converDate = tarih => {
+    if (tarih) {
+      let yil = parseInt(tarih.split('-')[0])
+      let ay = tarih.split('-')[1]
+      let gun = parseInt(tarih.split('-')[2])
+
+      return `${yil}${ay}${gun}T160000Z/${yil}${ay}${gun + 1}T160000Z`
+    }
+  }
+
   const calculateTimeLeft = () => {
     const difference = +new Date(tarih) - +new Date()
     let timeLeft = {}
@@ -92,19 +102,38 @@ const Header = ({ kisisel, tarih, username, genel, fullTarih }) => {
                   </div>
                 </div>
               )}
-              {/* <a
-                href={`https://calendar.google.com/calendar/r/eventedit?text=${
-                  item.gelinAdi != '' ? item.gelinAdi : 'Gelin Adı'
-                } ve ${
-                  item.damatAdi != '' ? item.damatAdi : 'Damat Adı'
-                }+Düğünü&dates=20131124T010000Z/20131124T020000Z&details=Event+Details+Here&location=123+Main+St,+Example,+NY%22&sf=true`}
-              >
-                Deneme
-              </a> */}
               <div className="saat">
                 {tarih != undefined ? (
                   timerComponents.length ? (
-                    timerComponents
+                    <div className="takvimEkle">
+                      <span className="takvimEkleText">
+                        <a
+                          href={`https://calendar.google.com/calendar/r/eventedit?text=${
+                            kisisel[0].gelinAdi != ''
+                              ? kisisel[0].gelinAdi
+                              : 'Gelin Adı'
+                          } ve ${
+                            kisisel[0].damatAdi != ''
+                              ? kisisel[0].damatAdi
+                              : 'Damat Adı'
+                          }+Düğünü&dates=${converDate(tarih)}&details=${
+                            kisisel[0].gelinAdi != ''
+                              ? kisisel[0].gelinAdi
+                              : 'Gelin Adı'
+                          } ve ${
+                            kisisel[0].damatAdi != ''
+                              ? kisisel[0].damatAdi
+                              : 'Damat Adı'
+                          } evleniyor. Düğün daveti.&location=${
+                            gunler[0].dadres
+                          }&sf=true`}
+                          target="_blank"
+                        >
+                          Takvime Ekle
+                        </a>
+                      </span>
+                      {timerComponents}
+                    </div>
                   ) : (
                     <span>EVLENDİK!</span>
                   )

@@ -152,7 +152,7 @@ const Layout = ({ children, userid }) => {
         genel={genel}
         tarih={dugunTarih}
         username={username}
-        fullTarih={genel}
+        gunler={gunler}
       />
       <Bio kisisel={kisisel} username={username} />
       <Comments yorum={yorum} />

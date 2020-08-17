@@ -81,11 +81,20 @@
     color: #f0feff;
 }
 
+#userPage .saat a {
+    color: inherit;
+    display: flex;
+}
+
+#userPage .saat a:hover {
+    cursor: pointer;
+}
+
 #userPage .saat div {
     display: flex;
 }
 
-#userPage .saat div span {
+#userPage .saat div.month span {
     font-size: 24px;
     padding-top: 5px;
     line-height: 44px;
@@ -94,7 +103,7 @@
     padding-right: 10px;
 }
 
-#userPage .saat span.nullTarih{
+#userPage .saat span.nullTarih {
     font-size: 22px;
     width: 175px;
 }
@@ -118,6 +127,26 @@
 #userPage span#tarih {
     display: none;
 }
+
+
+
+.takvimEkle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.takvimEkle span.takvimEkleText {
+    position: absolute;
+    background: rgba(44, 62, 80, 0.5);
+    bottom: -35px;
+    font-size: 15px;
+    line-height: 15px ;
+    padding: 8px 15px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
 
 #userPage .soz p {
     font-size: 17px;
@@ -294,6 +323,7 @@
 #userPage .gunler ul {
     width: 972px;
     float: left;
+    margin-bottom: 20px
 }
 
 #userPage .gunler li {
@@ -359,7 +389,6 @@
 }
 
 #userPage .not {
-    padding-top: 40px;
     text-align: center;
 }
 
@@ -385,7 +414,7 @@
     position: relative;
 }
 
-#userPage #galeriSlider .swiper-wrapper{
+#userPage #galeriSlider .swiper-wrapper {
     width: 350px;
     height: 325px;
 }
@@ -435,13 +464,14 @@
 #userPage #aramizaKatil {
     width: 100%;
     position: fixed;
+    background: #fbffd1;
     bottom: 0;
     z-index: 4;
 }
 
 #userPage .aramizaKatil {
-    width: 100%;
-    background: #fbffd1;
+    box-sizing: border-box;
+    width: 90%;
     height: auto;
     padding: 15px 20px;
     text-align: center;
@@ -521,6 +551,6 @@
     background-color: #b93b2f;
 }
 
-.swiper-slide{
+.swiper-slide {
     object-fit: cover;
 }
