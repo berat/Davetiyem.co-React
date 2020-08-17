@@ -161,12 +161,11 @@ const Layout = ({ children, userid }) => {
       <div id="aramizaKatil">
         <div className="aramizaKatil">
           <p>
-            Birkaç dakika içerisinde siz de kendi davetiye sitenizi
-            oluşturabilirsiniz. Hemen
+           Bu dijital düğün davetiyesi 
             <Link href="/register">
-              <a> Kayıt Olun </a>
+              <a> davetiyem.co </a>
             </Link>
-            ve başlayın.
+            ile oluşturulmuştur.
           </p>
         </div>
       </div>

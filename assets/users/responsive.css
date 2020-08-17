@@ -1,89 +1,442 @@
 @media only screen and (max-width: 576px) {
-	#userPage body{width: 100% !important}
-	#userPage header{height: 400px}
-	#userPage .header{height: 400px;}
-	#userPage .ortala{width: 90%;margin: 0px auto}
-	#userPage .giris,#userPage .dikey{width: 100%;margin: 0px auto;}
-	#userPage .dikey{vertical-align: 0;padding-top: 25px}
-	#userPage .kisi{width: 45%;margin-left: 25px;}
-	#userPage .kisi img{width: 100px;height: 100px;}
-	#userPage .kisi span{font-size: 17px; text-align: center; margin-left: -15%;}
-	#userPage .orta{font-size: 50px;margin-left: 10px;width:5%;margin-right:15px;padding-top: 40px}
-	#userPage .saat{height: 0;padding: 28px 10px;font-size:14px;line-height: 5%}
-	#userPage .saat div.month span{font-size: 100%;line-height: 0%; padding-top: 0;}
-	#userPage .saat i{font-size: 100%;line-height: 5%;padding: 0;}
-	#userPage .saat span, :not(.saat span.takvimEkleText){font-size:20px;text-align: center;position: relative;top:-10px}
-	#userPage .saat span#suan{line-height: initial; font-size: 18px;}
-	#userpage .saat div.takvimEkle span.takvimEkleText a{font-size: 11px; top: 16px; bottom: auto; padding: 5px 12px}
-	#userPage .soz{padding: 0}
-	#userPage .soz p{margin-top: 20px;}
-	#userPage .hsoz{display: none}
-	#userPage .bio{display: block;padding: 40px 0}
-	#userPage .bio,#userPage .woman,#userPage .man{width: 98%;margin: 0px auto}
-	#userPage .ptext{width: 90%;}
-	#userPage .hakkinda{width:100%;font-size: 16px;text-align: -webkit-right}
-	#userPage .man .hakkinda{text-align: -webkit-left}
-	#userPage .pimg img{width: 100%;height: 75%;margin-top: 10px}
-	#userPage .porta{width: auto;margin: 0;padding: 0;margin-top: -10px;margin-bottom: 10px}
-	#userPage #galeriSlider,#userPage #galeriSlider .swiper-wrapper{height: 206px}
-	#userPage .soz,#userPage ul.sparagraf{width: 98%}
-	#userPage .soz p.icerik{font-size: 17px;line-height: 27px}
-	#userPage .soz span.sahibi{font-size: 17px}
-	#userPage .gunler{width: 99%}
-	#userPage .gunler ul{width: 99%;float: none;}
-	#userPage .gunler ul li:nth-child(odd){padding: 0;border: none;}
-	#userPage .gunler ul li{width: 94%;margin: 0px auto !important;float: none;border: none;padding: 0;margin-bottom: 30px !important}
-	#userPage .gbaslik,#userPage .gust,#userPage .gmap iframe,#userPage .gmap,#userPage .gmap iframe{width: 100%;}
-	#userPage .gtarih{width: 25%}
-	#userPage .gtarih span{font-size: 100%;}
-	#userPage .gtarih i{font-size: 250%;}
-	#userPage .gadres{width: 70%;font-size: 17px}
-	#userPage .not{padding: 0;line-height: 22px;}
-	#userPage .gmap iframe{width: 100% !important;}
-	#userPage #galeriSlider div.scrollableArea img{width: 230px; height: 206px;}
-	#userPage .socialMedia{bottom:0;right: auto;top: auto;width: 100%}
-	#userPage .socialMedia ul{display: flex}
-	#userPage .socialMedia li{width: 25%}
-	#userpage #aramizaKatil .aramizaKatil{width: 90%; padding: 10px 0px; font-size: 1.9em;}
+	#userPage body {
+		width: 100% !important
+	}
+
+	#userPage header {
+		height: 400px
+	}
+
+	#userPage .header {
+		height: 400px;
+	}
+
+	#userPage .ortala {
+		width: 90%;
+		margin: 0px auto
+	}
+
+	#userPage .giris,
+	#userPage .dikey {
+		width: 100%;
+		margin: 0px auto;
+	}
+
+	#userPage .dikey {
+		vertical-align: 0;
+		padding-top: 25px
+	}
+
+	#userPage .kisi {
+		width: 45%;
+		margin-left: 25px;
+	}
+
+	#userPage .kisi img {
+		width: 100px;
+		height: 100px;
+	}
+
+	#userPage .kisi span {
+		font-size: 17px;
+		text-align: center;
+		margin-left: -15%;
+	}
+
+	#userPage .orta {
+		font-size: 50px;
+		margin-left: 10px;
+		width: 5%;
+		margin-right: 15px;
+		padding-top: 40px
+	}
+
+	#userPage .saat {
+		height: 0;
+		padding: 28px 10px;
+		font-size: 14px;
+		line-height: 5%
+	}
+
+	#userPage .saat div.month span {
+		font-size: 100%;
+		line-height: 0%;
+		padding: 0 6px;
+	}
+
+	#userPage .saat i {
+		font-size: 100%;
+		line-height: 5%;
+		padding: 0;
+	}
+
+	#userPage .saat span,
+	:not(.saat span.takvimEkleText) {
+		font-size: 20px;
+		text-align: center;
+		position: relative;
+		top: -10px
+	}
+
+	#userPage .saat span#suan {
+		line-height: initial;
+		font-size: 18px;
+	}
+
+
+	.takvimEkle span.takvimEkleText {
+		font-size: 11px;
+		top: 13px;
+		bottom: auto;
+		padding: 5px 12px
+	}
+
+	#userPage .soz {
+		padding: 0
+	}
+
+	#userPage .soz p {
+		margin-top: 20px;
+	}
+
+	#userPage .hsoz {
+		display: none
+	}
+
+	#userPage .bio {
+		display: block;
+		padding: 40px 0
+	}
+
+	#userPage .bio,
+	#userPage .woman,
+	#userPage .man {
+		width: 98%;
+		margin: 0px auto
+	}
+
+	#userPage .ptext {
+		width: 90%;
+	}
+
+	#userPage .hakkinda {
+		width: 100%;
+		font-size: 16px;
+		text-align: -webkit-right
+	}
+
+	#userPage .man .hakkinda {
+		text-align: -webkit-left
+	}
+
+	#userPage .pimg img {
+		width: 100%;
+		height: 75%;
+		margin-top: 10px
+	}
+
+	#userPage .porta {
+		width: auto;
+		margin: 0;
+		padding: 0;
+		margin-top: -10px;
+		margin-bottom: 10px
+	}
+
+	#userPage #galeriSlider,
+	#userPage #galeriSlider .swiper-wrapper {
+		height: 206px
+	}
+
+	#userPage .soz,
+	#userPage ul.sparagraf {
+		width: 98%
+	}
+
+	#userPage .soz p.icerik {
+		font-size: 17px;
+		line-height: 27px
+	}
+
+	#userPage .soz span.sahibi {
+		font-size: 17px
+	}
+
+	#userPage .gunler {
+		width: 99%
+	}
+
+	#userPage .gunler ul {
+		width: 99%;
+		float: none;
+	}
+
+	#userPage .gunler ul li:nth-child(odd) {
+		padding: 0;
+		border: none;
+	}
+
+	#userPage .gunler ul li {
+		width: 94%;
+		margin: 0px auto !important;
+		float: none;
+		border: none;
+		padding: 0;
+		margin-bottom: 30px !important
+	}
+
+	#userPage .gbaslik,
+	#userPage .gust,
+	#userPage .gmap iframe,
+	#userPage .gmap,
+	#userPage .gmap iframe {
+		width: 100%;
+	}
+
+	#userPage .gtarih {
+		width: 25%
+	}
+
+	#userPage .gtarih span {
+		font-size: 100%;
+	}
+
+	#userPage .gtarih i {
+		font-size: 250%;
+	}
+
+	#userPage .gadres {
+		width: 70%;
+		font-size: 17px
+	}
+
+	#userPage .not {
+		padding: 0;
+		line-height: 22px;
+	}
+
+	#userPage .gmap iframe {
+		width: 100% !important;
+	}
+
+	#userPage #galeriSlider div.scrollableArea img {
+		width: 230px;
+		height: 206px;
+	}
+
+	#userPage .socialMedia {
+		bottom: 0;
+		right: auto;
+		top: auto;
+		width: 100%
+	}
+
+	#userPage .socialMedia ul {
+		display: flex
+	}
+
+	#userPage .socialMedia li {
+		width: 25%
+	}
+
+	#userpage #aramizaKatil .aramizaKatil {
+		padding: 10px 0px;
+		font-size: 12px;
+		line-height: 17px;
+	}
 }
 
-@media only screen and (max-width: 768px) { 
-	#userPage .bio{display: block;padding: 40px 0}
-	#userPage .bio,#userPage .woman,#userPage .man{width: 98%;margin: 0px auto}
-	#userPage .ptext{width: 90%;}
-	#userPage .hakkinda{width:100%;font-size: 16px;text-align: -webkit-right}
-	#userPage .man .hakkinda{text-align: -webkit-left}
-	#userPage .pimg img{width: 100%;height: 75%;margin-top: 10px}
-	#userPage .porta{width: auto;margin: 0;padding: 0;margin-top: -10px;margin-bottom: 10px}
-	#userPage .soz,ul.sparagraf{width: 98%}
-	#userPage .soz p.icerik{font-size: 17px;line-height: 27px}
-	#userPage .soz span.sahibi{font-size: 17px}
-	#userPage .gunler{width: 99%}
-	#userPage .gunler ul{width: 99%;float: none;}
-	#userPage .gunler ul li:nth-child(odd){padding: 0;border: none;}
-	#userPage .gunler ul li{width: 94%;margin: 0px auto !important;float: none;border: none;padding: 0;margin-bottom: 30px !important}
-	#userPage .gbaslik,#userPage .gust,#userPage .gmap,#userPage .gmap img,#userPage .gmap iframe{width: 100%;}
-	#userPage .gtarih{width: 25%}
-	#userPage .gtarih span{font-size:100%;}
-	#userPage .gtarih i{font-size: 250%;}
-	#userPage .gadres{width: 70%;font-size: 17px}
-	#userPage .not{padding: 0;line-height:22px}
-	#userPage .socialMedia{bottom:0;right: auto;top: auto;width: 100%}
-	#userPage .socialMedia ul{display: flex}
-	.socialMedia li{width: 25%}
-	#userpage .saat div.takvimEkle span.takvimEkleText{font-size: 11px; top: 16px; bottom: auto; padding: 5px 12px}
-	#userpage #aramizaKatil .aramizaKatil{width: 90%; padding: 10px 0px; font-size: 1.9em;}
- }
+@media only screen and (max-width: 768px) {
+	#userPage .bio {
+		display: block;
+		padding: 40px 0
+	}
 
-@media only screen and (max-width: 992px) { 
-	#userPage .bio{display: block;padding: 40px 0}
-	#userPage .bio,#userPage .woman,#userPage .man{width: 98%;margin: 0px auto}
-	#userPage .ptext{width: 90%;}
-	#userPage .hakkinda{width:100%;font-size: 16px;text-align: -webkit-right}
-	#userPage .man .hakkinda{text-align: -webkit-left}
-	#userPage .pimg img{width: 100%;height: 75%;margin-top: 10px}
-	#userPage .porta{width: auto;margin: 0;padding: 0;margin-top: -10px;margin-bottom: 10px}
-	#userPage .socialMedia{bottom:0;right: auto;top: auto;width: 100%}
-	#userPage .socialMedia ul{display: flex}
-	#userPage .socialMedia li{width: 25%}
- }
+	#userPage .bio,
+	#userPage .woman,
+	#userPage .man {
+		width: 98%;
+		margin: 0px auto
+	}
+
+	#userPage .ptext {
+		width: 90%;
+	}
+
+	#userPage .hakkinda {
+		width: 100%;
+		font-size: 16px;
+		text-align: -webkit-right
+	}
+
+	#userPage .man .hakkinda {
+		text-align: -webkit-left
+	}
+
+	#userPage .pimg img {
+		width: 100%;
+		height: 75%;
+		margin-top: 10px
+	}
+
+	#userPage .porta {
+		width: auto;
+		margin: 0;
+		padding: 0;
+		margin-top: -10px;
+		margin-bottom: 10px
+	}
+
+	#userPage .soz,
+	ul.sparagraf {
+		width: 98%
+	}
+
+	#userPage .soz p.icerik {
+		font-size: 17px;
+		line-height: 27px
+	}
+
+	#userPage .soz span.sahibi {
+		font-size: 17px
+	}
+
+	#userPage .gunler {
+		width: 99%
+	}
+
+	#userPage .gunler ul {
+		width: 99%;
+		float: none;
+	}
+
+	#userPage .gunler ul li:nth-child(odd) {
+		padding: 0;
+		border: none;
+	}
+
+	#userPage .gunler ul li {
+		width: 94%;
+		margin: 0px auto !important;
+		float: none;
+		border: none;
+		padding: 0;
+		margin-bottom: 30px !important
+	}
+
+	#userPage .gbaslik,
+	#userPage .gust,
+	#userPage .gmap,
+	#userPage .gmap img,
+	#userPage .gmap iframe {
+		width: 100%;
+	}
+
+	#userPage .gtarih {
+		width: 25%
+	}
+
+	#userPage .gtarih span {
+		font-size: 100%;
+	}
+
+	#userPage .gtarih i {
+		font-size: 250%;
+	}
+
+	#userPage .gadres {
+		width: 70%;
+		font-size: 17px
+	}
+
+	#userPage .not {
+		padding: 0;
+		line-height: 22px
+	}
+
+	#userPage .socialMedia {
+		bottom: 0;
+		right: auto;
+		top: auto;
+		width: 100%
+	}
+
+	#userPage .socialMedia ul {
+		display: flex
+	}
+
+	.socialMedia li {
+		width: 25%
+	}
+
+	#userpage .saat div.takvimEkle span.takvimEkleText {
+		font-size: 11px;
+		top: 16px;
+		bottom: auto;
+		padding: 5px 12px
+	}
+
+	#userpage #aramizaKatil .aramizaKatil {
+		padding: 10px 0px;
+		font-size: 1.9em;
+		font-size: 12px;
+		line-height: 17px;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	#userPage .bio {
+		display: block;
+		padding: 40px 0
+	}
+
+	#userPage .bio,
+	#userPage .woman,
+	#userPage .man {
+		width: 98%;
+		margin: 0px auto
+	}
+
+	#userPage .ptext {
+		width: 90%;
+	}
+
+	#userPage .hakkinda {
+		width: 100%;
+		font-size: 16px;
+		text-align: -webkit-right
+	}
+
+	#userPage .man .hakkinda {
+		text-align: -webkit-left
+	}
+
+	#userPage .pimg img {
+		width: 100%;
+		height: 75%;
+		margin-top: 10px
+	}
+
+	#userPage .porta {
+		width: auto;
+		margin: 0;
+		padding: 0;
+		margin-top: -10px;
+		margin-bottom: 10px
+	}
+
+	#userPage .socialMedia {
+		bottom: 0;
+		right: auto;
+		top: auto;
+		width: 100%
+	}
+
+	#userPage .socialMedia ul {
+		display: flex
+	}
+
+	#userPage .socialMedia li {
+		width: 25%
+	}
+}
