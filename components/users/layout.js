@@ -18,7 +18,6 @@ const Layout = ({ children, userid }) => {
   const [genel, setGenel] = useState([])
   const [yorum, setYorum] = useState([])
   const [kisisel, setKisisel] = useState([])
-
   const [dugunTarih, setDugunTarih] = useState()
 
   const trDate = [
@@ -153,6 +152,7 @@ const Layout = ({ children, userid }) => {
         genel={genel}
         tarih={dugunTarih}
         username={username}
+        fullTarih={genel}
       />
       <Bio kisisel={kisisel} username={username} />
       <Comments yorum={yorum} />

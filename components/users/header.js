@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import images from '../../public/images/image'
 
-const Header = ({ kisisel, tarih, username, genel }) => {
+const Header = ({ kisisel, tarih, username, genel, fullTarih }) => {
   const calculateTimeLeft = () => {
     const difference = +new Date(tarih) - +new Date()
     let timeLeft = {}
@@ -40,6 +40,7 @@ const Header = ({ kisisel, tarih, username, genel }) => {
       </div>
     )
   })
+
   return (
     <header>
       <div id="header">
@@ -59,9 +60,7 @@ const Header = ({ kisisel, tarih, username, genel }) => {
                         alt="gelin fotoğrafı"
                       />
                       <span>
-                        {item.gelinAdi != ''
-                          ? item.gelinAdi
-                          : 'Gelin Adı'}
+                        {item.gelinAdi != '' ? item.gelinAdi : 'Gelin Adı'}
                       </span>
                     </div>
                     <div className="orta">&amp;</div>
@@ -75,9 +74,7 @@ const Header = ({ kisisel, tarih, username, genel }) => {
                         alt="damat fotoğrafı"
                       />
                       <span>
-                        {item.damatAdi != ''
-                          ? item.damatAdi
-                          : 'Damat Adı'}{' '}
+                        {item.damatAdi != '' ? item.damatAdi : 'Damat Adı'}
                       </span>
                     </div>
                   </div>
@@ -95,6 +92,15 @@ const Header = ({ kisisel, tarih, username, genel }) => {
                   </div>
                 </div>
               )}
+              {/* <a
+                href={`https://calendar.google.com/calendar/r/eventedit?text=${
+                  item.gelinAdi != '' ? item.gelinAdi : 'Gelin Adı'
+                } ve ${
+                  item.damatAdi != '' ? item.damatAdi : 'Damat Adı'
+                }+Düğünü&dates=20131124T010000Z/20131124T020000Z&details=Event+Details+Here&location=123+Main+St,+Example,+NY%22&sf=true`}
+              >
+                Deneme
+              </a> */}
               <div className="saat">
                 {tarih != undefined ? (
                   timerComponents.length ? (
@@ -102,11 +108,15 @@ const Header = ({ kisisel, tarih, username, genel }) => {
                   ) : (
                     <span>EVLENDİK!</span>
                   )
-                ) : <span className="nullTarih">Tarih Eklenmedi!</span>}
+                ) : (
+                  <span className="nullTarih">Tarih Eklenmedi!</span>
+                )}
               </div>
               <div className="soz">
                 {genel != []
-                  ? genel.map((item, index) => <p key={index}>{item.dugunSozu}</p>)
+                  ? genel.map((item, index) => (
+                      <p key={index}>{item.dugunSozu}</p>
+                    ))
                   : null}
               </div>
             </div>
