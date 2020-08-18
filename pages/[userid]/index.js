@@ -24,15 +24,18 @@ const HomePage = () => {
     userid &&
       Axios.get(`${config.apiURL}${config.version}uyeCek/${userid}`).then(
         response => {
+          console.log(response.data)
           if (response.data.status == 202) {
+            console.log('2')
             setPro(false)
             setLoad(true)
+            setError(false)
           }
           if (response.data.status == 201) {
             setCheck(true)
             setCheckUserID(response.data.userid)
             setLoad(true)
-          } else {
+          } else if (response.data.status == 404) {
             setError(true)
             setLoad(true)
           }
@@ -54,21 +57,22 @@ const HomePage = () => {
       />
     )
 
-  return check != false ? (
-    <Layout userid={checkUserID}></Layout>
-  ) : (
-    <h2
-      style={{
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: 23,
-        paddingTop: 20
-      }}
-    >
-      Yönetim paneline gidin ve ödemenizi yapıp kullanmaya kaldığınız yerden
-      devam edin.
-    </h2>
-  )
+  if (!pro)
+    return (
+      <h2
+        style={{
+          textAlign: 'center',
+          fontWeight: 'bold',
+          fontSize: 23,
+          paddingTop: 20
+        }}
+      >
+        Yönetim paneline gidin ve ödemenizi yapıp kullanmaya kaldığınız yerden
+        devam edin.
+      </h2>
+    )
+
+  return <Layout userid={checkUserID}></Layout>
 }
 
 export default HomePage
