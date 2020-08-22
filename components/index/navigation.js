@@ -14,7 +14,7 @@ const Navigation = React.memo(() => {
         </Scrollchor>
       </li>
       <li>
-        <Scrollchor href="#hakkinda">
+        <Scrollchor to="#hakkinda">
           <a>HAKKINDA</a>
         </Scrollchor>
       </li>

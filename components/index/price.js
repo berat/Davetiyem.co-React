@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Price() {
   return (
-    <div id="price">
+    <div id="ucret">
       <div className="maddeler">
         <h4>
           Kullanım Ücreti <i>|</i>
