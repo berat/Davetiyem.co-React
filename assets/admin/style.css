@@ -616,11 +616,25 @@ body {
     font-weight: bold;
     justify-content: right;
 }
-.odemeYonlendir:hover{
+
+.odemeYonlendir:hover {
     color: white;
     text-decoration: none;
 }
 
 .odemeYonlendir img {
     padding-right: 10px;
+}
+
+#AdminPanel .ornekSozler {
+    padding-left: 10px;
+    display: inline-block;
+    font-size: 13.5px;
+    color: #515456;
+    border-left: 1px solid #b9b8b8;
+    margin-left: 10px;
+}
+
+#AdminPanel .ornekSozler a {
+    color: #58b5e4;
 }

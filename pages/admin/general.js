@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
+import Link from 'next/link'
 import Layout from '../../components/admin/layout'
 import Axios from 'axios'
 import Flatpickr from 'react-flatpickr'
@@ -195,6 +196,15 @@ const General = () => {
                 </ul>
                 <div className="form-group">
                   <label htmlFor="title">Düğün Sözü</label>
+                  <div className="ornekSozler">
+                    <span>Örnek sözler için: </span>
+                    <Link
+                      href="https://blog.davetiyem.co/davetiye-sozleri"
+                      prefetch={false}
+                    >
+                      <a>https://blog.davetiyem.co/davetiye-sozleri</a>
+                    </Link>
+                  </div>
                   <textarea
                     name="dugunSozu"
                     maxLength={150}
@@ -303,6 +313,15 @@ const General = () => {
                 </ul>
                 <div className="form-group">
                   <label htmlFor="title">Düğün Sözü</label>
+                  <div className="ornekSozler">
+                    <span>Örnek sözler için: </span>
+                    <Link
+                      href="https://blog.davetiyem.co/davetiye-sozleri"
+                      prefetch={false}
+                    >
+                      <a>https://blog.davetiyem.co/davetiye-sozleri</a>
+                    </Link>
+                  </div>
                   <textarea
                     name="dugunSozu"
                     maxLength={150}
