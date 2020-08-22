@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Cookies from 'js-cookie'
+import Scrollchor from 'react-scrollchor'
 
 const Navigation = React.memo(() => {
   const userid = Cookies.get('login') != undefined ? Cookies.get('login') : null
@@ -8,19 +9,19 @@ const Navigation = React.memo(() => {
   return (
     <ul>
       <li>
-        <Link href="/">
+        <Scrollchor to="/">
           <a>ANASAYFA</a>
-        </Link>
+        </Scrollchor>
       </li>
       <li>
-        <Link href="#hakkinda">
+        <Scrollchor href="#hakkinda">
           <a>HAKKINDA</a>
-        </Link>
+        </Scrollchor>
       </li>
       <li>
-        <Link href="#hizmetler">
-          <a>HİZMETLER</a>
-        </Link>
+        <Scrollchor to="#ucret">
+          <a>ÜCRET</a>
+        </Scrollchor>
       </li>
       <li>
         <Link href="https://blog.davetiyem.co/" prefetch={false}>
@@ -33,9 +34,9 @@ const Navigation = React.memo(() => {
         </Link>
       </li>
       <li>
-        <Link href="#iletisim">
+        <Scrollchor to="#iletisim">
           <a>İLETİŞİM</a>
-        </Link>
+        </Scrollchor>
       </li>
       {userid == null ? (
         <>

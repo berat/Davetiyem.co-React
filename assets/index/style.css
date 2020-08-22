@@ -641,7 +641,7 @@
     }
 }
 
-#price {
+#ucret {
     width: 65%;
     margin: 20px auto 40px auto;
     display: flex;
@@ -653,20 +653,20 @@
     color: #46494c;
 }
 
-#price .maddeler {
+#ucret .maddeler {
     font-size: 16px;
     margin-right: 60px;
 }
 
-#price .maddeler ul {
+#ucret .maddeler ul {
     border-right: 1px solid #d6d6d6;
 }
 
-#price .maddeler li {
+#ucret .maddeler li {
     line-height: 32px;
 }
 
-#price .maddeler li::before {
+#ucret .maddeler li::before {
     content: url(/images/check.svg);
     width: 10px;
     height: 10px;
