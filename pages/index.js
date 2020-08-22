@@ -4,7 +4,9 @@ import Head from 'next/head'
 import Header from '../components/index/header'
 import Body from '../components/index/body'
 import Price from '../components/index/price'
+import Blogs from '../components/index/blogs'
 import Bottom from '../components/index/bottom'
+import Davet from '../components/index/davet'
 
 import '../assets/reset.css'
 import '../assets/index/animate.min.css'
@@ -28,6 +30,8 @@ function HomePage() {
       <Header />
       <Body />
       <Price />
+      <Davet />
+      <Blogs />
       <Bottom />
     </Layout>
   )

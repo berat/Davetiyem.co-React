@@ -386,6 +386,10 @@ body {
         width: 100%
     }
 
+    #AdminPanel .ornekSozler {
+        display: none;
+    }
+
     #AdminPanel .socialMedia ul {
         display: flex
     }

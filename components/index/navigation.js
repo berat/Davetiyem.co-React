@@ -10,17 +10,17 @@ const Navigation = React.memo(() => {
     <ul>
       <li>
         <Scrollchor to="/">
-          <a>ANASAYFA</a>
+          ANASAYFA
         </Scrollchor>
       </li>
       <li>
         <Scrollchor to="#hakkinda">
-          <a>HAKKINDA</a>
+          HAKKINDA
         </Scrollchor>
       </li>
       <li>
         <Scrollchor to="#ucret">
-          <a>ÜCRET</a>
+          ÜCRET
         </Scrollchor>
       </li>
       <li>
@@ -35,7 +35,7 @@ const Navigation = React.memo(() => {
       </li>
       <li>
         <Scrollchor to="#iletisim">
-          <a>İLETİŞİM</a>
+          İLETİŞİM
         </Scrollchor>
       </li>
       {userid == null ? (
