@@ -764,9 +764,10 @@
     color: #474a4d;
     font-weight: bold;
     line-height: 23px;
-    max-height: 38px;
     padding: 10px 0;
     letter-spacing: -0.2px;
+    margin: 0;
+    font-family: inherit;
 }
 
 #blogs ul li p {
