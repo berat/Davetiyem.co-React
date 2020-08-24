@@ -69,7 +69,7 @@ const Header = () => {
                   <a>Dijital Davetiyeni Hemen Oluştur</a>
                 </Link>
               </div>
-              <p>Tamamen Ücretsizdir.</p>
+              <p>Sadece 59.99 ₺</p>
             </div>
           ) : (
             <div className="sorta">

@@ -24,9 +24,9 @@ const Navigation = React.memo(() => {
         </Scrollchor>
       </li>
       <li>
-        <Link href="https://blog.davetiyem.co/" prefetch={false}>
+      <Scrollchor to="#blogs">
           <a>BLOG</a>
-        </Link>
+        </Scrollchor>
       </li>
       <li>
         <Link href="/damatgelin">

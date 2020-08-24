@@ -49,7 +49,9 @@ export default function Blogs() {
           </li>
         ))}
       </ul>
-      <button>Daha Fazla İçeriğe Gözat</button>
+      <button onClick={() => 'https://blog.davetiyem.co'}>
+        Daha Fazla İçeriğe Gözat
+      </button>
     </div>
   )
 }

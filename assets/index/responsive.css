@@ -26,6 +26,8 @@
 	#index .iletisim-form .sag{float: none;}
 	#index .iletisim-form .sol{float: none;}
 	#index .iletisim-form .sol,#index .iletisim-form .sag{margin: 0px auto;}
+	#index #ucret,#index #blogs {width: 90%;}
+	#index #blogs ul li,#index #blogs button{width: 100%}
  }
 
  @media only screen and (max-width: 576px) {
@@ -52,4 +54,8 @@
 	#index .iletisim-form .sag{float: none;}
 	#index .iletisim-form .sol{float: none;}
 	#index .iletisim-form .sol,#index .iletisim-form .sag{margin: 0px auto;}
- }
+	#index #ucret {width: 90%; flex-direction: column;}
+	#index #ucret .maddeler{order: 2; margin: 0px; padding: 0 25px;}
+	#index #ucret .maddeler ul{border: none;}
+	#index #ucret .fiyat{order: 1; padding-bottom: 30px;}
+}

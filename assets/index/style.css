@@ -140,9 +140,9 @@
 }
 
 #index .sorta p {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 300;
-    color: #b7b7b7;
+    color: #c5c5c5;
     text-align: center;
 }
 
@@ -746,6 +746,7 @@
 #blogs ul {
     display: flex;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 #blogs ul li {
@@ -788,6 +789,7 @@
     border: 2px solid #c5c3c6;
     text-align: center;
     background: none;
+    outline: none;
 }
 
 #blogs button:hover {
