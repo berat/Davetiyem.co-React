@@ -745,13 +745,12 @@
 
 #blogs ul {
     display: flex;
-    gap: 40px;
+    gap: 2%;
     flex-wrap: wrap;
 }
 
 #blogs ul li {
-    width: 33.33%;
-    box-sizing: border-box;
+    width: 32%;
 }
 
 #blogs ul li img {
